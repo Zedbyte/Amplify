@@ -60,5 +60,7 @@
 
 </div><!-- page -->
 
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+
 </body>
 </html>

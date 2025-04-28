@@ -58,3 +58,31 @@ should you have any questions.</p> -->
     	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guitar.png" alt="Guitar" class="relative z-10 w-80 md:w-[450px] object-contain" />
     </div>
 </section>
+
+<section class="py-16 bg-white">
+	<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-10 gap-8 items-center">
+		
+		<!-- Left Column (30%) -->
+		<div class="md:col-span-3">
+			<h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+				Best Selling<br>Guitars
+			</h2>
+			<p class="text-gray-600 mb-6">
+				Check our different guitar styles!
+			</p>
+			<a href="#" class="inline-flex items-center px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800">
+				See more
+				<i class="ph ph-arrow-right ml-2"></i>
+			</a>
+		</div>
+
+		<!-- Right Column (70%) -->
+		<div class="md:col-span-7 grid grid-cols-3 gap-6">
+			<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guitar.png" alt="Guitar 1" class="object-contain w-full" />
+			<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guitar.png" alt="Guitar 2" class="object-contain w-full" />
+			<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guitar.png" alt="Guitar 3" class="object-contain w-full" />
+			<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guitar.png" alt="Guitar 4" class="object-contain w-full" />
+		</div>
+
+	</div>
+</section>
