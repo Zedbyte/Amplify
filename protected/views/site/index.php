@@ -4,7 +4,7 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<!-- <h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
 <p>Congratulations! You have successfully created your Yii application.</p>
 
@@ -17,4 +17,44 @@ $this->pageTitle=Yii::app()->name;
 <p>For more details on how to further develop this application, please read
 the <a href="https://www.yiiframework.com/doc/">documentation</a>.
 Feel free to ask in the <a href="https://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+should you have any questions.</p> -->
+
+<section class="bg-black rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between overflow-hidden w-9/12 mx-auto mt-6">
+	<!-- Text Content -->
+	<div class="text-white max-w-lg">
+		<h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+		Buy your<br>
+		<span class="text-white">dream guitar</span>
+		</h1>
+		<div class="flex space-x-8 mt-8 text-lg">
+		<div class="flex flex-col items-start">
+			<span class="font-bold text-2xl">50+</span>
+			<span class="text-gray-400 text-sm">Guitar selections</span>
+		</div>
+		<div class="border-l border-gray-600 h-full"></div>
+		<div class="flex flex-col items-start">
+			<span class="font-bold text-2xl">100+</span>
+			<span class="text-gray-400 text-sm">Buyers</span>
+		</div>
+		</div>
+
+		<!-- Search Box -->
+		<div class="mt-8">
+		<div class="relative">
+			<input type="text" placeholder="What are you looking for?" class="w-full rounded-lg px-3 py-4 text-black focus:outline-none bg-white" />
+			<button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black text-white py-2 px-3 rounded-md hover:bg-gray-800">
+				<i class="ph ph-magnifying-glass text-2xl"></i>
+			</button>
+		</div>
+		</div>
+	</div>
+
+	<!-- Guitar and Circle -->
+	<div class="relative w-full md:w-auto flex justify-end mt-8 md:mt-0">
+    <!-- Circle Background -->
+    	<div class="absolute bottom-0 right-0 w-[700px] h-[700px] bg-stone-800 rounded-full translate-x-1/3 translate-y-1/4"></div>
+    
+    <!-- Guitar Image -->
+    	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guitar.png" alt="Guitar" class="relative z-10 w-80 md:w-[400px] object-contain" />
+    </div>
+</section>
