@@ -52,9 +52,9 @@ should you have any questions.</p> -->
 	<!-- Guitar and Circle -->
 	<div class="relative w-full md:w-auto flex justify-end mt-8 md:mt-0">
     <!-- Circle Background -->
-    	<div class="absolute bottom-0 right-0 w-[700px] h-[700px] bg-stone-800 rounded-full translate-x-1/3 translate-y-1/4"></div>
+    	<div class="absolute bottom-0 right-0 w-[600px] h-[500px] bg-stone-800 rounded-t-full rounded-l-full translate-x-1/20 translate-y-1/4"></div>
     
     <!-- Guitar Image -->
-    	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guitar.png" alt="Guitar" class="relative z-10 w-80 md:w-[400px] object-contain" />
+    	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guitar.png" alt="Guitar" class="relative z-10 w-80 md:w-[450px] object-contain" />
     </div>
 </section>
