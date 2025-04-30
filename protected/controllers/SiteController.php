@@ -107,6 +107,11 @@ class SiteController extends Controller
 		$this->redirect(Yii::app()->homeUrl);
 	}
 
+
+	/**
+	 * Displays the registration page
+	 * @return void
+	 */
 	public function actionRegister()
 	{
 		$model = new RegisterForm();
@@ -121,6 +126,11 @@ class SiteController extends Controller
 		$this->render('register', ['model' => $model]);
 	}
 
+
+	/**
+	 * Displays the registration page for admin
+	 * @return void
+	 */
 	public function actionRegisterAdmin()
 	{
 		// Check if the current user is logged in and is an admin (role 2)
