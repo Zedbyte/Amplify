@@ -20,7 +20,7 @@ class Order extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'order';
+		return '{{order}}';
 	}
 
 	/**

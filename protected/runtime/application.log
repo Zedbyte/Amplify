@@ -612,3 +612,28 @@ Stack trace:
 REQUEST_URI=/index.php/site/login
 HTTP_REFERER=http://localhost:8080/index.php/site/login
 ---
+2025/04/30 16:16:01 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'amplify.user' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `user`.
+in C:\xampp\htdocs\Amplify\protected\models\RegisterForm.php (34)
+in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (115)
+in C:\xampp\htdocs\Amplify\index.php (13)
+2025/04/30 16:16:01 [error] [exception.CDbException] CDbException: The table "user" for active record class "User" cannot be found in the database. in C:\xampp\htdocs\Amplify\framework\db\ar\CActiveRecord.php:2391
+Stack trace:
+#0 C:\xampp\htdocs\Amplify\framework\db\ar\CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(User))
+#1 C:\xampp\htdocs\Amplify\framework\db\ar\CActiveRecord.php(663): CActiveRecord->getMetaData()
+#2 C:\xampp\htdocs\Amplify\framework\validators\CUniqueValidator.php(96): CActiveRecord->getTableSchema()
+#3 C:\xampp\htdocs\Amplify\framework\validators\CValidator.php(201): CUniqueValidator->validateAttribute(Object(RegisterForm), 'username')
+#4 C:\xampp\htdocs\Amplify\framework\base\CModel.php(159): CValidator->validate(Object(RegisterForm), Array)
+#5 C:\xampp\htdocs\Amplify\protected\models\RegisterForm.php(34): CModel->validate()
+#6 C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php(115): RegisterForm->register()
+#7 C:\xampp\htdocs\Amplify\framework\web\actions\CInlineAction.php(49): SiteController->actionRegister()
+#8 C:\xampp\htdocs\Amplify\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\Amplify\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\Amplify\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(282): CController->run('register')
+#12 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(141): CWebApplication->runController('site/register')
+#13 C:\xampp\htdocs\Amplify\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\Amplify\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php/site/register
+HTTP_REFERER=http://localhost:8080/index.php/site/register
+---

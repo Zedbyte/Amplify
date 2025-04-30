@@ -20,7 +20,7 @@ class Shipment extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'shipment';
+		return '{{shipment}}';
 	}
 
 	/**

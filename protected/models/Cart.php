@@ -16,7 +16,7 @@ class Cart extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'cart';
+		return '{{cart}}';
 	}
 
 	/**

@@ -18,7 +18,7 @@ class Product extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'product';
+		return '{{product}}';
 	}
 
 	/**

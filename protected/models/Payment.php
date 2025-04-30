@@ -17,7 +17,7 @@ class Payment extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'payment';
+		return '{{payment}}';
 	}
 
 	/**
