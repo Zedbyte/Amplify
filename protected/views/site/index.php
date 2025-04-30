@@ -93,4 +93,18 @@ should you have any questions.</p> -->
 	<?php $this->widget('application.widgets.AboutUs'); ?>
 
 	<?php $this->widget('application.widgets.Testimonial'); ?>
+
+	<section class="bg-black text-white rounded-2xl px-6 py-20 text-center mx-auto mb-16">
+		<h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to amplify your sound?</h2>
+		<p class="text-gray-300 mb-8">
+			Start your musical journey with the perfect gear — delivered fast, played forever.
+		</p>
+
+		<a href="#" class="inline-block bg-white text-black font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-100 transition">
+			Explore Collection
+		</a>
+
+		<p class="mt-8 font-medium">Amplify your passion, elevate your sound</p>
+	</section>
+
 </div>

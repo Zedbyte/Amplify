@@ -9,6 +9,10 @@ class Testimonial extends CWidget
 
     public function run()
     {
-        $this->render('testimonial');
+        $this->render('testimonial', 
+            [
+                'testimonials' => require(Yii::getPathOfAlias('application.data.testimonialsData') . '.php')
+            ]
+        );
     }
 }
