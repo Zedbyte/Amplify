@@ -89,4 +89,6 @@ should you have any questions.</p> -->
 
 		</div>
 	</section>
+
+	<?php $this->widget('application.components.AboutUs'); ?>
 </div>

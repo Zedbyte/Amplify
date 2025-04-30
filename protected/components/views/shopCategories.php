@@ -19,7 +19,7 @@
                          alt="<?php echo CHtml::encode($cat->name); ?>"
                          class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" />
                 </div>
-                <p class="text-sm text-gray-800 font-medium"><?php echo CHtml::encode($cat->name); ?></p>
+                <p class="text-md text-gray-800 font-medium"><?php echo CHtml::encode($cat->name); ?></p>
             </div>
         <?php endforeach; ?>
     </div>
