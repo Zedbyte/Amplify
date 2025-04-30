@@ -6,12 +6,14 @@ $currentRoute = Yii::app()->controller->getRoute();
 $isGuest = Yii::app()->user->isGuest;
 ?>
 
-<nav class="bg-white border-b border-gray-200 fixed top-0 w-full">
+<nav class="bg-white border-b border-gray-200 relative top-0 w-full py-3">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16 items-center">
+    <div class="flex justify-between items-center">
       <!-- Logo -->
-      <div class="flex-shrink-0 flex items-center">
-        <span class="text-xl font-bold">Amplify</span>
+      <div class="flex items-center">
+        <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/amplify_logo.png"
+        alt="Amplify's Logo"
+        class="h-14 object-contain" />
       </div>
 
       <!-- Desktop Menu -->
@@ -27,30 +29,33 @@ $isGuest = Yii::app()->user->isGuest;
       </div>
 
       <!-- Right Icons -->
-      <div class="flex items-center space-x-4">
-        <?php if ($isGuest): ?>
-          <a href="<?php echo Yii::app()->createUrl('/site/login'); ?>" class="text-gray-700 hover:text-gray-900">
-            <span class="ml-1 font-semibold">Login</span>
+      <div class="flex items-center space-x-10">
+        <span class="flex items-center space-x-4">
+          <a href="#" class="text-gray-700 hover:text-gray-900">
+            <i class="ph ph-magnifying-glass text-xl"></i>
           </a>
-          <a href="<?php echo Yii::app()->createUrl('/site/register'); ?>" class="text-gray-700 hover:text-gray-900">
-            <span class="ml-1 font-semibold">Register</span>
+          <a href="#" class="relative text-gray-700 hover:text-gray-900">
+            <i class="ph ph-shopping-cart text-xl"></i>
+            <span class="absolute -top-2 -right-2 text-xs bg-red-500 text-white rounded-full px-1">1</span>
           </a>
-        <?php else: ?>
-          <a href="<?php echo Yii::app()->createUrl('/site/logout'); ?>" class="text-gray-700 hover:text-gray-900">
-            <span class="ml-1 font-semibold">Logout</span>
+          <a href="#" class="relative text-gray-700 hover:text-gray-900">
+            <i class="ph ph-heart text-xl"></i>
+            <span class="absolute -top-2 -right-2 text-xs">1</span>
           </a>
-        <?php endif; ?>
-        <a href="#" class="text-gray-700 hover:text-gray-900">
-          <i class="ph ph-magnifying-glass text-xl"></i>
-        </a>
-        <a href="#" class="relative text-gray-700 hover:text-gray-900">
-          <i class="ph ph-shopping-cart text-xl"></i>
-          <span class="absolute -top-2 -right-2 text-xs bg-red-500 text-white rounded-full px-1">1</span>
-        </a>
-        <a href="#" class="relative text-gray-700 hover:text-gray-900">
-          <i class="ph ph-heart text-xl"></i>
-          <span class="absolute -top-2 -right-2 text-xs">1</span>
-        </a>
+        </span>
+
+        <span>
+          <?php if ($isGuest): ?>
+            <a href="<?php echo Yii::app()->createUrl('/site/login'); ?>" class="text-gray-700 hover:text-gray-900">
+              <i class="ph ph-user text-xl"></i>
+              <span class="ml-1 font-semibold">Login/Register</span>
+            </a>
+          <?php else: ?>
+            <a href="<?php echo Yii::app()->createUrl('/site/logout'); ?>" class="text-gray-700 hover:text-gray-900">
+              <span class="ml-1 font-semibold">Logout</span>
+            </a>
+          <?php endif; ?>
+        </span>
       </div>
 
       <!-- Mobile Menu Button -->

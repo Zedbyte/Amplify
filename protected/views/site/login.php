@@ -33,9 +33,12 @@ $this->breadcrumbs = ['Login'];
             ]); ?>
             <?php echo $form->error($model, 'password', ['class' => 'text-red-600 text-sm mt-1']); ?>
 
-            <p class="text-xs text-gray-400 mt-2">
-                Hint: You may login with <kbd class="bg-gray-100 px-1 rounded text-black">demo</kbd>/<kbd class="bg-gray-100 px-1 rounded text-black">demo</kbd> or <kbd class="bg-gray-100 px-1 rounded text-black">admin</kbd>/<kbd class="bg-gray-100 px-1 rounded text-black">admin</kbd>.
-            </p>
+            <span class="text-sm flex justify-end mt-2">
+                Already have an account?
+                <a href="<?php echo Yii::app()->createUrl('/site/register'); ?>" class="text-gray-700 hover:text-gray-900">
+                    <span class="ml-1 font-semibold">Sign Up</span>
+                </a>
+            </span>
         </div>
 
         <div class="mb-6 flex items-center space-x-2">

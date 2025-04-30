@@ -21,11 +21,7 @@
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
-<body>
-	<div id="header">
-		<div id="logo"><?php //echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
-
+<body class="flex flex-col min-h-screen">
 	<?php $this->widget('application.components.Navbar'); ?>
 
 	<!-- <div id="mainmenu"> -->
@@ -46,10 +42,9 @@
 	<?php //endif?>
 
 
-	<?php echo $content; ?>
-
-
-	<!-- <div class="clear"></div> -->
+	<main class="flex-1">
+		<?php echo $content; ?>
+	</main>
 
 	<!-- <div id="footer">
 		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
