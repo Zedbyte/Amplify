@@ -29,7 +29,7 @@ class Product extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, SKU, description, price, stock, category_id', 'required'),
+			array('SKU, description, price, stock, category_id', 'required'),
 			array('id, stock, category_id', 'numerical', 'integerOnly'=>true),
 			array('SKU, description', 'length', 'max'=>100),
 			array('price', 'length', 'max'=>10),

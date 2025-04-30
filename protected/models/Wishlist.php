@@ -26,11 +26,11 @@ class Wishlist extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('wishlist_id, customer_id, product_id', 'required'),
-			array('wishlist_id, customer_id, product_id', 'numerical', 'integerOnly'=>true),
+			array('customer_id, product_id', 'required'),
+			array('id, customer_id, product_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('wishlist_id, customer_id, product_id', 'safe', 'on'=>'search'),
+			array('id, customer_id, product_id', 'safe', 'on'=>'search'),
 		);
 	}
 

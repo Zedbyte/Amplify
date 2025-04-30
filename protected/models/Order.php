@@ -31,7 +31,7 @@ class Order extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, order_date, total_price, customer_id, payment_id, shipment_id, status, is_received', 'required'),
+			array('order_date, total_price, customer_id, payment_id, shipment_id, status, is_received', 'required'),
 			array('id, customer_id, payment_id, shipment_id, status, is_received', 'numerical', 'integerOnly'=>true),
 			array('total_price', 'length', 'max'=>10),
 			// The following rule is used by search().

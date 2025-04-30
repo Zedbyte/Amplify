@@ -28,11 +28,11 @@ class Customer extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('address, phone_number', 'required'),
-			array('user_id', 'numerical', 'integerOnly'=>true),
+			array('id', 'user_id', 'numerical', 'integerOnly'=>true),
 			array('address, phone_number', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('address, phone_number, user_id', 'safe', 'on'=>'search'),
+			array('id, address, phone_number, user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
