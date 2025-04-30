@@ -6,9 +6,14 @@
  * The followings are the available columns in table 'category':
  * @property integer $id
  * @property string $name
+ * @property string $image_path
  */
 class Category extends CActiveRecord
 {
+
+	public $imageFile;
+
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -25,9 +30,10 @@ class Category extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, name', 'required'),
+			array('name', 'required'),
 			array('id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>100),
+			array('imageFile', 'file', 'types'=>'jpg, png, jpeg', 'allowEmpty'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name', 'safe', 'on'=>'search'),
@@ -53,6 +59,7 @@ class Category extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => 'Name',
+			'imageFile' => 'Category Image',
 		);
 	}
 
