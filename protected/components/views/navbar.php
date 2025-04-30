@@ -1,8 +1,12 @@
 <?php
-// File: protected/components/navbar.php
+/** @var Navbar $this */
+$routes = $this->getRoutes();
+
+$currentRoute = Yii::app()->controller->getRoute();
+$isGuest = Yii::app()->user->isGuest;
 ?>
 
-<nav class="bg-white border-b border-gray-200">
+<nav class="bg-white border-b border-gray-200 fixed top-0 w-full">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16 items-center">
       <!-- Logo -->
@@ -12,33 +16,30 @@
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex md:items-center md:space-x-6">
-        <a href="#" class="text-gray-700 hover:text-gray-900">Home</a>
-
-        <div class="relative group">
-          <button class="text-gray-700 hover:text-gray-900 inline-flex items-center">
-            Shop
-            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <!-- Dropdown (optional) -->
-          <div class="absolute hidden group-hover:block bg-white shadow-md mt-2 py-2 w-40">
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Category 1</a>
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Category 2</a>
-          </div>
-        </div>
-
-        <a href="#" class="text-gray-700 hover:text-gray-900">About</a>
-        <a href="#" class="text-gray-700 hover:text-gray-900">Blog</a>
-        <a href="#" class="text-gray-700 hover:text-gray-900">Contact</a>
+        <?php foreach ($routes as $item):
+          $isActive = strpos($currentRoute, trim($item['route'], '/')) !== false;
+        ?>
+          <a href="<?php echo Yii::app()->createUrl($item['route'], $item['params'] ?? []); ?>"
+             class="text-gray-700 hover:text-gray-900 <?php echo $isActive ? 'font-semibold underline' : ''; ?>">
+              <?php echo CHtml::encode($item['label']); ?>
+          </a>
+        <?php endforeach; ?>
       </div>
 
       <!-- Right Icons -->
       <div class="flex items-center space-x-4">
-        <a href="#" class="flex items-center text-gray-700 hover:text-gray-900">
-          <i class="ph ph-user text-xl"></i>
-          <span class="ml-1 font-semibold">Login / Register</span>
-        </a>
+        <?php if ($isGuest): ?>
+          <a href="<?php echo Yii::app()->createUrl('/site/login'); ?>" class="text-gray-700 hover:text-gray-900">
+            <span class="ml-1 font-semibold">Login</span>
+          </a>
+          <a href="<?php echo Yii::app()->createUrl('/site/register'); ?>" class="text-gray-700 hover:text-gray-900">
+            <span class="ml-1 font-semibold">Register</span>
+          </a>
+        <?php else: ?>
+          <a href="<?php echo Yii::app()->createUrl('/site/logout'); ?>" class="text-gray-700 hover:text-gray-900">
+            <span class="ml-1 font-semibold">Logout</span>
+          </a>
+        <?php endif; ?>
         <a href="#" class="text-gray-700 hover:text-gray-900">
           <i class="ph ph-magnifying-glass text-xl"></i>
         </a>
@@ -65,23 +66,27 @@
 
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden md:hidden">
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Shop</a>
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About</a>
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Blog</a>
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Contact</a>
-    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Pages</a>
+    <?php foreach ($routes as $item): ?>
+      <a href="<?php echo Yii::app()->createUrl($item['route'], $item['params'] ?? []); ?>"
+         class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+        <?php echo CHtml::encode($item['label']); ?>
+      </a>
+    <?php endforeach; ?>
+
+    <?php if ($isGuest): ?>
+      <a href="<?php echo Yii::app()->createUrl('/site/login'); ?>" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Login</a>
+      <a href="<?php echo Yii::app()->createUrl('/site/register'); ?>" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Register</a>
+    <?php else: ?>
+      <a href="<?php echo Yii::app()->createUrl('/site/logout'); ?>" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
+    <?php endif; ?>
   </div>
 </nav>
 
-<!-- Include Phosphor Icons -->
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
 <script>
-    const btn = document.getElementById('mobile-menu-button');
-    const menu = document.getElementById('mobile-menu');
-
-    btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-    });
+  const btn = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
 </script>

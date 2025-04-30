@@ -6,4 +6,9 @@ class Navbar extends CWidget
     {
         $this->render('navbar');
     }
+
+    public function getRoutes()
+    {
+        return require(Yii::getPathOfAlias('application.data.navRoutes') . '.php');
+    }
 }
