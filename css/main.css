@@ -36,7 +36,7 @@ body {
   }
   
   .animate-scroll-x {
-	animation: scrollX 60s linear infinite;
+	animation: scrollX 40s linear infinite;
   }
   
   .group:hover .animate-scroll-x {

@@ -22,6 +22,7 @@
     --color-gray-900: oklch(21% 0.034 264.665);
     --color-stone-400: oklch(70.9% 0.01 56.259);
     --color-stone-600: oklch(44.4% 0.011 73.639);
+    --color-stone-700: oklch(37.4% 0.01 67.558);
     --color-stone-800: oklch(26.8% 0.007 34.298);
     --color-black: #000;
     --color-white: #fff;
@@ -777,6 +778,9 @@
   }
   .border-stone-600 {
     border-color: var(--color-stone-600);
+  }
+  .border-stone-700 {
+    border-color: var(--color-stone-700);
   }
   .border-white {
     border-color: var(--color-white);

@@ -55,7 +55,7 @@
         $loopTestimonials = array_merge($testimonials, $testimonials);
 
             foreach ($loopTestimonials as $t): ?>
-                <div class="relative bg-black text-white flex-shrink-0 w-4/12 md:w-6/12 rounded-2xl p-6 flex flex-col justify-between">
+                <div class="relative bg-black text-white flex-shrink-0 w-4/12 md:w-5/12 rounded-2xl p-6 flex flex-col justify-between">
                     <!-- Text -->
                     <p class="text-sm leading-relaxed mb-4 pr-2 overflow-y-auto max-h-40">
                         <?php echo $t['text']; ?>
@@ -67,10 +67,10 @@
                             <i class="ph ph-quotes text-2xl"></i>
                             <img src="<?php echo $t['image']; ?>"
                                  alt="<?php echo CHtml::encode($t['name']); ?>"
-                                 class="h-12 w-12 object-cover rounded-full border border-white" />
+                                 class="h-12 w-12 object-cover rounded-full border border-stone-700" />
                             <div>
                                 <p class="font-semibold"><?php echo $t['name']; ?></p>
-                                <p class="text-xs text-gray-400"><?php echo $t['role']; ?></p>
+                                <p class="text-sm text-gray-400"><?php echo $t['role']; ?></p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-1">
