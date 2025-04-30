@@ -2,7 +2,13 @@
 
 * {
 	font-family: "Montserrat", sans-serif;
+	box-sizing: border-box;
 }
+
+body {
+	height: 100vh;
+}
+
 
 
 /* body

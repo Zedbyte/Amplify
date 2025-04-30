@@ -22,9 +22,6 @@
 </head>
 
 <body>
-
-<div class="" id="page">
-
 	<div id="header">
 		<div id="logo"><?php //echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
@@ -48,9 +45,11 @@
 		//)); ?><!-- breadcrumbs -->
 	<?php //endif?>
 
+
 	<?php echo $content; ?>
 
-	<div class="clear"></div>
+
+	<!-- <div class="clear"></div> -->
 
 	<!-- <div id="footer">
 		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
@@ -58,7 +57,6 @@
 		<?php //echo Yii::powered(); ?>
 	<!-- </div>footer -->
 
-</div><!-- page -->
 
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
