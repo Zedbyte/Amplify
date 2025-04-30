@@ -22,7 +22,7 @@
 </head>
 
 <body class="flex flex-col min-h-screen">
-	<?php $this->widget('application.components.Navbar'); ?>
+	<?php $this->widget('application.widgets.Navbar'); ?>
 
 	<!-- <div id="mainmenu"> -->
 		<?php //$this->widget('zii.widgets.CMenu',array(
@@ -47,7 +47,7 @@
 	</main>
 
 	<!-- Footer -->
-	<?php $this->widget('application.components.Footer'); ?>
+	<?php $this->widget('application.widgets.Footer'); ?>
 
 
 <script src="https://unpkg.com/@phosphor-icons/web"></script>

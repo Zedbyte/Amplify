@@ -60,7 +60,7 @@ should you have any questions.</p> -->
 		</div>
 	</section>
 
-	<?php $this->widget('application.components.ShopCategory'); ?>
+	<?php $this->widget('application.widgets.ShopCategory'); ?>
 
 	<section class="py-16 bg-white">
 		<div class="mx-auto px-4 grid grid-cols-1 md:grid-cols-10 gap-8 items-center">
@@ -90,5 +90,5 @@ should you have any questions.</p> -->
 		</div>
 	</section>
 
-	<?php $this->widget('application.components.AboutUs'); ?>
+	<?php $this->widget('application.widgets.AboutUs'); ?>
 </div>
