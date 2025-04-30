@@ -3,12 +3,45 @@
 * {
 	font-family: "Montserrat", sans-serif;
 	box-sizing: border-box;
+
+	scrollbar-width: thin; /* Firefox */
+ 	scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
 
 body {
 	height: 100vh;
 }
 
+*::-webkit-scrollbar {
+	height: 6px;
+	width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+}
+
+@keyframes scrollX {
+	0% {
+	  transform: translateX(0%);
+	}
+	100% {
+	  transform: translateX(-50%);
+	}
+  }
+  
+  .animate-scroll-x {
+	animation: scrollX 60s linear infinite;
+  }
+  
+  .group:hover .animate-scroll-x {
+	animation-play-state: paused;
+  }
 
 
 /* body

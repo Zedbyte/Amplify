@@ -91,4 +91,6 @@ should you have any questions.</p> -->
 	</section>
 
 	<?php $this->widget('application.widgets.AboutUs'); ?>
+
+	<?php $this->widget('application.widgets.Testimonial'); ?>
 </div>
