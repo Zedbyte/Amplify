@@ -106,4 +106,40 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+	public function actionRegister()
+	{
+		$model = new RegisterForm();
+		if (isset($_POST['RegisterForm'])) {
+			$model->attributes = $_POST['RegisterForm'];
+			if ($model->register()) {
+				Yii::app()->user->setFlash('success', 'Registration successful. You can now login.');
+				$this->redirect(array('site/login'));
+			}
+		}
+
+		$this->render('register', ['model' => $model]);
+	}
+
+	public function actionRegisterAdmin()
+	{
+		// Check if the current user is logged in and is an admin (role 2)
+		if (Yii::app()->user->isGuest || Yii::app()->user->role != 2) {
+			throw new CHttpException(403, 'You are not authorized to access this page.');
+		}
+	
+		$model = new RegisterAdminForm();
+	
+		if (isset($_POST['RegisterAdminForm'])) {
+			$model->attributes = $_POST['RegisterAdminForm'];
+			if ($model->register()) {
+				Yii::app()->user->setFlash('success', 'Admin account created.');
+				$this->redirect(array('site/login'));
+			}
+		}
+	
+		$this->render('registerAdmin', ['model' => $model]);
+	}
+	
+
 }
