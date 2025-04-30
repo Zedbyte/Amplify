@@ -41,16 +41,13 @@
 		//)); ?><!-- breadcrumbs -->
 	<?php //endif?>
 
-
+	<!-- Main Content -->
 	<main class="flex-1">
 		<?php echo $content; ?>
 	</main>
 
-	<!-- <div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/> -->
-		<?php //echo Yii::powered(); ?>
-	<!-- </div>footer -->
+	<!-- Footer -->
+	<?php $this->widget('application.components.Footer'); ?>
 
 
 <script src="https://unpkg.com/@phosphor-icons/web"></script>

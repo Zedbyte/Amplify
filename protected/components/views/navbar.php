@@ -87,7 +87,6 @@ $isGuest = Yii::app()->user->isGuest;
   </div>
 </nav>
 
-<script src="https://unpkg.com/@phosphor-icons/web"></script>
 <script>
   const btn = document.getElementById('mobile-menu-button');
   const menu = document.getElementById('mobile-menu');
