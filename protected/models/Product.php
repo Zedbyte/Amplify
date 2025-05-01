@@ -26,6 +26,9 @@
  */
 class Product extends CActiveRecord
 {
+
+	public $imageFile;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -44,6 +47,7 @@ class Product extends CActiveRecord
 		return array(
 			array('SKU, name, description, price, stock, category_id, brand_id, image_path', 'required'),
 			array('stock, category_id, brand_id, status', 'numerical', 'integerOnly'=>true),
+			array('imageFile', 'file', 'types' => 'jpg, png, jpeg, gif', 'allowEmpty' => true),
 			array('SKU', 'length', 'max'=>100),
 			array('name, image_path', 'length', 'max'=>255),
 			array('price', 'length', 'max'=>10),

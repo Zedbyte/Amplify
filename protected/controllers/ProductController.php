@@ -62,21 +62,30 @@ class ProductController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Product;
+		$model = new Product;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Product']))
-		{
-			$model->attributes=$_POST['Product'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		if (isset($_POST['Product'])) {
+			$model->attributes = $_POST['Product'];
+			$model->imageFile = CUploadedFile::getInstance($model, 'imageFile');
+	
+			if ($model->imageFile !== null) {
+				$fileName = uniqid('prod_') . '.' . $model->imageFile->extensionName;
+				$savePath = Yii::getPathOfAlias('webroot.images.products') . '/' . $fileName;
+	
+				if ($model->imageFile->saveAs($savePath)) {
+					$model->image_path = $fileName;
+				}
+			}
+	
+			if ($model->save()) {
+				$this->redirect(['view', 'id' => $model->id]);
+			}
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+	
+		$this->render('create', ['model' => $model]);
 	}
 
 	/**
@@ -91,16 +100,32 @@ class ProductController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Product']))
-		{
-			$model->attributes=$_POST['Product'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		$existingImage = $model->image_path;
+
+		if (isset($_POST['Product'])) {
+			$model->attributes = $_POST['Product'];
+			$model->imageFile = CUploadedFile::getInstance($model, 'imageFile');
+
+			if ($model->imageFile !== null) {
+				$fileName = uniqid('prod_') . '.' . $model->imageFile->extensionName;
+				$savePath = Yii::getPathOfAlias('webroot.images.products') . '/' . $fileName;
+
+				if ($model->imageFile->saveAs($savePath)) {
+					if (!empty($existingImage)) {
+						@unlink(Yii::getPathOfAlias('webroot.images.products') . '/' . $existingImage);
+					}
+					$model->image_path = $fileName;
+				}
+			} else {
+				$model->image_path = $existingImage;
+			}
+
+			if ($model->save()) {
+				$this->redirect(['view', 'id' => $model->id]);
+			}
 		}
 
-		$this->render('update',array(
-			'model'=>$model,
-		));
+		$this->render('update', ['model' => $model]);
 	}
 
 	/**
@@ -122,11 +147,50 @@ class ProductController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Product');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		$criteria = new CDbCriteria;
+	
+		// 🔍 Filter by search keyword
+		if (!empty($_GET['q'])) {
+			$q = $_GET['q'];
+			$criteria->addSearchCondition('name', $q, true, 'OR');
+			$criteria->addSearchCondition('description', $q, true, 'OR');
+		}
+	
+		// 🔽 Sorting
+		if (!empty($_GET['sort'])) {
+			switch ($_GET['sort']) {
+				case 'popular':
+					$criteria->order = 'views DESC'; // assuming 'views' column exists
+					break;
+				case 'latest':
+					$criteria->order = 'created_at DESC';
+					break;
+				case 'top_sales':
+					$criteria->order = 'sales DESC'; // assuming 'sales' column exists
+					break;
+				case 'price_asc':
+					$criteria->order = 'price ASC';
+					break;
+				case 'price_desc':
+					$criteria->order = 'price DESC';
+					break;
+				default:
+					$criteria->order = 'id DESC';
+			}
+		} else {
+			$criteria->order = 'id DESC';
+		}
+	
+		$dataProvider = new CActiveDataProvider('Product', [
+			'criteria' => $criteria,
+			'pagination' => ['pageSize' => 9],
+		]);
+	
+		$this->render('index', [
+			'dataProvider' => $dataProvider,
+		]);
 	}
+	
 
 	/**
 	 * Manages all models.

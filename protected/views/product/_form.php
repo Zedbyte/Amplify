@@ -7,7 +7,9 @@
 <?php $form = $this->beginWidget('CActiveForm', [
     'id' => 'product-form',
     'enableAjaxValidation' => false,
-    'htmlOptions' => ['class' => 'space-y-6'],
+    'htmlOptions' => [
+        'class' => 'space-y-6',
+        'enctype' => 'multipart/form-data',],
 ]); ?>
 
 <!-- Error summary -->
@@ -25,6 +27,7 @@ $fields = [
     'category_id' => 'dropdown',
     'brand_id' => 'dropdown',
     'status' => 'text',
+	'imageFile' => 'file',
 ];
 
 foreach ($fields as $attribute => $type): ?>
@@ -58,9 +61,20 @@ foreach ($fields as $attribute => $type): ?>
             ?>
 
         <?php else: ?>
-            <?php echo $form->textField($model, $attribute, [
-                'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black placeholder-gray-400 focus:ring-1 focus:ring-black focus:outline-none'
-            ]); ?>
+            <?php if ($attribute === 'imageFile'): ?>
+                <?php echo $form->fileField($model, 'imageFile', [
+                    'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black bg-white focus:ring-1 focus:ring-black focus:outline-none'
+                ]); ?>
+                <?php if (!$model->isNewRecord && $model->image_path): ?>
+                    <img src="<?php echo Yii::app()->baseUrl . '/images/products/' . $model->image_path; ?>" 
+                        alt="Product Image"
+                        class="mt-2 w-32 h-32 object-cover rounded" />
+                <?php endif; ?>
+            <?php else: ?>
+                <?php echo $form->textField($model, $attribute, [
+                    'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black placeholder-gray-400 focus:ring-1 focus:ring-black focus:outline-none'
+                ]); ?>
+            <?php endif; ?>
         <?php endif; ?>
 
         <?php echo $form->error($model, $attribute, ['class' => 'text-red-600 text-sm mt-1']); ?>
