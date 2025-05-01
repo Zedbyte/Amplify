@@ -76,7 +76,10 @@ class SiteController extends Controller
 	 * Displays the login page
 	 */
 	public function actionLogin()
-	{
+	{	
+		// Set the layout for the login page (No Footer)
+		$this->layout = '//layouts/noFooterLayout';
+
 		$model=new LoginForm;
 
 		// if it is ajax validation request
@@ -114,6 +117,10 @@ class SiteController extends Controller
 	 */
 	public function actionRegister()
 	{
+
+		// Set the layout for the login page (No Footer)
+		$this->layout = '//layouts/noFooterLayout';
+
 		$model = new RegisterForm();
 		if (isset($_POST['RegisterForm'])) {
 			$model->attributes = $_POST['RegisterForm'];
