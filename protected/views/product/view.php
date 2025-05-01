@@ -45,6 +45,11 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
                 <span class="text-sm text-gray-600">4.5/5</span>
             </div>
 
+            <!-- Stock -->
+            <div class="text-sm font-bold text-gray-600">
+                <?php echo $model->stock; ?> available
+            </div>
+
             <!-- Price -->
             <div class="text-2xl font-bold text-black">
                 PHP <?php echo number_format($model->price, 2); ?>
@@ -59,28 +64,46 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
         <!-- Bottom Controls -->
         <div class="absolute bottom-0 left-0 right-0 flex items-center space-x-4 mt-6 pt-6 bg-white">
             <!-- Quantity -->
-			<div x-data="{ qty: 1 }" class="flex items-center border border-gray-300 rounded-full px-3 py-1 w-32 justify-between">
-				<button 
-					@click="qty = Math.max(1, qty - 1)" 
-					class="text-xl font-bold text-gray-600 hover:text-red-500 cursor-pointer"
-					aria-label="Decrease quantity">-</button>
-				
-				<span class="text-base font-medium" x-text="qty"></span>
-				
-				<button 
-					@click="qty++" 
-					class="text-xl font-bold text-gray-600 hover:text-green-500 cursor-pointer"
-					aria-label="Increase quantity">+</button>
-			</div>
+            <div 
+                x-data="{ 
+                    qty: 1, 
+                    max: <?php echo (int) $model->stock; ?> 
+                }" 
+                class="flex flex-col space-y-4 w-full"
+            >
+                <!-- Quantity Control -->
+                <div class="flex items-center border border-gray-300 rounded-full px-3 py-1 w-32 justify-between">
+                    <button 
+                        @click="qty = Math.max(1, qty - 1)" 
+                        class="text-xl font-bold text-gray-600 hover:text-red-500 cursor-pointer"
+                        aria-label="Decrease quantity">-</button>
+                    
+                    <input 
+                        type="number"
+                        min="1"
+                        :max="max"
+                        x-model.number="qty"
+                        @input="if (!qty || qty < 1) qty = 1; if (qty > max) qty = max"
+                        class="w-10 text-center border-none focus:outline-none text-sm font-medium"
+                    >
+                    
+                    <button 
+                        @click="qty = qty < max ? qty + 1 : qty" 
+                        class="text-xl font-bold text-gray-600 hover:text-green-500 cursor-pointer"
+                        aria-label="Increase quantity">+</button>
+                </div>
 
-            <!-- Add to Cart -->
-            <?php echo CHtml::beginForm(['cart/add'], 'post', ['class' => 'flex w-full items-center gap-4']); ?>
-                <?php echo CHtml::hiddenField('product_id', $model->id); ?>
-                <?php echo CHtml::hiddenField('quantity', 1); ?>
-                <?php echo CHtml::submitButton('Add to Cart', [
-                    'class' => 'flex-1 bg-black text-white py-3 rounded-full hover:bg-gray-900 transition text-sm font-semibold'
-                ]); ?>
-            <?php echo CHtml::endForm(); ?>
+                <!-- Add to Cart Form -->
+                <form method="post" action="<?php echo Yii::app()->createUrl('cart/add'); ?>" class="flex w-full items-center gap-4">
+                    <?php echo CHtml::hiddenField('product_id', $model->id); ?>
+                    <input type="hidden" name="quantity" :value="qty">
+                    
+                    <button type="submit" 
+                        class="flex-1 bg-black text-white py-3 rounded-full hover:bg-gray-900 transition text-sm font-semibold">
+                        Add to Cart
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 

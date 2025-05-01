@@ -28,7 +28,7 @@ class CartController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'add', 'mycart'),
+				'actions'=>array('index','view', 'add', 'mycart', 'delete', 'updateQuantity'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -36,7 +36,7 @@ class CartController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -110,12 +110,34 @@ class CartController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		if (Yii::app()->user->isGuest) {
+			// Handle guest cart deletion from session
+			$sessionCart = Yii::app()->session['cart'] ?? [];
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			// Find product ID key that matches the session cart item
+			if (array_key_exists($id, $sessionCart)) {
+				unset($sessionCart[$id]);
+				Yii::app()->session['cart'] = $sessionCart;
+			}
+
+		} else {
+			// Authenticated user - delete from DB
+			$model = $this->loadModel($id);
+
+			// Ensure the cart belongs to the current user
+			if ($model->customer_id == Yii::app()->user->id) {
+				$model->delete();
+			} else {
+				throw new CHttpException(403, 'Unauthorized deletion attempt.');
+			}
+		}
+
+		// If not AJAX, redirect
+		if (!isset($_GET['ajax'])) {
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : ['myCart']);
+		}
 	}
+
 
 	/**
 	 * Lists all models.
@@ -180,53 +202,67 @@ class CartController extends Controller
 		$productId = (int)$_POST['product_id'];
 		$quantity = (int)$_POST['quantity'];
 
-		// Validate basic input
 		if (!$productId || $quantity < 1) {
 			Yii::app()->user->setFlash('error', 'Invalid product or quantity.');
 			$this->redirect(['product/index']);
 			return;
 		}
 
+		$product = Product::model()->findByPk($productId);
+		if (!$product) {
+			Yii::app()->user->setFlash('error', 'Product not found.');
+			$this->redirect(['product/index']);
+			return;
+		}
+
+		$stockAvailable = (int)$product->stock;
+
 		if (Yii::app()->user->isGuest) {
-			// Store in session cart for guest
 			$cart = Yii::app()->session['cart'] ?? [];
+			$existingQty = $cart[$productId] ?? 0;
+			$newTotal = $existingQty + $quantity;
 
-			if (isset($cart[$productId])) {
-				$cart[$productId] += $quantity;
+			if ($newTotal > $stockAvailable) {
+				Yii::app()->user->setFlash('error', 'Quantity exceeds available stock.');
 			} else {
-				$cart[$productId] = $quantity;
+				$cart[$productId] = $newTotal;
+				Yii::app()->session['cart'] = $cart;
+				Yii::app()->user->setFlash('success', 'Product added to cart (guest).');
 			}
-
-			Yii::app()->session['cart'] = $cart;
-			Yii::app()->user->setFlash('success', 'Product added to cart (guest).');
 		} else {
-			// Authenticated user: store in DB
 			$userId = Yii::app()->user->id;
-
 			$existingCart = Cart::model()->findByAttributes([
 				'customer_id' => $userId,
 				'product_id' => $productId,
 			]);
 
-			if ($existingCart) {
-				$existingCart->quantity += $quantity;
-				$existingCart->updated_at = new CDbExpression('NOW()');
-				$existingCart->save();
-				Yii::app()->user->setFlash('success', 'Cart updated.');
+			$existingQty = $existingCart ? $existingCart->quantity : 0;
+			$newTotal = $existingQty + $quantity;
+
+			if ($newTotal > $stockAvailable) {
+				Yii::app()->user->setFlash('error', 'Quantity exceeds available stock.');
 			} else {
-				$cart = new Cart();
-				$cart->customer_id = $userId;
-				$cart->product_id = $productId;
-				$cart->quantity = $quantity;
-				$cart->created_at = new CDbExpression('NOW()');
-				$cart->updated_at = new CDbExpression('NOW()');
-				$cart->save();
-				Yii::app()->user->setFlash('success', 'Product added to cart.');
+				if ($existingCart) {
+					$existingCart->quantity = $newTotal;
+					$existingCart->updated_at = new CDbExpression('NOW()');
+					$existingCart->save();
+					Yii::app()->user->setFlash('success', 'Cart updated.');
+				} else {
+					$cart = new Cart();
+					$cart->customer_id = $userId;
+					$cart->product_id = $productId;
+					$cart->quantity = $quantity;
+					$cart->created_at = new CDbExpression('NOW()');
+					$cart->updated_at = new CDbExpression('NOW()');
+					$cart->save();
+					Yii::app()->user->setFlash('success', 'Product added to cart.');
+				}
 			}
 		}
 
-		$this->redirect(['product/index']); // or go back to product/view
+		$this->redirect(['product/index']);
 	}
+
 
 	
 	/**
@@ -261,5 +297,55 @@ class CartController extends Controller
 		$this->render('myCart', ['dataProvider' => null, 'guestCart' => $products, 'quantities' => $sessionCart]);
 	}
 
+	/**
+	 * Updates the quantity of a product in the cart.
+	 */
+	public function actionUpdateQuantity()
+	{
+		if (!Yii::app()->request->isPostRequest) {
+			throw new CHttpException(400, 'Invalid request.');
+		}
+
+		$data = json_decode(file_get_contents('php://input'), true);
+
+		$productId = (int)($data['product_id'] ?? 0);
+		$quantity = (int)($data['quantity'] ?? 1);
+		$cartId   = (int)($data['cart_id'] ?? 0);
+
+		if (!$productId || $quantity < 1) {
+			echo CJSON::encode(['status' => 'error', 'message' => 'Invalid input']);
+			Yii::app()->end();
+		}
+
+		if (!Yii::app()->user->isGuest) {
+			$cart = Cart::model()->findByPk($cartId);
+			if (!$cart || $cart->customer_id != Yii::app()->user->id) {
+				echo CJSON::encode(['status' => 'error', 'message' => 'Unauthorized']);
+				Yii::app()->end();
+			}
+
+			$product = Product::model()->findByPk($productId);
+			if ($quantity > $product->stock) {
+				echo CJSON::encode(['status' => 'error', 'message' => 'Exceeds stock']);
+				Yii::app()->end();
+			}
+
+			$cart->quantity = $quantity;
+			$cart->updated_at = new CDbExpression('NOW()');
+			$cart->save();
+
+		} else {
+			// Guest cart (session)
+			$cart = Yii::app()->session['cart'] ?? [];
+			if (isset($cart[$productId])) {
+				$product = Product::model()->findByPk($productId);
+				$cart[$productId] = min($quantity, $product->stock);
+				Yii::app()->session['cart'] = $cart;
+			}
+		}
+
+		echo CJSON::encode(['status' => 'success']);
+		Yii::app()->end();
+	}
 
 }
