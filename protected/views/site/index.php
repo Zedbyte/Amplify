@@ -60,7 +60,19 @@ should you have any questions.</p> -->
 		</div>
 	</section>
 
-	<?php $this->widget('application.widgets.ShopCategory'); ?>
+	<section class="px-6 py-12 mx-auto">
+    <!-- Header -->
+		<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 space-y-4 md:space-y-0">
+			<div>
+				<h2 class="text-2xl md:text-4xl font-bold text-black">Shop by Category</h2>
+				<p class="text-gray-500 text-md md:text-lg">Find your perfect sound in just a few clicks</p>
+			</div>
+			<a href="#" class="inline-flex items-center border border-black px-4 py-2 text-sm rounded-lg hover:bg-black hover:text-white transition">
+				See All <i class="ph ph-arrow-right ml-2"></i>
+			</a>
+		</div>
+		<?php $this->widget('application.widgets.ShopCategory', ['limit' => 4]); ?>
+	</section>
 
 	<section class="py-16 bg-white">
 		<div class="mx-auto px-4 grid grid-cols-1 md:grid-cols-10 gap-8 items-center">

@@ -2,9 +2,10 @@
 
 class ShopCategory extends CWidget
 {
+    public $limit = null; // default is no limit
+
     public function getViewPath($checkTheme = false)
     {
-        // Tell Yii that views are stored here now
         return Yii::getPathOfAlias('application.components.home');
     }
 
@@ -17,7 +18,12 @@ class ShopCategory extends CWidget
 
     public function getCategories()
     {
-        // Fetch from tbl_category; adjust criteria as needed
-        return Category::model()->findAll();
+        $criteria = new CDbCriteria();
+
+        if ($this->limit !== null) {
+            $criteria->limit = $this->limit;
+        }
+
+        return Category::model()->findAll($criteria);
     }
 }
