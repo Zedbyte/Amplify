@@ -47,16 +47,21 @@ $this->menu = [
                     $sortOptions = ['Popular (MAINTENANCE)', 'Latest', 'Top Sales (MAINTENANCE)', 'Price'];
                     foreach ($sortOptions as $option): ?>
                         <?php if ($option === 'Price'): ?>
-                            <div class="relative group focus-within:block">
+                            <div x-data="{ open: false }" class="relative">
                                 <button type="button"
-                                    class="px-4 py-1 border text-sm border-black rounded-sm transition hover:bg-black hover:text-white focus:outline-none sort-btn flex items-center"
-                                    onclick="this.parentNode.classList.toggle('open')">
+                                    @click="open = !open"
+                                    class="font-semibold px-4 py-1 border text-sm border-black rounded-sm transition hover:bg-black hover:text-white focus:outline-none sort-btn flex items-center">
                                     Price
                                     <i class="ph ph-sliders-horizontal ml-2"></i>
                                 </button>
 
                                 <!-- Dropdown -->
-                                <div class="absolute left-0 mt-2 hidden group-[.open]:block bg-white border border-gray-300 rounded-md shadow-lg z-50 w-48">
+                                <div 
+                                    x-show="open" 
+                                    @click.away="open = false" 
+                                    x-transition 
+                                    class="absolute left-0 mt-2 bg-white border border-gray-300 rounded-md shadow-lg z-50 w-48"
+                                    x-cloak>
                                     <button type="button" data-sort="price_asc"
                                         class="sort-dropdown-option block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
                                         Lowest Prices First
@@ -65,15 +70,16 @@ $this->menu = [
                                         class="sort-dropdown-option block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
                                         Highest Prices First
                                     </button>
-                                </div>  
+                                </div>
                             </div>
                         <?php else: ?>
-                            <button class="px-4 py-1 border text-sm border-black rounded-sm transition hover:bg-black hover:text-white focus:outline-none sort-btn"
+                            <button class="font-semibold px-4 py-1 border text-sm border-black rounded-sm transition hover:bg-black hover:text-white focus:outline-none sort-btn"
                                 data-sort="<?php echo strtolower(str_replace(' ', '_', $option)); ?>">
                                 <?php echo $option; ?>
                             </button>
                         <?php endif; ?>
                     <?php endforeach; ?>
+
                 </div>
 
                 <!-- Search Field -->

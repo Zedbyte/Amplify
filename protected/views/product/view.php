@@ -40,7 +40,7 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
             <!-- Rating -->
             <div class="flex items-center space-x-2">
                 <?php for ($i = 1; $i <= 5; $i++): ?>
-                    <i class="ph ph-star<?php echo $i <= 4 ? '-fill text-yellow-400' : ' text-gray-300'; ?>"></i>
+                    <i class="ph-fill ph-star<?php echo $i <= 4 ? ' text-yellow-400' : ' text-gray-300'; ?>"></i>
                 <?php endfor; ?>
                 <span class="text-sm text-gray-600">4.5/5</span>
             </div>
@@ -59,11 +59,19 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
         <!-- Bottom Controls -->
         <div class="absolute bottom-0 left-0 right-0 flex items-center space-x-4 mt-6 pt-6 bg-white">
             <!-- Quantity -->
-            <div class="flex items-center border border-gray-300 rounded-full px-3 py-1 w-32 justify-between">
-                <button class="text-xl font-bold text-gray-600 hover:text-black">-</button>
-                <span class="text-base font-medium">1</span>
-                <button class="text-xl font-bold text-gray-600 hover:text-black">+</button>
-            </div>
+			<div x-data="{ qty: 1 }" class="flex items-center border border-gray-300 rounded-full px-3 py-1 w-32 justify-between">
+				<button 
+					@click="qty = Math.max(1, qty - 1)" 
+					class="text-xl font-bold text-gray-600 hover:text-red-500 cursor-pointer"
+					aria-label="Decrease quantity">-</button>
+				
+				<span class="text-base font-medium" x-text="qty"></span>
+				
+				<button 
+					@click="qty++" 
+					class="text-xl font-bold text-gray-600 hover:text-green-500 cursor-pointer"
+					aria-label="Increase quantity">+</button>
+			</div>
 
             <!-- Add to Cart -->
             <button class="flex-1 bg-black text-white py-3 rounded-full hover:bg-gray-900 transition text-sm font-semibold">
@@ -90,14 +98,14 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
     <div class="border-b border-gray-200 flex space-x-10 mb-6">
         <button 
             @click="tab = 'details'"
-            :class="tab === 'details' ? 'border-black text-black' : 'text-gray-500'"
-            class="tab-btn text-sm font-semibold py-3 border-b-2">
+            :class="tab === 'details' ? 'border-black text-black border-b-2' : 'text-gray-500'"
+            class="tab-btn text-sm font-semibold py-3 cursor-pointer hover:text-black">
             Product Details
         </button>
         <button 
             @click="tab = 'reviews'"
-            :class="tab === 'reviews' ? 'border-black text-black' : 'text-gray-500'"
-            class="tab-btn text-sm font-semibold py-3 border-b-2">
+            :class="tab === 'reviews' ? 'border-black text-black border-b-2' : 'text-gray-500'"
+            class="tab-btn text-sm font-semibold py-3 cursor-pointer hover:text-black">
             Ratings & Reviews
         </button>
     </div>
