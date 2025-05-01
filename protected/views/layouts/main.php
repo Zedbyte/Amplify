@@ -18,6 +18,8 @@
 	<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/output.css" rel="stylesheet">
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" rel="stylesheet">
 
+	<link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/amplify_logo.png" type="image/x-icon">
+
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
