@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "order".
+ * This is the model class for table "{{order}}".
  *
- * The followings are the available columns in table 'order':
+ * The followings are the available columns in table '{{order}}':
  * @property integer $id
  * @property string $order_date
  * @property string $total_price
@@ -12,6 +12,14 @@
  * @property integer $shipment_id
  * @property integer $status
  * @property integer $is_received
+ * @property string $created_at
+ * @property string $updated_at
+ *
+ * The followings are the available model relations:
+ * @property Customer $customer
+ * @property Payment $payment
+ * @property Shipment $shipment
+ * @property OrderItem[] $orderItems
  */
 class Order extends CActiveRecord
 {
@@ -31,12 +39,12 @@ class Order extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('order_date, total_price, customer_id, payment_id, shipment_id, status, is_received', 'required'),
-			array('id, customer_id, payment_id, shipment_id, status, is_received', 'numerical', 'integerOnly'=>true),
+			array('order_date, total_price, customer_id, payment_id, shipment_id, is_received', 'required'),
+			array('customer_id, payment_id, shipment_id, status, is_received', 'numerical', 'integerOnly'=>true),
 			array('total_price', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, order_date, total_price, customer_id, payment_id, shipment_id, status, is_received', 'safe', 'on'=>'search'),
+			array('id, order_date, total_price, customer_id, payment_id, shipment_id, status, is_received, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,6 +56,10 @@ class Order extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'customer' => array(self::BELONGS_TO, 'Customer', 'customer_id'),
+			'payment' => array(self::BELONGS_TO, 'Payment', 'payment_id'),
+			'shipment' => array(self::BELONGS_TO, 'Shipment', 'shipment_id'),
+			'orderItems' => array(self::HAS_MANY, 'OrderItem', 'order_id'),
 		);
 	}
 
@@ -65,6 +77,8 @@ class Order extends CActiveRecord
 			'shipment_id' => 'Shipment',
 			'status' => 'Status',
 			'is_received' => 'Is Received',
+			'created_at' => 'Created At',
+			'updated_at' => 'Updated At',
 		);
 	}
 
@@ -94,6 +108,8 @@ class Order extends CActiveRecord
 		$criteria->compare('shipment_id',$this->shipment_id);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('is_received',$this->is_received);
+		$criteria->compare('created_at',$this->created_at,true);
+		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

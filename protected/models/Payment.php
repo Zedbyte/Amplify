@@ -1,14 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "payment".
+ * This is the model class for table "{{payment}}".
  *
- * The followings are the available columns in table 'payment':
+ * The followings are the available columns in table '{{payment}}':
  * @property integer $id
  * @property string $payment_date
  * @property string $payment_method
  * @property string $amount
  * @property integer $customer_id
+ * @property integer $status
+ * @property string $created_at
+ * @property string $updated_at
+ *
+ * The followings are the available model relations:
+ * @property Order[] $orders
+ * @property Customer $customer
  */
 class Payment extends CActiveRecord
 {
@@ -29,12 +36,12 @@ class Payment extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('payment_date, payment_method, amount, customer_id', 'required'),
-			array('id, customer_id', 'numerical', 'integerOnly'=>true),
+			array('customer_id, status', 'numerical', 'integerOnly'=>true),
 			array('payment_method', 'length', 'max'=>100),
 			array('amount', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, payment_date, payment_method, amount, customer_id', 'safe', 'on'=>'search'),
+			array('id, payment_date, payment_method, amount, customer_id, status, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,6 +53,8 @@ class Payment extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'orders' => array(self::HAS_MANY, 'Order', 'payment_id'),
+			'customer' => array(self::BELONGS_TO, 'Customer', 'customer_id'),
 		);
 	}
 
@@ -60,6 +69,9 @@ class Payment extends CActiveRecord
 			'payment_method' => 'Payment Method',
 			'amount' => 'Amount',
 			'customer_id' => 'Customer',
+			'status' => 'Status',
+			'created_at' => 'Created At',
+			'updated_at' => 'Updated At',
 		);
 	}
 
@@ -86,6 +98,9 @@ class Payment extends CActiveRecord
 		$criteria->compare('payment_method',$this->payment_method,true);
 		$criteria->compare('amount',$this->amount,true);
 		$criteria->compare('customer_id',$this->customer_id);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('created_at',$this->created_at,true);
+		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

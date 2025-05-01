@@ -1,18 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "category".
+ * This is the model class for table "{{category}}".
  *
- * The followings are the available columns in table 'category':
+ * The followings are the available columns in table '{{category}}':
  * @property integer $id
  * @property string $name
  * @property string $image_path
+ * @property integer $status
+ * @property string $created_at
+ * @property string $updated_at
+ *
+ * The followings are the available model relations:
+ * @property Product[] $products
  */
 class Category extends CActiveRecord
 {
 
 	public $imageFile;
-
 
 	/**
 	 * @return string the associated database table name
@@ -30,13 +35,12 @@ class Category extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'required'),
-			array('id', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>100),
-			array('imageFile', 'file', 'types'=>'jpg, png, jpeg', 'allowEmpty'=>true),
+			array('name, image_path', 'required'),
+			array('status', 'numerical', 'integerOnly'=>true),
+			array('name, image_path', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name', 'safe', 'on'=>'search'),
+			array('id, name, image_path, status, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,6 +52,7 @@ class Category extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'products' => array(self::HAS_MANY, 'Product', 'category_id'),
 		);
 	}
 
@@ -59,7 +64,10 @@ class Category extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => 'Name',
-			'imageFile' => 'Category Image',
+			'image_path' => 'Image Path',
+			'status' => 'Status',
+			'created_at' => 'Created At',
+			'updated_at' => 'Updated At',
 		);
 	}
 
@@ -83,6 +91,10 @@ class Category extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('image_path',$this->image_path,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('created_at',$this->created_at,true);
+		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

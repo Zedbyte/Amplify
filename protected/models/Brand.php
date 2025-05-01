@@ -1,35 +1,27 @@
 <?php
 
 /**
- * This is the model class for table "{{product}}".
+ * This is the model class for table "{{brand}}".
  *
- * The followings are the available columns in table '{{product}}':
+ * The followings are the available columns in table '{{brand}}':
  * @property integer $id
- * @property string $SKU
  * @property string $description
- * @property string $price
- * @property integer $stock
- * @property integer $category_id
- * @property integer $brand_id
+ * @property string $name
  * @property integer $status
  * @property string $created_at
  * @property string $updated_at
  *
  * The followings are the available model relations:
- * @property Cart[] $carts
- * @property OrderItem[] $orderItems
- * @property Category $category
- * @property Brand $brand
- * @property Wishlist[] $wishlists
+ * @property Product[] $products
  */
-class Product extends CActiveRecord
+class Brand extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return '{{product}}';
+		return '{{brand}}';
 	}
 
 	/**
@@ -40,13 +32,13 @@ class Product extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('SKU, description, price, stock, category_id, brand_id', 'required'),
-			array('stock, category_id, brand_id, status', 'numerical', 'integerOnly'=>true),
-			array('SKU, description', 'length', 'max'=>100),
-			array('price', 'length', 'max'=>10),
+			array('description, name, created_at, updated_at', 'required'),
+			array('status', 'numerical', 'integerOnly'=>true),
+			array('description', 'length', 'max'=>255),
+			array('name', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, SKU, description, price, stock, category_id, brand_id, status, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, description, name, status, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,11 +50,7 @@ class Product extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'carts' => array(self::HAS_MANY, 'Cart', 'product_id'),
-			'orderItems' => array(self::HAS_MANY, 'OrderItem', 'product_id'),
-			'category' => array(self::BELONGS_TO, 'Category', 'category_id'),
-			'brand' => array(self::BELONGS_TO, 'Brand', 'brand_id'),
-			'wishlists' => array(self::HAS_MANY, 'Wishlist', 'product_id'),
+			'products' => array(self::HAS_MANY, 'Product', 'brand_id'),
 		);
 	}
 
@@ -73,12 +61,8 @@ class Product extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'SKU' => 'Sku',
 			'description' => 'Description',
-			'price' => 'Price',
-			'stock' => 'Stock',
-			'category_id' => 'Category',
-			'brand_id' => 'Brand',
+			'name' => 'Name',
 			'status' => 'Status',
 			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
@@ -104,12 +88,8 @@ class Product extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('SKU',$this->SKU,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('price',$this->price,true);
-		$criteria->compare('stock',$this->stock);
-		$criteria->compare('category_id',$this->category_id);
-		$criteria->compare('brand_id',$this->brand_id);
+		$criteria->compare('name',$this->name,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
@@ -123,7 +103,7 @@ class Product extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Product the static model class
+	 * @return Brand the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

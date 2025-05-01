@@ -1,14 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "order_item".
+ * This is the model class for table "{{order_item}}".
  *
- * The followings are the available columns in table 'order_item':
+ * The followings are the available columns in table '{{order_item}}':
  * @property integer $id
  * @property integer $quantity
  * @property string $price
  * @property integer $product_id
  * @property integer $order_id
+ * @property integer $status
+ * @property string $created_at
+ * @property string $updated_at
+ *
+ * The followings are the available model relations:
+ * @property Product $product
+ * @property Order $order
  */
 class OrderItem extends CActiveRecord
 {
@@ -29,11 +36,11 @@ class OrderItem extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('quantity, price, product_id, order_id', 'required'),
-			array('id, quantity, product_id, order_id', 'numerical', 'integerOnly'=>true),
+			array('quantity, product_id, order_id, status', 'numerical', 'integerOnly'=>true),
 			array('price', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, quantity, price, product_id, order_id', 'safe', 'on'=>'search'),
+			array('id, quantity, price, product_id, order_id, status, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,6 +52,8 @@ class OrderItem extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'product' => array(self::BELONGS_TO, 'Product', 'product_id'),
+			'order' => array(self::BELONGS_TO, 'Order', 'order_id'),
 		);
 	}
 
@@ -59,6 +68,9 @@ class OrderItem extends CActiveRecord
 			'price' => 'Price',
 			'product_id' => 'Product',
 			'order_id' => 'Order',
+			'status' => 'Status',
+			'created_at' => 'Created At',
+			'updated_at' => 'Updated At',
 		);
 	}
 
@@ -85,6 +97,9 @@ class OrderItem extends CActiveRecord
 		$criteria->compare('price',$this->price,true);
 		$criteria->compare('product_id',$this->product_id);
 		$criteria->compare('order_id',$this->order_id);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('created_at',$this->created_at,true);
+		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

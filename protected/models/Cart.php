@@ -1,13 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "cart".
+ * This is the model class for table "{{cart}}".
  *
- * The followings are the available columns in table 'cart':
- * @property integer $cart_id
+ * The followings are the available columns in table '{{cart}}':
+ * @property integer $id
  * @property integer $quantity
- * @property integer $Customer_customer_id
+ * @property integer $customer_id
  * @property integer $product_id
+ * @property integer $status
+ * @property string $created_at
+ * @property string $updated_at
+ *
+ * The followings are the available model relations:
+ * @property Customer $customer
+ * @property Product $product
  */
 class Cart extends CActiveRecord
 {
@@ -27,11 +34,11 @@ class Cart extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cart_id, quantity, Customer_customer_id, product_id', 'required'),
-			array('cart_id, quantity, Customer_customer_id, product_id', 'numerical', 'integerOnly'=>true),
+			array('quantity, customer_id, product_id', 'required'),
+			array('quantity, customer_id, product_id, status', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('cart_id, quantity, Customer_customer_id, product_id', 'safe', 'on'=>'search'),
+			array('id, quantity, customer_id, product_id, status, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -43,6 +50,8 @@ class Cart extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'customer' => array(self::BELONGS_TO, 'Customer', 'customer_id'),
+			'product' => array(self::BELONGS_TO, 'Product', 'product_id'),
 		);
 	}
 
@@ -52,10 +61,13 @@ class Cart extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'cart_id' => 'Cart',
+			'id' => 'ID',
 			'quantity' => 'Quantity',
-			'Customer_customer_id' => 'Customer Customer',
+			'customer_id' => 'Customer',
 			'product_id' => 'Product',
+			'status' => 'Status',
+			'created_at' => 'Created At',
+			'updated_at' => 'Updated At',
 		);
 	}
 
@@ -77,10 +89,13 @@ class Cart extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('cart_id',$this->cart_id);
+		$criteria->compare('id',$this->id);
 		$criteria->compare('quantity',$this->quantity);
-		$criteria->compare('Customer_customer_id',$this->Customer_customer_id);
+		$criteria->compare('customer_id',$this->customer_id);
 		$criteria->compare('product_id',$this->product_id);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('created_at',$this->created_at,true);
+		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

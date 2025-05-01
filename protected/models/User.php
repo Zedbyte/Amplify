@@ -1,16 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "user".
+ * This is the model class for table "{{user}}".
  *
- * The followings are the available columns in table 'user':
+ * The followings are the available columns in table '{{user}}':
  * @property integer $id
  * @property string $first_name
  * @property string $last_name
  * @property string $username
  * @property string $email
+ * @property integer $status
  * @property string $password
  * @property integer $role
+ * @property string $created_at
+ * @property string $updated_at
+ *
+ * The followings are the available model relations:
+ * @property Customer[] $customers
  */
 class User extends CActiveRecord
 {
@@ -31,11 +37,11 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('first_name, last_name, username, email, password', 'required'),
-			array('id, role', 'numerical', 'integerOnly'=>true),
+			array('status, role', 'numerical', 'integerOnly'=>true),
 			array('first_name, last_name, username, email, password', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, first_name, last_name, username, email, password, role', 'safe', 'on'=>'search'),
+			array('id, first_name, last_name, username, email, status, password, role, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,6 +53,7 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'customers' => array(self::HAS_MANY, 'Customer', 'user_id'),
 		);
 	}
 
@@ -61,8 +68,11 @@ class User extends CActiveRecord
 			'last_name' => 'Last Name',
 			'username' => 'Username',
 			'email' => 'Email',
+			'status' => 'Status',
 			'password' => 'Password',
 			'role' => 'Role',
+			'created_at' => 'Created At',
+			'updated_at' => 'Updated At',
 		);
 	}
 
@@ -89,8 +99,11 @@ class User extends CActiveRecord
 		$criteria->compare('last_name',$this->last_name,true);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('email',$this->email,true);
+		$criteria->compare('status',$this->status);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('role',$this->role);
+		$criteria->compare('created_at',$this->created_at,true);
+		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

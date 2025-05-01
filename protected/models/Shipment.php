@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "shipment".
+ * This is the model class for table "{{shipment}}".
  *
- * The followings are the available columns in table 'shipment':
+ * The followings are the available columns in table '{{shipment}}':
  * @property integer $id
  * @property string $shipment_date
  * @property string $address
@@ -11,7 +11,14 @@
  * @property string $state
  * @property string $country
  * @property string $zip_code
+ * @property integer $status
  * @property integer $customer_id
+ * @property string $created_at
+ * @property string $updated_at
+ *
+ * The followings are the available model relations:
+ * @property Order[] $orders
+ * @property Customer $customer
  */
 class Shipment extends CActiveRecord
 {
@@ -32,14 +39,14 @@ class Shipment extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('shipment_date, address, city, state, country, zip_code, customer_id', 'required'),
-			array('id, customer_id', 'numerical', 'integerOnly'=>true),
+			array('status, customer_id', 'numerical', 'integerOnly'=>true),
 			array('address, city', 'length', 'max'=>100),
 			array('state', 'length', 'max'=>20),
 			array('country', 'length', 'max'=>50),
 			array('zip_code', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, shipment_date, address, city, state, country, zip_code, customer_id', 'safe', 'on'=>'search'),
+			array('id, shipment_date, address, city, state, country, zip_code, status, customer_id, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,6 +58,8 @@ class Shipment extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'orders' => array(self::HAS_MANY, 'Order', 'shipment_id'),
+			'customer' => array(self::BELONGS_TO, 'Customer', 'customer_id'),
 		);
 	}
 
@@ -67,7 +76,10 @@ class Shipment extends CActiveRecord
 			'state' => 'State',
 			'country' => 'Country',
 			'zip_code' => 'Zip Code',
+			'status' => 'Status',
 			'customer_id' => 'Customer',
+			'created_at' => 'Created At',
+			'updated_at' => 'Updated At',
 		);
 	}
 
@@ -96,7 +108,10 @@ class Shipment extends CActiveRecord
 		$criteria->compare('state',$this->state,true);
 		$criteria->compare('country',$this->country,true);
 		$criteria->compare('zip_code',$this->zip_code,true);
+		$criteria->compare('status',$this->status);
 		$criteria->compare('customer_id',$this->customer_id);
+		$criteria->compare('created_at',$this->created_at,true);
+		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
