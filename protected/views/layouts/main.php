@@ -21,6 +21,8 @@
 	<link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/amplify_logo.png" type="image/x-icon">
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
 </head>
 
 <body class="flex flex-col min-h-screen">
