@@ -2,7 +2,8 @@
 
 class ShopCategory extends CWidget
 {
-    public $limit = null; // default is no limit
+    public $limit = null;
+    public $imageHeightClass = 'h-[300px]'; // default value
 
     public function getViewPath($checkTheme = false)
     {
@@ -13,13 +14,13 @@ class ShopCategory extends CWidget
     {
         $this->render('shopCategories', [
             'categories' => $this->getCategories(),
+            'imageHeightClass' => $this->imageHeightClass,
         ]);
     }
 
     public function getCategories()
     {
-        $criteria = new CDbCriteria();
-
+        $criteria = new CDbCriteria;
         if ($this->limit !== null) {
             $criteria->limit = $this->limit;
         }

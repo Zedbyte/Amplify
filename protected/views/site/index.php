@@ -71,7 +71,12 @@ should you have any questions.</p> -->
 				See All <i class="ph ph-arrow-right ml-2"></i>
 			</a>
 		</div>
-		<?php $this->widget('application.widgets.ShopCategory', ['limit' => 4]); ?>
+		<div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
+			<?php $this->widget('application.widgets.ShopCategory', [
+				'limit' => 4,
+				'imageHeightClass' => 'h-[250px] md:h-[300px] lg:h-[350px] xl:h-auto' // or custom per page
+			]); ?>
+		</div>
 	</section>
 
 	<section class="py-16 bg-white">

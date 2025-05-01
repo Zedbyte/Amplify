@@ -3,28 +3,38 @@
 * {
 	font-family: "Montserrat", sans-serif;
 	box-sizing: border-box;
-
-	scrollbar-width: thin; /* Firefox */
- 	scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
 
 body {
 	height: 100vh;
 }
 
-*::-webkit-scrollbar {
-	height: 6px;
-	width: 6px;
+.scroll-wrapper {
+    overflow-x: auto;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: rgba(0, 0, 0, 0) transparent;
 }
 
-*::-webkit-scrollbar-track {
-	background: transparent;
+.scroll-wrapper::-webkit-scrollbar {
+    height: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-*::-webkit-scrollbar-thumb {
-	background-color: rgba(0, 0, 0, 0.2);
-	border-radius: 3px;
+.scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
 }
+
+.scroll-wrapper:hover::-webkit-scrollbar {
+    opacity: 1;
+}
+
+/* Optional for Firefox */
+.scroll-wrapper:hover {
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
 
 @keyframes scrollX {
 	0% {

@@ -3,53 +3,46 @@
 /* @var $data Product */
 ?>
 
-<div class="view">
+<section class="px-6 py-12 mx-auto">
+    <div class="flex justify-center mb-8">
+        <h2 class="text-2xl md:text-4xl font-bold text-black">Shop by Category</h2>
+    </div>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
+    <!-- Scrollable wrapper -->
+    <div class="overflow-x-auto pb-2 scroll-wrapper">
+        <div class="flex space-x-6">
+            <?php $this->widget('application.widgets.ShopCategory', [
+                'imageHeightClass' => 'h-[250px] md:h-[300px] lg:h-[350px]'
+            ]); ?>
+        </div>
+    </div>
+</section>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('SKU')); ?>:</b>
-	<?php echo CHtml::encode($data->SKU); ?>
-	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
-	<?php echo CHtml::encode($data->name); ?>
-	<br />
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6 max-w-11/12 mx-auto">
+    <!-- Left Filter Panel Placeholder -->
+    <?php $this->widget('application.widgets.FilterCard'); ?>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
-	<?php echo CHtml::encode($data->description); ?>
-	<br />
+    <!-- Product Grid -->
+    <div class="lg:col-span-9">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="bg-white  rounded-xl p-4 hover:shadow-md group hover:bg-black transition duration-500">
+                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guitar.png"
+                     alt="<?php echo CHtml::encode($data->name); ?>"
+                     class="w-full h-40 object-contain mb-4 group-hover:scale-115 transition-transform duration-300" />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('price')); ?>:</b>
-	<?php echo CHtml::encode($data->price); ?>
-	<br />
+                <h3 class="text-md font-semibold text-gray-800 group-hover:text-white">
+                    <?php echo CHtml::encode($data->name); ?>
+                </h3>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('stock')); ?>:</b>
-	<?php echo CHtml::encode($data->stock); ?>
-	<br />
+                <p class="text-sm text-gray-500 mb-1 group-hover:text-white">
+                    <?php echo CHtml::encode($data->category ? $data->category->name : 'Uncategorized'); ?>
+                </p>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('category_id')); ?>:</b>
-	<?php echo CHtml::encode($data->category_id); ?>
-	<br />
-
-	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('brand_id')); ?>:</b>
-	<?php echo CHtml::encode($data->brand_id); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('status')); ?>:</b>
-	<?php echo CHtml::encode($data->status); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('created_at')); ?>:</b>
-	<?php echo CHtml::encode($data->created_at); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('updated_at')); ?>:</b>
-	<?php echo CHtml::encode($data->updated_at); ?>
-	<br />
-
-	*/ ?>
-
+                <p class="text-lg font-semibold text-black group-hover:text-green-200">
+                    ₱<?php echo number_format($data->price, 2); ?>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
