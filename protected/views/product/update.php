@@ -16,6 +16,8 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Product <?php echo $model->id; ?></h1>
+<div class="max-w-2xl mx-auto mt-10 bg-white border border-gray-200 shadow-sm rounded-2xl p-8">
+    <h1 class="text-2xl font-semibold text-gray-900 mb-6">Update Product</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+	<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+</div>

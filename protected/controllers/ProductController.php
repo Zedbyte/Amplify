@@ -69,6 +69,10 @@ class ProductController extends Controller
 
 		if (isset($_POST['Product'])) {
 			$model->attributes = $_POST['Product'];
+
+			// sanitize description
+			$model->description = HtmlHelper::purify($model->description);
+
 			$model->imageFile = CUploadedFile::getInstance($model, 'imageFile');
 	
 			if ($model->imageFile !== null) {

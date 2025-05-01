@@ -51,8 +51,8 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
             </div>
 
             <!-- Description -->
-            <div class="text-gray-600 text-sm line-clamp-5">
-                <?php echo CHtml::encode($model->description); ?>
+            <div class="text-gray-600 text-sm line-clamp-5 prose max-w-none">
+                <?php echo $model->description; ?>
             </div>
         </div>
 
@@ -114,7 +114,7 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
     <div x-show="tab === 'details'" class="tab-panel">
         <h3 class="text-lg font-semibold text-black mb-2">Product Details</h3>
         <p class="text-sm text-gray-700 leading-relaxed mb-4">
-            <?php echo nl2br(CHtml::encode($model->description)); ?>
+            <?php echo $model->description; ?>
         </p>
     </div>
 

@@ -513,6 +513,9 @@
   .max-h-40 {
     max-height: calc(var(--spacing) * 40);
   }
+  .min-h-\[150px\] {
+    min-height: 150px;
+  }
   .min-h-screen {
     min-height: 100vh;
   }
@@ -569,6 +572,9 @@
   }
   .max-w-md {
     max-width: var(--container-md);
+  }
+  .max-w-none {
+    max-width: none;
   }
   .max-w-screen-xl {
     max-width: var(--breakpoint-xl);

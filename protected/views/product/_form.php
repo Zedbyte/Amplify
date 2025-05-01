@@ -3,6 +3,7 @@
 /* @var $model Product */
 /* @var $form CActiveForm */
 ?>
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
 
 <?php $form = $this->beginWidget('CActiveForm', [
     'id' => 'product-form',
@@ -60,21 +61,23 @@ foreach ($fields as $attribute => $type): ?>
                 ]);
             ?>
 
-        <?php else: ?>
-            <?php if ($attribute === 'imageFile'): ?>
-                <?php echo $form->fileField($model, 'imageFile', [
-                    'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black bg-white focus:ring-1 focus:ring-black focus:outline-none'
-                ]); ?>
-                <?php if (!$model->isNewRecord && $model->image_path): ?>
-                    <img src="<?php echo Yii::app()->baseUrl . '/images/products/' . $model->image_path; ?>" 
-                        alt="Product Image"
-                        class="mt-2 w-32 h-32 object-cover rounded" />
-                <?php endif; ?>
-            <?php else: ?>
-                <?php echo $form->textField($model, $attribute, [
-                    'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black placeholder-gray-400 focus:ring-1 focus:ring-black focus:outline-none'
-                ]); ?>
+        <?php elseif ($attribute === 'imageFile'): ?>
+            <?php echo $form->fileField($model, 'imageFile', [
+                'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black bg-white focus:ring-1 focus:ring-black focus:outline-none'
+            ]); ?>
+            <?php if (!$model->isNewRecord && $model->image_path): ?>
+                <img src="<?php echo Yii::app()->baseUrl . '/images/products/' . $model->image_path; ?>" 
+                    alt="Product Image"
+                    class="mt-2 w-32 h-32 object-cover rounded" />
             <?php endif; ?>
+
+        <?php elseif ($attribute === 'description'): ?>
+            <div id="quill-editor" class="bg-white border border-gray-300 rounded-xl px-4 py-2"></div>
+            <?php echo $form->hiddenField($model, 'description', ['id' => 'hidden-description']); ?>
+        <?php else: ?>
+            <?php echo $form->textField($model, $attribute, [
+                'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black placeholder-gray-400 focus:ring-1 focus:ring-black focus:outline-none'
+            ]); ?>
         <?php endif; ?>
 
         <?php echo $form->error($model, $attribute, ['class' => 'text-red-600 text-sm mt-1']); ?>
@@ -89,3 +92,21 @@ foreach ($fields as $attribute => $type): ?>
 </div>
 
 <?php $this->endWidget(); ?>
+
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.min.js"></script>
+<script>
+    const quill = new Quill('#quill-editor', {
+        theme: 'snow'
+    });
+
+    // Populate Quill if editing
+    const hiddenInput = document.getElementById('hidden-description');
+    if (hiddenInput.value) {
+        quill.root.innerHTML = hiddenInput.value;
+    }
+
+    // Update hidden input on form submit
+    document.getElementById('product-form').addEventListener('submit', function() {
+        hiddenInput.value = quill.root.innerHTML;
+    });
+</script>
