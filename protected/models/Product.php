@@ -13,6 +13,7 @@
  * @property integer $category_id
  * @property integer $brand_id
  * @property integer $status
+ * @property string $image_path
  * @property string $created_at
  * @property string $updated_at
  *
@@ -41,14 +42,14 @@ class Product extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('SKU, name, description, price, stock, category_id, brand_id', 'required'),
+			array('SKU, name, description, price, stock, category_id, brand_id, image_path', 'required'),
 			array('stock, category_id, brand_id, status', 'numerical', 'integerOnly'=>true),
 			array('SKU', 'length', 'max'=>100),
-			array('name', 'length', 'max'=>255),
+			array('name, image_path', 'length', 'max'=>255),
 			array('price', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, SKU, name, description, price, stock, category_id, brand_id, status, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, SKU, name, description, price, stock, category_id, brand_id, status, image_path, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,6 +84,7 @@ class Product extends CActiveRecord
 			'category_id' => 'Category',
 			'brand_id' => 'Brand',
 			'status' => 'Status',
+			'image_path' => 'Image Path',
 			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
 		);
@@ -115,6 +117,7 @@ class Product extends CActiveRecord
 		$criteria->compare('category_id',$this->category_id);
 		$criteria->compare('brand_id',$this->brand_id);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('image_path',$this->image_path,true);
 		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
 

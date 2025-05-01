@@ -55,6 +55,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'category_id',
 		'brand_id',
 		'status',
+		'image_path',
 		'created_at',
 		'updated_at',
 		*/

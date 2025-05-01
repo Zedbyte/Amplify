@@ -57,6 +57,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'image_path'); ?>
+		<?php echo $form->textField($model,'image_path',array('size'=>60,'maxlength'=>255)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'created_at'); ?>
 		<?php echo $form->textField($model,'created_at'); ?>
 	</div>

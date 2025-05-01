@@ -30,6 +30,7 @@ $this->menu=array(
 		'category_id',
 		'brand_id',
 		'status',
+		'image_path',
 		'created_at',
 		'updated_at',
 	),
