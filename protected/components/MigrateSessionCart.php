@@ -16,6 +16,12 @@ class MigrateSessionCart {
                 'product_id' => $productId
             ]);
 
+            $existingQty = $existingCart ? $existingCart->quantity : 0;
+
+            if (!CartHelper::isQuantityAvailable($productId, $quantity, $existingQty)) {
+                continue; // skip if over stock
+            }
+
             if ($existingCart) {
                 $existingCart->quantity += $quantity;
                 $existingCart->updated_at = new CDbExpression('NOW()');

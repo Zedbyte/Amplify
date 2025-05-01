@@ -215,35 +215,31 @@ class CartController extends Controller
 			return;
 		}
 
-		$stockAvailable = (int)$product->stock;
-
 		if (Yii::app()->user->isGuest) {
 			$cart = Yii::app()->session['cart'] ?? [];
 			$existingQty = $cart[$productId] ?? 0;
-			$newTotal = $existingQty + $quantity;
 
-			if ($newTotal > $stockAvailable) {
+			if (!CartHelper::isQuantityAvailable($productId, $quantity, $existingQty)) {
 				Yii::app()->user->setFlash('error', 'Quantity exceeds available stock.');
 			} else {
-				$cart[$productId] = $newTotal;
+				$cart[$productId] = $existingQty + $quantity;
 				Yii::app()->session['cart'] = $cart;
 				Yii::app()->user->setFlash('success', 'Product added to cart (guest).');
 			}
+
 		} else {
 			$userId = Yii::app()->user->id;
 			$existingCart = Cart::model()->findByAttributes([
 				'customer_id' => $userId,
 				'product_id' => $productId,
 			]);
-
 			$existingQty = $existingCart ? $existingCart->quantity : 0;
-			$newTotal = $existingQty + $quantity;
 
-			if ($newTotal > $stockAvailable) {
+			if (!CartHelper::isQuantityAvailable($productId, $quantity, $existingQty)) {
 				Yii::app()->user->setFlash('error', 'Quantity exceeds available stock.');
 			} else {
 				if ($existingCart) {
-					$existingCart->quantity = $newTotal;
+					$existingCart->quantity += $quantity;
 					$existingCart->updated_at = new CDbExpression('NOW()');
 					$existingCart->save();
 					Yii::app()->user->setFlash('success', 'Cart updated.');
@@ -305,45 +301,52 @@ class CartController extends Controller
 		if (!Yii::app()->request->isPostRequest) {
 			throw new CHttpException(400, 'Invalid request.');
 		}
-
+	
 		$data = json_decode(file_get_contents('php://input'), true);
-
+	
 		$productId = (int)($data['product_id'] ?? 0);
 		$quantity = (int)($data['quantity'] ?? 1);
 		$cartId   = (int)($data['cart_id'] ?? 0);
-
+	
 		if (!$productId || $quantity < 1) {
 			echo CJSON::encode(['status' => 'error', 'message' => 'Invalid input']);
 			Yii::app()->end();
 		}
-
+	
+		$product = Product::model()->findByPk($productId);
+		if (!$product) {
+			echo CJSON::encode(['status' => 'error', 'message' => 'Product not found']);
+			Yii::app()->end();
+		}
+	
 		if (!Yii::app()->user->isGuest) {
 			$cart = Cart::model()->findByPk($cartId);
 			if (!$cart || $cart->customer_id != Yii::app()->user->id) {
 				echo CJSON::encode(['status' => 'error', 'message' => 'Unauthorized']);
 				Yii::app()->end();
 			}
-
-			$product = Product::model()->findByPk($productId);
-			if ($quantity > $product->stock) {
+	
+			if (!CartHelper::isQuantityAvailable($productId, $quantity)) {
 				echo CJSON::encode(['status' => 'error', 'message' => 'Exceeds stock']);
 				Yii::app()->end();
 			}
-
+	
 			$cart->quantity = $quantity;
 			$cart->updated_at = new CDbExpression('NOW()');
 			$cart->save();
-
+	
 		} else {
-			// Guest cart (session)
 			$cart = Yii::app()->session['cart'] ?? [];
+	
 			if (isset($cart[$productId])) {
-				$product = Product::model()->findByPk($productId);
-				$cart[$productId] = min($quantity, $product->stock);
+				if (!CartHelper::isQuantityAvailable($productId, $quantity)) {
+					$quantity = $product->stock; // fallback to max allowed
+				}
+				$cart[$productId] = $quantity;
 				Yii::app()->session['cart'] = $cart;
 			}
 		}
-
+	
 		echo CJSON::encode(['status' => 'success']);
 		Yii::app()->end();
 	}
