@@ -35,6 +35,16 @@ body {
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
 
+/* Hide number input spinners on hover */
+.remove-spinners::-webkit-inner-spin-button,
+.remove-spinners::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.remove-spinners:hover {
+  -moz-appearance: textfield; /* Firefox */
+}
 
 @keyframes scrollX {
 	0% {

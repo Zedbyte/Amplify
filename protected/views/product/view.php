@@ -69,7 +69,7 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
                     qty: 1, 
                     max: <?php echo (int) $model->stock; ?> 
                 }" 
-                class="flex flex-col space-y-4 w-full"
+                class="flex items-center space-x-4 w-full"
             >
                 <!-- Quantity Control -->
                 <div class="flex items-center border border-gray-300 rounded-full px-3 py-1 w-32 justify-between">
@@ -84,7 +84,7 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
                         :max="max"
                         x-model.number="qty"
                         @input="if (!qty || qty < 1) qty = 1; if (qty > max) qty = max"
-                        class="w-10 text-center border-none focus:outline-none text-sm font-medium"
+                        class="remove-spinners w-10 text-center border-none focus:outline-none text-sm font-medium"
                     >
                     
                     <button 
