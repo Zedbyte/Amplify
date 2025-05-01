@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table '{{brand}}':
  * @property integer $id
- * @property string $description
  * @property string $name
  * @property integer $status
  * @property string $created_at
@@ -32,13 +31,12 @@ class Brand extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('description, name, created_at, updated_at', 'required'),
+			array('name', 'required'),
 			array('status', 'numerical', 'integerOnly'=>true),
-			array('description', 'length', 'max'=>255),
 			array('name', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, description, name, status, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, name, status, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,7 +59,6 @@ class Brand extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'description' => 'Description',
 			'name' => 'Name',
 			'status' => 'Status',
 			'created_at' => 'Created At',
@@ -88,7 +85,6 @@ class Brand extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('description',$this->description,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('created_at',$this->created_at,true);

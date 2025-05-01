@@ -6,6 +6,7 @@
  * The followings are the available columns in table '{{product}}':
  * @property integer $id
  * @property string $SKU
+ * @property string $name
  * @property string $description
  * @property string $price
  * @property integer $stock
@@ -40,13 +41,14 @@ class Product extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('SKU, description, price, stock, category_id, brand_id', 'required'),
+			array('SKU, name, description, price, stock, category_id, brand_id', 'required'),
 			array('stock, category_id, brand_id, status', 'numerical', 'integerOnly'=>true),
-			array('SKU, description', 'length', 'max'=>100),
+			array('SKU', 'length', 'max'=>100),
+			array('name', 'length', 'max'=>255),
 			array('price', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, SKU, description, price, stock, category_id, brand_id, status, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, SKU, name, description, price, stock, category_id, brand_id, status, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,6 +76,7 @@ class Product extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'SKU' => 'Sku',
+			'name' => 'Name',
 			'description' => 'Description',
 			'price' => 'Price',
 			'stock' => 'Stock',
@@ -105,6 +108,7 @@ class Product extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('SKU',$this->SKU,true);
+		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('price',$this->price,true);
 		$criteria->compare('stock',$this->stock);
