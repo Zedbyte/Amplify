@@ -9,7 +9,7 @@ $this->breadcrumbs = ['Register'];
 
 <div class="min-h-screen grid grid-cols-1 lg:grid-cols-12">
     <!-- Left Side: Registration Form -->
-    <div class="relative lg:col-span-5 flex items-center justify-center px-6 py-10 bg-white">
+    <div class="relative lg:col-span-5 flex items-center justify-center px-6 py-10 bg-white order-2 lg:order-1">
         
         <!-- Back Arrow -->
         <a href="<?php echo Yii::app()->createUrl('/'); ?>"
@@ -81,7 +81,7 @@ $this->breadcrumbs = ['Register'];
     </div>
 
     <!-- Right Side: Image Banner -->
-    <div class="lg:col-span-7 h-52 lg:h-full">
+    <div class="lg:col-span-7 h-52 lg:h-full order-1 lg:order-2">
         <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/register_banner.png"
             alt="Amplify Visual"
             class="w-full object-cover object-[center_30%] h-full" />

@@ -9,11 +9,12 @@ $this->breadcrumbs = ['Login'];
 
 <div class="min-h-screen grid grid-cols-1 lg:grid-cols-12">
     <!-- Left Side: Banner / Image -->
-    <div class="lg:col-span-7 h-52 lg:h-auto">
+    <div class="lg:col-span-7 h-25">
         <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/login_banner.png"
-             alt="Band Promo"
-             class="w-full h-full lg:h-screen object-cover object-[center_30%]" />
+            alt="Band Promo"
+            class="w-full h-52 sm:h-72 md:h-96 lg:h-screen object-cover object-[center_20%] lg:object-[center_30%]" />
     </div>
+
 
     <!-- Right Side: Login Form -->
     <div class="relative lg:col-span-5 flex items-center justify-center px-6 py-10 bg-white">

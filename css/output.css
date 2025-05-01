@@ -272,6 +272,12 @@
   .z-10 {
     z-index: 10;
   }
+  .order-1 {
+    order: 1;
+  }
+  .order-2 {
+    order: 2;
+  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
@@ -431,11 +437,20 @@
   .h-14 {
     height: calc(var(--spacing) * 14);
   }
+  .h-25 {
+    height: calc(var(--spacing) * 25);
+  }
   .h-32 {
     height: calc(var(--spacing) * 32);
   }
   .h-52 {
     height: calc(var(--spacing) * 52);
+  }
+  .h-64 {
+    height: calc(var(--spacing) * 64);
+  }
+  .h-96 {
+    height: calc(var(--spacing) * 96);
   }
   .h-\[500px\] {
     height: 500px;
@@ -445,6 +460,9 @@
   }
   .h-full {
     height: 100%;
+  }
+  .h-screen {
+    height: 100vh;
   }
   .max-h-40 {
     max-height: calc(var(--spacing) * 40);
@@ -724,8 +742,23 @@
   .object-fill {
     object-fit: fill;
   }
+  .object-\[center_10\%\] {
+    object-position: center 10%;
+  }
+  .object-\[center_20\%\] {
+    object-position: center 20%;
+  }
   .object-\[center_30\%\] {
     object-position: center 30%;
+  }
+  .object-\[center_40\%\] {
+    object-position: center 40%;
+  }
+  .object-\[center_50\%\] {
+    object-position: center 50%;
+  }
+  .object-bottom {
+    object-position: bottom;
   }
   .object-center {
     object-position: center;
@@ -1060,6 +1093,11 @@
       outline-style: none;
     }
   }
+  .sm\:h-72 {
+    @media (width >= 40rem) {
+      height: calc(var(--spacing) * 72);
+    }
+  }
   .sm\:grid-cols-2 {
     @media (width >= 40rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1093,6 +1131,11 @@
   .md\:hidden {
     @media (width >= 48rem) {
       display: none;
+    }
+  }
+  .md\:h-96 {
+    @media (width >= 48rem) {
+      height: calc(var(--spacing) * 96);
     }
   }
   .md\:w-5\/12 {
@@ -1188,6 +1231,16 @@
       line-height: var(--tw-leading, var(--text-xl--line-height));
     }
   }
+  .lg\:order-1 {
+    @media (width >= 64rem) {
+      order: 1;
+    }
+  }
+  .lg\:order-2 {
+    @media (width >= 64rem) {
+      order: 2;
+    }
+  }
   .lg\:col-span-2 {
     @media (width >= 64rem) {
       grid-column: span 2 / span 2;
@@ -1243,6 +1296,11 @@
       grid-template-columns: repeat(12, minmax(0, 1fr));
     }
   }
+  .lg\:justify-center {
+    @media (width >= 64rem) {
+      justify-content: center;
+    }
+  }
   .lg\:rounded-2xl {
     @media (width >= 64rem) {
       border-radius: var(--radius-2xl);
@@ -1259,14 +1317,34 @@
       border-bottom-left-radius: var(--radius-2xl);
     }
   }
+  .lg\:object-\[cefulr_30\%\] {
+    @media (width >= 64rem) {
+      object-position: cefulr 30%;
+    }
+  }
+  .lg\:object-\[center_30\%\] {
+    @media (width >= 64rem) {
+      object-position: center 30%;
+    }
+  }
   .lg\:object-center {
     @media (width >= 64rem) {
       object-position: center;
     }
   }
+  .lg\:px-6 {
+    @media (width >= 64rem) {
+      padding-inline: calc(var(--spacing) * 6);
+    }
+  }
   .lg\:px-8 {
     @media (width >= 64rem) {
       padding-inline: calc(var(--spacing) * 8);
+    }
+  }
+  .lg\:py-10 {
+    @media (width >= 64rem) {
+      padding-block: calc(var(--spacing) * 10);
     }
   }
 }
