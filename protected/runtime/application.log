@@ -1568,3 +1568,12 @@ Stack trace:
 #8 {main}
 REQUEST_URI=/index.php/site/registerAdmin
 ---
+2025/05/01 07:41:17 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "product/index". in C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(141): CWebApplication->runController('product/index')
+#1 C:\xampp\htdocs\Amplify\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\Amplify\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/product/index
+HTTP_REFERER=http://localhost:8080/index.php
+---
