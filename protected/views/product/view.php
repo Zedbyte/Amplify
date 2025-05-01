@@ -74,9 +74,13 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
 			</div>
 
             <!-- Add to Cart -->
-            <button class="flex-1 bg-black text-white py-3 rounded-full hover:bg-gray-900 transition text-sm font-semibold">
-                Add to Cart
-            </button>
+            <?php echo CHtml::beginForm(['cart/add'], 'post', ['class' => 'flex w-full items-center gap-4']); ?>
+                <?php echo CHtml::hiddenField('product_id', $model->id); ?>
+                <?php echo CHtml::hiddenField('quantity', 1); ?>
+                <?php echo CHtml::submitButton('Add to Cart', [
+                    'class' => 'flex-1 bg-black text-white py-3 rounded-full hover:bg-gray-900 transition text-sm font-semibold'
+                ]); ?>
+            <?php echo CHtml::endForm(); ?>
         </div>
     </div>
 

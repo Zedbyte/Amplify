@@ -16,4 +16,17 @@ class Navbar extends CWidget
     {
         return require(Yii::getPathOfAlias('application.data.navRoutes') . '.php');
     }
+
+    public function getCart()
+    {
+        if (!Yii::app()->user->isGuest) {
+            // Logged-in user: fetch from database
+            return Cart::model()->findAllByAttributes([
+                'customer_id' => Yii::app()->user->id,
+            ]);
+        }
+
+        // Guest user: fetch from session
+        return Yii::app()->session['cart'] ?? [];
+    }
 }

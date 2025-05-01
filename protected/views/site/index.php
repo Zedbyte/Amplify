@@ -19,7 +19,9 @@ the <a href="https://www.yiiframework.com/doc/">documentation</a>.
 Feel free to ask in the <a href="https://www.yiiframework.com/forum/">forum</a>,
 should you have any questions.</p> -->
 
-<div class="max-w-9/12 mx-auto">
+<div class="max-w-9/12 mx-auto space-y-16">
+
+	<!-- Hero Section -->
 	<section class="bg-black rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between overflow-hidden mt-6">
 		<!-- Text Content -->
 		<div class="text-white max-w-lg">
@@ -60,6 +62,9 @@ should you have any questions.</p> -->
 		</div>
 	</section>
 
+
+
+	<!-- Category Section -->
 	<section class="px-6 py-12 mx-auto">
     <!-- Header -->
 		<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 space-y-4 md:space-y-0">
@@ -79,6 +84,9 @@ should you have any questions.</p> -->
 		</div>
 	</section>
 
+
+
+	<!-- Best Selling Guitars Section -->
 	<section class="py-16 bg-white">
 		<div class="mx-auto px-4 grid grid-cols-1 md:grid-cols-10 gap-8 items-center">
 			
@@ -107,10 +115,18 @@ should you have any questions.</p> -->
 		</div>
 	</section>
 
+
+	<!-- About Us Section -->
 	<?php $this->widget('application.widgets.AboutUs'); ?>
 
+
+
+	<!-- Testimonials Section -->
 	<?php $this->widget('application.widgets.Testimonial'); ?>
 
+
+
+	<!-- Call to Action Section -->
 	<section class="bg-black text-white rounded-2xl px-6 py-20 text-center mx-auto mb-16">
 		<h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to amplify your sound?</h2>
 		<p class="text-gray-300 mb-8">
@@ -123,5 +139,4 @@ should you have any questions.</p> -->
 
 		<p class="mt-8 font-medium">Amplify your passion, elevate your sound</p>
 	</section>
-
 </div>

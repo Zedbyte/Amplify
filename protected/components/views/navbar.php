@@ -4,6 +4,7 @@ $routes = $this->getRoutes();
 
 $currentRoute = Yii::app()->controller->getRoute();
 $isGuest = Yii::app()->user->isGuest;
+$cartItems = $this->getCart();
 ?>
 
 <nav class="bg-white border-b border-gray-200 relative top-0 w-full py-3">
@@ -34,9 +35,15 @@ $isGuest = Yii::app()->user->isGuest;
           <a href="#" class="text-gray-700 hover:text-gray-900">
             <i class="ph ph-magnifying-glass text-xl"></i>
           </a>
-          <a href="#" class="relative text-gray-700 hover:text-gray-900">
-            <i class="ph ph-shopping-cart text-xl"></i>
-            <span class="absolute -top-2 -right-2 text-xs bg-red-500 text-white rounded-full px-1">1</span>
+          <a href="<?php echo Yii::app()->createUrl('cart/mycart'); ?>" class="relative text-gray-700 hover:text-gray-900">
+              <i class="ph ph-shopping-cart text-xl"></i>
+
+              <?php $cartCount = is_array($cartItems) ? count($cartItems) : count($cartItems); ?>
+              <?php if ($cartCount > 0): ?>
+                  <span class="absolute -top-2 -right-2 text-xs bg-red-500 text-white rounded-full px-1">
+                      <?php echo $cartCount; ?>
+                  </span>
+              <?php endif; ?>
           </a>
           <a href="#" class="relative text-gray-700 hover:text-gray-900">
             <i class="ph ph-heart text-xl"></i>
