@@ -10,6 +10,20 @@ class ComposerStaticInitfb9f629fe8337560dd413e7a6ac6cb57
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     );
 
+    public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Stripe\\' => 7,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Stripe\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
+        ),
+    );
+
     public static $prefixesPsr0 = array (
         'H' => 
         array (
@@ -27,6 +41,8 @@ class ComposerStaticInitfb9f629fe8337560dd413e7a6ac6cb57
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitfb9f629fe8337560dd413e7a6ac6cb57::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitfb9f629fe8337560dd413e7a6ac6cb57::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitfb9f629fe8337560dd413e7a6ac6cb57::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitfb9f629fe8337560dd413e7a6ac6cb57::$classMap;
 
