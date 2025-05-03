@@ -19,8 +19,8 @@
             <div class="bg-black text-white rounded-full p-4 flex items-center">
                 <i class="ph ph-package text-4xl"></i>
             </div>
-            <h3 class="md:text-2xl font-semibold text-black">Fast & Free Shipping</h3>
-            <p class="md:text-xl text-gray-500">4-day or less delivery time, free shipping and an expedited delivery option.</p>
+            <h3 class="md:text-2xl font-semibold text-black">Fast & Low Shipping Fee</h3>
+            <p class="md:text-xl text-gray-500">4-day or less delivery time, low shipping fee and an expedited delivery option.</p>
         </div>
 
         <!-- Item 3 -->
