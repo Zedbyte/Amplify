@@ -28,6 +28,9 @@ class Product extends CActiveRecord
 {
 
 	public $imageFile;
+	// For best-selling products
+	// This property is not in the database, but used for displaying total sold
+	public $total_sold;
 
 	/**
 	 * @return string the associated database table name

@@ -27,10 +27,32 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		$rows = Yii::app()->db->createCommand()
+		->select('product_id, SUM(quantity) as total_sold')
+		->from('tbl_order_item')
+		->group('product_id')
+		->order('total_sold DESC')
+		->limit(4)
+		->queryAll();
+	
+	
+		$bestSellingProducts = [];
+		foreach ($rows as $row) {
+			$product = Product::model()->findByPk($row['product_id']);
+			// var_dump($product);exit;
+			if ($product) {
+				$product->total_sold = $row['total_sold'];
+				$bestSellingProducts[] = $product;
+			}
+		}
+		
+	
+		$this->render('index', [
+			'bestSellingProducts' => $bestSellingProducts,
+		]);
 	}
+
+
 
 	/**
 	 * This is the action to handle external exceptions.

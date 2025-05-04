@@ -105,11 +105,25 @@ should you have any questions.</p> -->
 			</div>
 
 			<!-- Right Column (70%) -->
-			<div class="md:col-span-7 grid grid-cols-3 gap-6">
-				<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guitar.png" alt="Guitar 1" class="object-contain w-full" />
-				<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guitar.png" alt="Guitar 2" class="object-contain w-full" />
-				<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guitar.png" alt="Guitar 3" class="object-contain w-full" />
-				<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/guitar.png" alt="Guitar 4" class="object-contain w-full" />
+			<div class="md:col-span-7 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-15">
+				<?php if (empty($bestSellingProducts)): ?>
+					<p class="text-gray-500">No best-selling guitars yet.</p>
+				<?php else: ?>
+					<?php foreach ($bestSellingProducts as $product): ?>
+						<div class="bg-white rounded-xl p-4 hover:shadow-lg transition">
+							<img src="<?php echo Yii::app()->baseUrl . '/images/products/' . $product['image_path']; ?>"
+								alt="<?php echo CHtml::encode($product['name']); ?>"
+								class="w-full h-5/6 object-contain mb-4 rotate-45" />
+							<h3 class="text-md font-semibold text-gray-800 truncate">
+								<?php echo CHtml::encode($product['name']); ?>
+							</h3>
+							<div class="flex justify-between mt-5">
+								<p class="text-md text-gray-500">₱<?php echo number_format($product['price'], 2); ?></p>
+								<p class="text-md text-gray-500"><?php echo (int) $product->stock; ?> units left</p>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				<?php endif; ?>
 			</div>
 
 		</div>
