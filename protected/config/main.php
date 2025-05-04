@@ -80,5 +80,13 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'santos.markjerome@auf.edu.com',
+
+		// Stripe API keys
+		'stripe.secretKey' => 'sk_test_51RJoJYBS4I776XW0FUBAZlJZtDN8v4bGu85ZapltzbmU50lm1VWs4cWWfXxpYyQVUoeRakRjS8m0MZ1EJBib5mdy0019WbKSjI',
+		'stripe.publicKey' => 'pk_test_51RJoJYBS4I776XW038O1KQ1A2hXGf9DQ39c0Ocgtgq3tGVgXi5vjr8Rf95knPjNOLqxUHEGvUGuwARRk3TaDPxxU00xmVvT2W7',
+	
+		// Stripe URLs (optional)
+		'stripe.successUrl' => 'http://localhost:8080/index.php/order/success',
+		'stripe.cancelUrl' => 'http://localhost:8080/index.php/order/cancel',
 	),
 );

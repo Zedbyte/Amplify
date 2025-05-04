@@ -32,7 +32,7 @@ class OrderController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update', 'createCheckoutSession', 'success', 'cancel', 'stripeWebhook'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -169,5 +169,92 @@ class OrderController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+
+	/**
+	 * Function to create a Stripe Checkout session
+	 */
+	public function actionCreateCheckoutSession($orderId)
+	{
+		$order = Order::model()->findByPk($orderId);
+		if (!$order) {
+			throw new CHttpException(404, 'Order not found.');
+		}
+
+		try {
+			$session = StripeService::createCheckoutSession($order);
+			$this->redirect($session->url);
+		} catch (Exception $e) {
+			Yii::log("Stripe Error: " . $e->getMessage(), CLogger::LEVEL_ERROR);
+			Yii::app()->user->setFlash('error', 'Stripe checkout failed.');
+			$this->redirect(['order/view', 'id' => $order->id]);
+		}
+	}
+
+	/**
+	 * After the payment process in Stripe.
+	 */
+	public function actionSuccess()
+	{
+		Yii::app()->user->setFlash('success', 'Payment successful!');
+		var_dump("Payment successful! Create a View Page for this. ");exit;
+		$this->render('success');
+	}
+
+	
+	public function actionCancel()
+	{
+		Yii::app()->user->setFlash('error', 'Payment was cancelled.');
+		var_dump("Payment failed! Create a View Page for this. ");exit;
+		$this->render('cancel');
+	}
+
+
+	/**
+	 * 
+	 * Webhook Configuration to send Email to LateNode
+	 * 
+	 */
+
+	public function actionStripeWebhook()
+	{
+		$payload = @file_get_contents("php://input");
+		$sigHeader = $_SERVER['HTTP_STRIPE_SIGNATURE'];
+		$secret = Yii::app()->params['stripe.webhookSecret']; // set in config
+
+		require_once(dirname(Yii::app()->basePath) . '/../vendor/autoload.php');
+
+		try {
+			$event = \Stripe\Webhook::constructEvent($payload, $sigHeader, $secret);
+		} catch(\UnexpectedValueException $e) {
+			// Invalid payload
+			http_response_code(400);
+			exit();
+		} catch(\Stripe\Exception\SignatureVerificationException $e) {
+			// Invalid signature
+			http_response_code(400);
+			exit();
+		}
+
+		// Handle the event
+		if ($event->type === 'checkout.session.completed') {
+			$session = $event->data->object;
+
+			$orderId = $session->metadata->order_id;
+			$order = Order::model()->findByPk($orderId);
+
+			if ($order) {
+				$order->status = 1; // paid
+				$order->updated_at = new CDbExpression('NOW()');
+				$order->save(false);
+
+				// Send email via LateNode
+				$email = $order->customer->email; // assumes relation
+				$message = "Hi, your payment was successful. Your order #{$order->id} is now being processed.";
+				LateNodeService::sendEmail($email, 'Payment Successful', $message);
+			}
+		}
+
+		http_response_code(200);
 	}
 }

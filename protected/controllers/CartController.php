@@ -32,7 +32,7 @@ class CartController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update', 'checkout', 'createCheckoutSession'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -266,16 +266,33 @@ class CartController extends Controller
 	 */
 	public function actionMyCart()
 	{
+		$subtotal = 0;
+		$deliveryFee = 700;
+
 		if (!Yii::app()->user->isGuest) {
 			$criteria = new CDbCriteria();
 			$criteria->compare('customer_id', Yii::app()->user->id);
+
+			$cartItems = Cart::model()->findAll($criteria);
+
+			foreach ($cartItems as $item) {
+				$product = Product::model()->findByPk($item->product_id);
+				if ($product) {
+					$subtotal += $product->price * $item->quantity;
+				}
+			}
 
 			$dataProvider = new CActiveDataProvider('Cart', [
 				'criteria' => $criteria,
 				'pagination' => ['pageSize' => 10],
 			]);
 
-			$this->render('myCart', ['dataProvider' => $dataProvider, 'guestCart' => null]);
+			$this->render('myCart', [
+				'dataProvider' => $dataProvider,
+				'guestCart' => null,
+				'subtotal' => $subtotal,
+				'deliveryFee' => $deliveryFee,
+			]);
 			return;
 		}
 
@@ -283,15 +300,32 @@ class CartController extends Controller
 		$sessionCart = Yii::app()->session['cart'] ?? [];
 
 		if (empty($sessionCart)) {
-			$this->render('myCart', ['dataProvider' => null, 'guestCart' => null]);
+			$this->render('myCart', [
+				'dataProvider' => null,
+				'guestCart' => null,
+				'subtotal' => 0,
+				'deliveryFee' => $deliveryFee,
+			]);
 			return;
 		}
 
 		$productIds = array_keys($sessionCart);
 		$products = Product::model()->findAllByPk($productIds);
 
-		$this->render('myCart', ['dataProvider' => null, 'guestCart' => $products, 'quantities' => $sessionCart]);
+		foreach ($products as $product) {
+			$qty = $sessionCart[$product->id] ?? 1;
+			$subtotal += $product->price * $qty;
+		}
+
+		$this->render('myCart', [
+			'dataProvider' => null,
+			'guestCart' => $products,
+			'quantities' => $sessionCart,
+			'subtotal' => $subtotal,
+			'deliveryFee' => $deliveryFee,
+		]);
 	}
+
 
 	/**
 	 * Updates the quantity of a product in the cart.
@@ -350,5 +384,92 @@ class CartController extends Controller
 		echo CJSON::encode(['status' => 'success']);
 		Yii::app()->end();
 	}
+
+
+	/**
+	 * 
+	 * Fucntion to checkout the cart
+	 * 
+	 */
+
+	public function actionCheckout()
+	{
+		if (Yii::app()->user->isGuest) {
+			$this->redirect(['site/login']);
+			return;
+		}
+	
+		$customerId = Yii::app()->user->id;
+		$cartItems = Cart::model()->findAllByAttributes(['customer_id' => $customerId]);
+		if (empty($cartItems)) {
+			Yii::app()->user->setFlash('error', 'Your cart is empty.');
+			$this->redirect(['cart/myCart']);
+			return;
+		}
+	
+		$subtotal = 0;
+		$deliveryFee = 700;
+		$orderItems = [];
+	
+		foreach ($cartItems as $item) {
+			$product = Product::model()->findByPk($item->product_id);
+			if (!$product || $item->quantity > $product->stock) {
+				Yii::app()->user->setFlash('error', 'Product unavailable or stock insufficient.');
+				$this->redirect(['cart/myCart']);
+				return;
+			}
+	
+			$price = $product->price;
+			$subtotal += $price * $item->quantity;
+	
+			$orderItems[] = [
+				'product_id' => $product->id,
+				'quantity' => $item->quantity,
+				'price' => $price,
+			];
+		}
+		
+		$total = $subtotal + $deliveryFee;
+	
+		// Create Order
+		$order = new Order();
+		$order->customer_id = $customerId;
+		$order->order_date = new CDbExpression('NOW()');
+		$order->total_price = $total;
+		$order->status = 0;
+		$order->is_received = 0; // false
+		$order->payment_id = 1;
+		$order->shipment_id = 1;
+		$order->created_at = new CDbExpression('NOW()');
+		$order->updated_at = new CDbExpression('NOW()');
+		if ($order->save()) {
+			foreach ($orderItems as $itemData) {
+				$orderItem = new OrderItem();
+				$orderItem->order_id = $order->id;
+				$orderItem->product_id = $itemData['product_id'];
+				$orderItem->quantity = $itemData['quantity'];
+				$orderItem->price = $itemData['price'];
+				$orderItem->status = 0;
+				$orderItem->created_at = new CDbExpression('NOW()');
+				$orderItem->updated_at = new CDbExpression('NOW()');
+				if (!$orderItem->save()) {
+					Yii::app()->user->setFlash('error', 'Failed to save an order item.');
+					$order->delete(); // Rollback
+					$this->redirect(['cart/myCart']);
+					return;
+				}
+			}
+	
+			// Clear cart
+			Cart::model()->deleteAllByAttributes(['customer_id' => $customerId]);
+	
+			// Redirect to order view or Stripe checkout
+			$this->redirect(['order/createCheckoutSession', 'orderId' => $order->id]);
+		} else {
+			Yii::app()->user->setFlash('error', 'Failed to create order.');
+			$this->redirect(['cart/myCart']);
+		}
+	}
+	
 
 }
