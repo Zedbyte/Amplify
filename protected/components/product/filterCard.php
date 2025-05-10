@@ -55,10 +55,13 @@
             </button>
 
             <div x-show="open" x-transition class="mt-4 space-y-3" x-cloak>
-                <div class="flex justify-between items-center gap-2">
+                <div class="flex justify-between items-center">
                     <input x-model="min" type="number" placeholder="Min ₱"
                         class="w-24 px-2 py-1 border rounded text-sm" id="minPriceInput" />
-                    <span>—</span>
+                    <!-- SVG line resembling a string -->
+                    <div class="h-6 w-full bg-center bg-no-repeat bg-cover" 
+                        style="background-image: url('<?php echo Yii::app()->request->baseUrl; ?>/images/tube_svg_bg.svg');">
+                    </div>
                     <input x-model="max" type="number" placeholder="Max ₱"
                         class="w-24 px-2 py-1 border rounded text-sm" id="maxPriceInput" />
                 </div>

@@ -19,7 +19,7 @@ $url = Yii::app()->createUrl('product/view', ['id' => $data->id]);
         </div>
 
         <div>
-            <h3 class="text-md font-semibold text-gray-800 group-hover:text-white">
+            <h3 class="text-md font-semibold text-gray-800 group-hover:text-white line-clamp-1">
                 <?php echo CHtml::encode($data->name); ?>
             </h3>
 
