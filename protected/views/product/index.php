@@ -27,29 +27,28 @@ $this->breadcrumbs = ['Products'];
 </section>
 
 
-<?php if (!Yii::app()->user->isGuest && Yii::app()->user->role == 2): ?>
-    <div class="flex justify-end gap-3 px-6 pb-4">
-        <a href="<?php echo $this->createUrl('product/create'); ?>"
-           class="inline-flex items-center gap-2 bg-black text-white text-sm font-semibold py-2 px-4 rounded-lg hover:bg-gray-900 transition">
-            <i class="ph ph-plus-circle text-lg"></i>
-            Create Product
-        </a>
-
-        <a href="<?php echo $this->createUrl('product/admin'); ?>"
-           class="inline-flex items-center gap-2 border border-black text-black text-sm font-semibold py-2 px-4 rounded-lg hover:bg-black hover:text-white transition">
-            <i class="ph ph-gear-six text-lg"></i>
-            Manage Products
-        </a>
-    </div>
-<?php endif; ?>
-
-
 <!-- Section: Product Grid and Filter -->
 <section class="px-6 pb-16 mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6  mx-auto">
-        
-        <!-- Filter Sidebar -->
-        <?php $this->widget('application.widgets.FilterCard'); ?>
+        <aside class="lg:col-span-3 hidden lg:block">
+            <?php if (!Yii::app()->user->isGuest && Yii::app()->user->role == 2): ?>
+                <div class="flex justify-between gap-3 pb-4">
+                    <a href="<?php echo $this->createUrl('product/create'); ?>"
+                    class="inline-flex items-center gap-2 bg-black text-white text-sm font-semibold py-2 px-4 rounded-lg hover:bg-gray-900 transition">
+                        <i class="ph ph-plus-circle text-lg"></i>
+                        Create Product
+                    </a>
+
+                    <a href="<?php echo $this->createUrl('product/admin'); ?>"
+                    class="inline-flex items-center gap-2 border border-black text-black text-sm font-semibold py-2 px-4 rounded-lg hover:bg-black hover:text-white transition">
+                        <i class="ph ph-gear-six text-lg"></i>
+                        Manage Products
+                    </a>
+                </div>
+            <?php endif; ?>
+            <!-- Filter Sidebar -->
+            <?php $this->widget('application.widgets.FilterCard'); ?>
+        </aside>
 
         <!-- Product Grid -->
         <div class="lg:col-span-9">

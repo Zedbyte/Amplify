@@ -63,6 +63,17 @@ body {
 	animation-play-state: paused;
   }
 
+/*  Active Filter */
+.active {
+    background-color: black !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* No Hover Style for Brand Tag Cloud When Active */
+/* .no-hover:hover {
+	background-color: black !important;
+} */
 
 /* body
 {

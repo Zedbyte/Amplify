@@ -58,6 +58,7 @@ $(function () {
         });
     });
 
+    // Reset Filters button handler
     $('#resetFiltersBtn').on('click', function () {
         // Clear search input
         $('#searchInput').val('');
@@ -76,4 +77,70 @@ $(function () {
             }
         });
     });
+
+
+
+    /**
+     * 
+     * FILTER CARD
+     * 
+     */
+
+    // Brand Filter
+    $('.brand-tag').on('click', function () {
+        const brandId = $(this).data('brand-id');
+    
+        // Remove active styles and hover class from all
+        $('.brand-tag')
+            .removeClass('bg-black text-white')
+            .addClass('bg-stone-100 text-stone-800 hover:bg-stone-200');
+    
+        // Apply active style to clicked one
+        $(this)
+            .removeClass('bg-stone-100 text-stone-800 hover:bg-stone-200')
+            .addClass('bg-black text-white');
+    
+        $.fn.yiiListView.update('product-list', {
+            data: { brand_id: brandId }
+        });
+    });
+    
+    // Reset Filter Card
+    $('#resetFilterCard').on('click', function () {
+        // Reset brand cloud styling
+        $('.brand-tag')
+            .removeClass('bg-black text-white')
+            .addClass('bg-stone-100 text-stone-800 hover:bg-stone-200');
+
+        $('#minPriceInput').val('');
+        $('#maxPriceInput').val('');
+        $('#inStockOnly').prop('checked', false);
+    
+        // Reset ListView (clear brand_id and other filters)
+        $.fn.yiiListView.update('product-list', {
+            data: {
+                brand_id: '',
+                min_price: '',
+                max_price: '',
+                in_stock: ''
+            }
+        });
+    });
+
+
+    // Global Filter Apply button
+    $('#applyGlobalFilters').on('click', function () {
+        const min = $('#minPriceInput').val();
+        const max = $('#maxPriceInput').val();
+        const inStock = $('#inStockOnly').is(':checked') ? 1 : 0;
+    
+        $.fn.yiiListView.update('product-list', {
+            data: {
+                min_price: min,
+                max_price: max,
+                in_stock: inStock
+            }
+        });
+    });
+    
 });

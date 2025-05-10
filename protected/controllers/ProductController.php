@@ -170,6 +170,26 @@ class ProductController extends Controller
 		if (!empty($_GET['category_id'])) {
 			$criteria->compare('category_id', (int)$_GET['category_id']);
 		}
+
+		// 🏷 Filter by brand
+		if (!empty($_GET['brand_id'])) {
+			$criteria->compare('brand_id', (int)$_GET['brand_id']);
+		}
+		
+		// 🏷 Filter by minimum price
+		if (!empty($_GET['min_price'])) {
+			$criteria->addCondition('price >= ' . (int)$_GET['min_price']);
+		}
+		
+		// 🏷 Filter by maximum price
+		if (!empty($_GET['max_price'])) {
+			$criteria->addCondition('price <= ' . (int)$_GET['max_price']);
+		}
+		
+		// 🏷 Filter by stock
+		if (!empty($_GET['in_stock'])) {
+			$criteria->addCondition('stock > 0');
+		}
 	
 		// 🔽 Sorting
 		if (!empty($_GET['sort'])) {
