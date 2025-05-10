@@ -165,6 +165,11 @@ class ProductController extends Controller
 			$criteria->addSearchCondition('name', $q, true, 'OR');
 			$criteria->addSearchCondition('description', $q, true, 'OR');
 		}
+
+		// 🏷 Filter by category
+		if (!empty($_GET['category_id'])) {
+			$criteria->compare('category_id', (int)$_GET['category_id']);
+		}
 	
 		// 🔽 Sorting
 		if (!empty($_GET['sort'])) {

@@ -63,12 +63,21 @@ $this->breadcrumbs = ['Products'];
                 <div class="flex gap-2">
                 <?php
                     $sortOptions = ['Random', 'Latest', 'Top Sales', 'Price'];
-                    foreach ($sortOptions as $option): ?>
+
+                    $activeSort = $_GET['sort'] ?? '';
+
+                    foreach ($sortOptions as $option): 
+                        $sortValue = strtolower(str_replace(' ', '_', $option));
+                        $isActive = $sortValue === $activeSort;
+                        $buttonClass = $isActive ? 'active' : '';
+                        $priceActive = in_array($activeSort, ['price_asc', 'price_desc']);
+                    ?>
                         <?php if ($option === 'Price'): ?>
                             <div x-data="{ open: false }" class="relative">
                                 <button type="button"
                                     @click="open = !open"
-                                    class="font-semibold px-4 py-1 border text-sm border-black rounded-sm transition hover:bg-black hover:text-white focus:outline-none sort-btn flex items-center">
+                                    class="font-semibold px-4 py-1 border text-sm border-black rounded-sm transition hover:bg-black hover:text-white focus:outline-none sort-btn flex items-center
+                                    <?php echo $priceActive ? 'active' : ''; ?>">
                                     Price
                                     <i class="ph ph-sliders-horizontal ml-2"></i>
                                 </button>
@@ -81,18 +90,21 @@ $this->breadcrumbs = ['Products'];
                                     class="absolute left-0 mt-2 bg-white border border-gray-300 rounded-md shadow-lg z-50 w-48"
                                     x-cloak>
                                     <button type="button" data-sort="price_asc"
-                                        class="sort-dropdown-option block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+                                        class="sort-dropdown-option block w-full text-left px-4 py-2 text-sm hover:bg-gray-100
+                                        <?php echo $activeSort === 'price_asc' ? 'active' : ''; ?>">
                                         Lowest Prices First
                                     </button>
                                     <button type="button" data-sort="price_desc"
-                                        class="sort-dropdown-option block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+                                        class="sort-dropdown-option block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                        <?php echo $activeSort === 'price_desc' ? 'active' : ''; ?>>
                                         Highest Prices First
                                     </button>
                                 </div>
                             </div>
                         <?php else: ?>
-                            <button class="font-semibold px-4 py-1 border text-sm border-black rounded-sm transition hover:bg-black hover:text-white focus:outline-none sort-btn"
-                                data-sort="<?php echo strtolower(str_replace(' ', '_', $option)); ?>">
+                            <button class="font-semibold px-4 py-1 border text-sm border-black rounded-sm transition hover:bg-black hover:text-white 
+                            focus:outline-none sort-btn <?php echo $buttonClass; ?>"
+                                data-sort="<?php echo $sortValue; ?>">
                                 <?php echo $option; ?>
                             </button>
                         <?php endif; ?>
@@ -101,11 +113,17 @@ $this->breadcrumbs = ['Products'];
                 </div>
 
                 <!-- Search Field -->
-                <div class="relative w-full md:w-64">
-                    <input type="text" name="q" id="searchInput"
-                        class="w-full px-4 py-2 text-sm border border-black rounded-lg focus:outline-none"
-                        placeholder="Search Instruments" />
-                    <i class="ph ph-magnifying-glass absolute right-3 top-2.5 text-gray-500 pointer-events-none"></i>
+                <div class="flex gap-5">
+                    <div class="relative w-full md:w-64">
+                        <input type="text" name="q" id="searchInput"
+                            class="w-full px-4 py-2 text-sm border border-black rounded-lg focus:outline-none"
+                            placeholder="Search Instruments" />
+                        <i class="ph ph-magnifying-glass absolute right-3 top-2.5 text-gray-500 pointer-events-none"></i>
+                    </div>
+                    <button id="resetFiltersBtn"
+                        class="text-lg text-gray-600 hover:text-black transition">
+                        <i class="ph-fill ph-funnel-x"></i>
+                    </button>
                 </div>
             </div>
             
