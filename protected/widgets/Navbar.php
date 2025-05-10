@@ -14,7 +14,12 @@ class Navbar extends CWidget
 
     public function getRoutes()
     {
-        return require(Yii::getPathOfAlias('application.data.navRoutes') . '.php');
+        $routes = require(Yii::getPathOfAlias('application.data.navRoutes') . '.php');
+
+        // Filter out any null or malformed entries
+        return array_filter($routes, function ($item) {
+            return is_array($item) && isset($item['route'], $item['label']);
+        });
     }
 
     public function getCart()

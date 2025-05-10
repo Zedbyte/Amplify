@@ -11,19 +11,19 @@ $cartItems = $this->getCart();
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center">
       <!-- Logo -->
-      <div class="flex items-center">
+      <a class="flex items-center" href="<?php echo Yii::app()->createUrl('/site/index'); ?>">
         <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/amplify_logo.png"
         alt="Amplify's Logo"
         class="h-14 object-contain" />
-      </div>
+      </a>
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex md:items-center md:space-x-6">
-        <?php foreach ($routes as $item):
-          $isActive = strpos($currentRoute, trim($item['route'], '/')) !== false;
-        ?>
+          <?php foreach ($routes as $item):
+            $isActive = strpos($currentRoute, trim($item['route'], '/')) !== false;
+          ?>
           <a href="<?php echo Yii::app()->createUrl($item['route'], $item['params'] ?? []); ?>"
-             class="text-gray-700 hover:text-gray-900 <?php echo $isActive ? 'font-semibold underline' : ''; ?>">
+            class="text-gray-700 hover:text-gray-900 <?php echo $isActive ? 'font-semibold underline' : ''; ?>">
               <?php echo CHtml::encode($item['label']); ?>
           </a>
         <?php endforeach; ?>
@@ -80,7 +80,7 @@ $cartItems = $this->getCart();
   <div id="mobile-menu" class="hidden md:hidden">
     <?php foreach ($routes as $item): ?>
       <a href="<?php echo Yii::app()->createUrl($item['route'], $item['params'] ?? []); ?>"
-         class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+        class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
         <?php echo CHtml::encode($item['label']); ?>
       </a>
     <?php endforeach; ?>

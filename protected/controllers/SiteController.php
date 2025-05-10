@@ -181,5 +181,15 @@ class SiteController extends Controller
 		$this->render('registerAdmin', ['model' => $model]);
 	}
 	
+	/**
+	 * Displays the admin dashboard
+	 */
+	public function actionAdminDashboard()
+	{
+		if (Yii::app()->user->isGuest || Yii::app()->user->role != 2) {
+			throw new CHttpException(403, 'You are not authorized to access this page.');
+		}
 
+		$this->render('adminDashboard');
+	}
 }
