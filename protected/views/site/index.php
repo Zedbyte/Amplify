@@ -72,7 +72,7 @@ should you have any questions.</p> -->
 				<h2 class="text-2xl md:text-4xl font-bold text-black">Shop by Category</h2>
 				<p class="text-gray-500 text-md md:text-lg">Find your perfect sound in just a few clicks</p>
 			</div>
-			<a href="#" class="inline-flex items-center border border-black px-4 py-2 text-sm rounded-lg hover:bg-black hover:text-white transition">
+			<a href="<?php echo Yii::app()->createUrl('product/index'); ?>" class="inline-flex items-center border border-black px-4 py-2 text-sm rounded-lg hover:bg-black hover:text-white transition">
 				See All <i class="ph ph-arrow-right ml-2"></i>
 			</a>
 		</div>
@@ -98,7 +98,7 @@ should you have any questions.</p> -->
 				<p class="text-gray-600 mb-6">
 					Check our different guitar styles!
 				</p>
-				<a href="#" class="inline-flex items-center px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800">
+				<a href="<?php echo Yii::app()->createUrl('product/index'); ?>" class="inline-flex items-center px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800">
 					See more
 					<i class="ph ph-arrow-right ml-2"></i>
 				</a>
@@ -147,7 +147,7 @@ should you have any questions.</p> -->
 			Start your musical journey with the perfect gear — delivered fast, played forever.
 		</p>
 
-		<a href="#" class="inline-block bg-white text-black font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-100 transition">
+		<a href="<?php echo Yii::app()->createUrl('product/index'); ?>" class="inline-block bg-white text-black font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-100 transition">
 			Explore Collection
 		</a>
 
