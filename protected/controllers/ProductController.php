@@ -34,10 +34,12 @@ class ProductController extends Controller
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
 				'users'=>array('@'),
+				'expression'=>'Yii::app()->user->role == 2',
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('@'),
+				'expression'=>'Yii::app()->user->role == 2',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -167,14 +169,17 @@ class ProductController extends Controller
 		// 🔽 Sorting
 		if (!empty($_GET['sort'])) {
 			switch ($_GET['sort']) {
-				case 'popular':
-					$criteria->order = 'views DESC'; // assuming 'views' column exists
+				case 'random':
+					$criteria->order = 'RAND()';
 					break;
 				case 'latest':
 					$criteria->order = 'created_at DESC';
 					break;
 				case 'top_sales':
-					$criteria->order = 'sales DESC'; // assuming 'sales' column exists
+					$criteria->select = 't.*, (
+						SELECT COUNT(*) FROM tbl_order_item oi WHERE oi.product_id = t.id
+					) AS sales_count';
+					$criteria->order = 'sales_count DESC';
 					break;
 				case 'price_asc':
 					$criteria->order = 'price ASC';

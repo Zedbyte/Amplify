@@ -4,10 +4,10 @@
 
 $this->breadcrumbs = ['Products'];
 
-$this->menu = [
-    ['label' => 'Create Product', 'url' => ['create']],
-    ['label' => 'Manage Product', 'url' => ['admin']],
-];
+// $this->menu = [
+//     ['label' => 'Create Product', 'url' => ['create']],
+//     ['label' => 'Manage Product', 'url' => ['admin']],
+// ];
 ?>
 
 <!-- Section: Shop by Category -->
@@ -25,6 +25,24 @@ $this->menu = [
         </div>
     </div>
 </section>
+
+
+<?php if (!Yii::app()->user->isGuest && Yii::app()->user->role == 2): ?>
+    <div class="flex justify-end gap-3 px-6 pb-4">
+        <a href="<?php echo $this->createUrl('product/create'); ?>"
+           class="inline-flex items-center gap-2 bg-black text-white text-sm font-semibold py-2 px-4 rounded-lg hover:bg-gray-900 transition">
+            <i class="ph ph-plus-circle text-lg"></i>
+            Create Product
+        </a>
+
+        <a href="<?php echo $this->createUrl('product/admin'); ?>"
+           class="inline-flex items-center gap-2 border border-black text-black text-sm font-semibold py-2 px-4 rounded-lg hover:bg-black hover:text-white transition">
+            <i class="ph ph-gear-six text-lg"></i>
+            Manage Products
+        </a>
+    </div>
+<?php endif; ?>
+
 
 <!-- Section: Product Grid and Filter -->
 <section class="px-6 pb-16 mx-auto">
@@ -44,7 +62,7 @@ $this->menu = [
                 <!-- Filter Buttons -->
                 <div class="flex gap-2">
                 <?php
-                    $sortOptions = ['Popular (MAINTENANCE)', 'Latest', 'Top Sales (MAINTENANCE)', 'Price'];
+                    $sortOptions = ['Random', 'Latest', 'Top Sales', 'Price'];
                     foreach ($sortOptions as $option): ?>
                         <?php if ($option === 'Price'): ?>
                             <div x-data="{ open: false }" class="relative">
