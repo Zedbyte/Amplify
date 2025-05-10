@@ -38,7 +38,7 @@ class Shipment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('shipment_date, address, city, state, country, zip_code, customer_id', 'required'),
+			array('address, city, state, country, zip_code', 'required'),
 			array('status, customer_id', 'numerical', 'integerOnly'=>true),
 			array('address, city', 'length', 'max'=>100),
 			array('state', 'length', 'max'=>20),

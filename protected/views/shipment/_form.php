@@ -4,85 +4,70 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow my-10">
+    <?php $form = $this->beginWidget('CActiveForm', [
+        'id' => 'shipment-form',
+        'enableAjaxValidation' => false,
+        'htmlOptions' => ['class' => 'space-y-6'],
+    ]); ?>
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'shipment-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
+    <?php echo $form->errorSummary($model, null, null, [
+        'class' => 'p-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg'
+    ]); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+    <div>
+        <?php echo $form->labelEx($model, 'shipment_date', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+        <?php echo $form->textField($model, 'shipment_date', [
+            'class' => 'w-full border border-gray-300 rounded-lg px-4 py-2 text-black focus:ring-1 focus:ring-black focus:outline-none'
+        ]); ?>
+        <?php echo $form->error($model, 'shipment_date', ['class' => 'text-red-600 text-sm mt-1']); ?>
+    </div>
 
-	<?php echo $form->errorSummary($model); ?>
+    <div>
+        <?php echo $form->labelEx($model, 'address', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+        <?php echo $form->textField($model, 'address', [
+            'class' => 'w-full border border-gray-300 rounded-lg px-4 py-2 text-black focus:ring-1 focus:ring-black focus:outline-none'
+        ]); ?>
+        <?php echo $form->error($model, 'address', ['class' => 'text-red-600 text-sm mt-1']); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'shipment_date'); ?>
-		<?php echo $form->textField($model,'shipment_date'); ?>
-		<?php echo $form->error($model,'shipment_date'); ?>
-	</div>
+    <div>
+        <?php echo $form->labelEx($model, 'city', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+        <?php echo $form->textField($model, 'city', [
+            'class' => 'w-full border border-gray-300 rounded-lg px-4 py-2 text-black focus:ring-1 focus:ring-black focus:outline-none'
+        ]); ?>
+        <?php echo $form->error($model, 'city', ['class' => 'text-red-600 text-sm mt-1']); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'address'); ?>
-		<?php echo $form->textField($model,'address',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'address'); ?>
-	</div>
+    <div>
+        <?php echo $form->labelEx($model, 'state', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+        <?php echo $form->textField($model, 'state', [
+            'class' => 'w-full border border-gray-300 rounded-lg px-4 py-2 text-black focus:ring-1 focus:ring-black focus:outline-none'
+        ]); ?>
+        <?php echo $form->error($model, 'state', ['class' => 'text-red-600 text-sm mt-1']); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'city'); ?>
-		<?php echo $form->textField($model,'city',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'city'); ?>
-	</div>
+    <div>
+        <?php echo $form->labelEx($model, 'country', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+        <?php echo $form->textField($model, 'country', [
+            'class' => 'w-full border border-gray-300 rounded-lg px-4 py-2 text-black focus:ring-1 focus:ring-black focus:outline-none'
+        ]); ?>
+        <?php echo $form->error($model, 'country', ['class' => 'text-red-600 text-sm mt-1']); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'state'); ?>
-		<?php echo $form->textField($model,'state',array('size'=>20,'maxlength'=>20)); ?>
-		<?php echo $form->error($model,'state'); ?>
-	</div>
+    <div>
+        <?php echo $form->labelEx($model, 'zip_code', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+        <?php echo $form->textField($model, 'zip_code', [
+            'class' => 'w-full border border-gray-300 rounded-lg px-4 py-2 text-black focus:ring-1 focus:ring-black focus:outline-none'
+        ]); ?>
+        <?php echo $form->error($model, 'zip_code', ['class' => 'text-red-600 text-sm mt-1']); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'country'); ?>
-		<?php echo $form->textField($model,'country',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'country'); ?>
-	</div>
+    <div>
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create Shipment' : 'Save Changes', [
+            'class' => 'w-full bg-black text-white py-2 rounded-lg hover:bg-gray-900 font-semibold transition'
+        ]); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'zip_code'); ?>
-		<?php echo $form->textField($model,'zip_code',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'zip_code'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
-		<?php echo $form->error($model,'status'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'customer_id'); ?>
-		<?php echo $form->textField($model,'customer_id'); ?>
-		<?php echo $form->error($model,'customer_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'created_at'); ?>
-		<?php echo $form->textField($model,'created_at'); ?>
-		<?php echo $form->error($model,'created_at'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'updated_at'); ?>
-		<?php echo $form->textField($model,'updated_at'); ?>
-		<?php echo $form->error($model,'updated_at'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-
-</div><!-- form -->
+    <?php $this->endWidget(); ?>
+</div>
