@@ -25,9 +25,15 @@ class Navbar extends CWidget
     public function getCart()
     {
         if (!Yii::app()->user->isGuest) {
-            // Logged-in user: fetch from database
+            $customer = Customer::model()->findByAttributes(['user_id' => Yii::app()->user->id]);
+
+            if (!$customer) {
+                Yii::log("No customer found for user ID: " . Yii::app()->user->id, CLogger::LEVEL_WARNING);
+                return [];
+            }
+
             return Cart::model()->findAllByAttributes([
-                'customer_id' => Yii::app()->user->id,
+                'customer_id' => $customer->id,
             ]);
         }
 
