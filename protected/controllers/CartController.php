@@ -228,33 +228,45 @@ class CartController extends Controller
 			}
 
 		} else {
-			$userId = Yii::app()->user->id;
-			$existingCart = Cart::model()->findByAttributes([
-				'customer_id' => $userId,
-				'product_id' => $productId,
-			]);
-			$existingQty = $existingCart ? $existingCart->quantity : 0;
+				$userId = Yii::app()->user->id;
 
-			if (!CartHelper::isQuantityAvailable($productId, $quantity, $existingQty)) {
-				Yii::app()->user->setFlash('error', 'Quantity exceeds available stock.');
-			} else {
-				if ($existingCart) {
-					$existingCart->quantity += $quantity;
-					$existingCart->updated_at = new CDbExpression('NOW()');
-					$existingCart->save();
-					Yii::app()->user->setFlash('success', 'Cart updated.');
+				// Check if user is a customer (exists in tbl_customer)
+				$customer = Customer::model()->findByAttributes(['user_id' => $userId]);
+				if (!$customer) {
+					Yii::app()->user->setFlash('error', 'Admin users cannot add items to cart.');
+					$this->redirect(['product/index']);
+					return;
+				}
+
+				$customerId = $customer->id;
+
+				$existingCart = Cart::model()->findByAttributes([
+					'customer_id' => $customerId,
+					'product_id' => $productId,
+				]);
+				$existingQty = $existingCart ? $existingCart->quantity : 0;
+
+				if (!CartHelper::isQuantityAvailable($productId, $quantity, $existingQty)) {
+					Yii::app()->user->setFlash('error', 'Quantity exceeds available stock.');
 				} else {
-					$cart = new Cart();
-					$cart->customer_id = $userId;
-					$cart->product_id = $productId;
-					$cart->quantity = $quantity;
-					$cart->created_at = new CDbExpression('NOW()');
-					$cart->updated_at = new CDbExpression('NOW()');
-					$cart->save();
-					Yii::app()->user->setFlash('success', 'Product added to cart.');
+					if ($existingCart) {
+						$existingCart->quantity += $quantity;
+						$existingCart->updated_at = new CDbExpression('NOW()');
+						$existingCart->save();
+						Yii::app()->user->setFlash('success', 'Cart updated.');
+					} else {
+						$cart = new Cart();
+						$cart->customer_id = $customerId;
+						$cart->product_id = $productId;
+						$cart->quantity = $quantity;
+						$cart->created_at = new CDbExpression('NOW()');
+						$cart->updated_at = new CDbExpression('NOW()');
+						$cart->save();
+						Yii::app()->user->setFlash('success', 'Product added to cart.');
+					}
 				}
 			}
-		}
+
 
 		$this->redirect(['product/index']);
 	}
