@@ -282,8 +282,17 @@ class CartController extends Controller
 		$deliveryFee = 700;
 
 		if (!Yii::app()->user->isGuest) {
+			// Find the actual customer record for the logged-in user
+			$customer = Customer::model()->findByAttributes(['user_id' => Yii::app()->user->id]);
+
+			if (!$customer) {
+				// Optional: handle missing customer record
+				Yii::log("No customer record found for user ID: " . Yii::app()->user->id, CLogger::LEVEL_WARNING);
+				throw new CHttpException(400, "Customer profile not found.");
+			}
+
 			$criteria = new CDbCriteria();
-			$criteria->compare('customer_id', Yii::app()->user->id);
+			$criteria->compare('customer_id', $customer->id);
 
 			$cartItems = Cart::model()->findAll($criteria);
 
@@ -410,8 +419,15 @@ class CartController extends Controller
 			$this->redirect(['site/login']);
 			return;
 		}
-	
-		$customerId = Yii::app()->user->id;
+		$userId = Yii::app()->user->id;
+		$customer = Customer::model()->findByAttributes(['user_id' => $userId]);
+		if (!$customer) {
+            Yii::log("No customer profile found for user ID: $userId", CLogger::LEVEL_WARNING);
+            Yii::app()->user->setFlash('error', 'No customer profile found. Please contact support.');
+            return;
+        }
+
+        $customerId = $customer->id;
 		$cartItems = Cart::model()->findAllByAttributes(['customer_id' => $customerId]);
 		if (empty($cartItems)) {
 			Yii::app()->user->setFlash('error', 'Your cart is empty.');
@@ -450,8 +466,8 @@ class CartController extends Controller
 		$order->total_price = $total;
 		$order->status = 0;
 		$order->is_received = 0; // false
-		$order->payment_id = 1;
-		$order->shipment_id = 1;
+		// $order->payment_id = 1; //will be assigned after stripe checkout
+		// $order->shipment_id = 1; //will be assigned after stripe checkout
 		$order->created_at = new CDbExpression('NOW()');
 		$order->updated_at = new CDbExpression('NOW()');
 		if ($order->save()) {
