@@ -1,58 +1,89 @@
-<div class="flex bg-white shadow-sm rounded-xl border border-gray-200 mb-4 hover:shadow-md transition">
-	<!-- Left Strip -->
-	<div class="w-2 sm:w-6 bg-gradient-to-r from-black via-stone-950 to-stone-700 rounded-l-xl"></div>
+<?php
+/* @var $this OrderController */
+/* @var $data Order */
+?>
 
-    <!-- Header: Order ID and Status -->
-    <div class="p-6 w-full">
-		<div class="flex justify-between items-center mb-4">
-			<h3 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
-				<i class="ph ph-shopping-cart text-xl text-blue-500"></i>
-				Order #
-				<a href="<?php echo CHtml::normalizeUrl(['view', 'id' => $data->id]); ?>" class="text-blue-600 hover:underline">
-					<?php echo CHtml::encode($data->id); ?>
-				</a>
-			</h3>
-			<span class="inline-flex items-center gap-1 text-sm px-2 py-1 rounded-full 
-				<?php echo $data->status == 1 ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'; ?>">
-				<i class="ph <?php echo $data->status == 1 ? 'ph-check-circle' : 'ph-clock'; ?>"></i>
-				<?php echo $data->status == 1 ? 'Accepted' : 'Pending'; ?>
-			</span>
-		</div>
+<div class="relative flex bg-white shadow-sm rounded-xl border border-gray-200 mb-6 overflow-hidden hover:shadow-md transition">
+    <!-- Diagonal Stripe with Vertical Status Label -->
+    <div class="relative w-20 min-w-[5rem] bg-gradient-to-br from-black via-stone-900 to-stone-700">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <span class="transform -rotate-90 text-sm font-extrabold tracking-wider uppercase 
+                <?php echo $data->status == 1 ? 'text-green-400' : 'text-yellow-300'; ?>">
+                <?php echo $data->status == 1 ? 'Accepted' : 'Pending'; ?>
+            </span>
+        </div>
+    </div>
 
-		<!-- Metadata Section -->
-		<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-700">
-			<div class="flex items-center gap-2">
-				<i class="ph ph-calendar text-gray-500"></i>
-				<span class="font-medium text-gray-900">Order Date:</span> <?php echo CHtml::encode($data->order_date); ?>
-			</div>
-			<div class="flex items-center gap-2">
-				<i class="ph ph-currency-circle-dollar text-gray-500"></i>
-				<span class="font-medium text-gray-900">Total:</span> ₱<?php echo number_format($data->total_price, 2); ?>
-			</div>
-			<div class="flex items-center gap-2">
-				<i class="ph ph-user text-gray-500"></i>
-				<span class="font-medium text-gray-900">Customer ID:</span> <?php echo CHtml::encode($data->customer_id); ?>
-			</div>
-			<div class="flex items-center gap-2">
-				<i class="ph ph-credit-card text-gray-500"></i>
-				<span class="font-medium text-gray-900">Payment ID:</span> <?php echo CHtml::encode($data->payment_id ?? '—'); ?>
-			</div>
-			<div class="flex items-center gap-2">
-				<i class="ph ph-truck text-gray-500"></i>
-				<span class="font-medium text-gray-900">Shipment ID:</span> <?php echo CHtml::encode($data->shipment_id ?? '—'); ?>
-			</div>
-		</div>
+    <!-- Main Content -->
+    <div class="p-6 flex-1 pl-4 relative">
+        <!-- Top: Header + Total -->
+        <div class="flex justify-between items-start mb-4">
+            <h3 class="text-xl font-semibold text-gray-900 flex items-center gap-2">
+                <i class="ph ph-shopping-cart text-2xl text-blue-500"></i>
+                Order #
+                <a href="<?php echo CHtml::normalizeUrl(['view', 'id' => $data->id]); ?>" class="text-blue-600 hover:underline">
+                    <?php echo CHtml::encode($data->id); ?>
+                </a>
+            </h3>
+            <div class="text-right">
+                <div class="text-xs uppercase text-gray-500">Total</div>
+                <div class="text-2xl font-bold text-emerald-600">₱<?php echo number_format($data->total_price, 2); ?></div>
+            </div>
+        </div>
 
-		<?php if ($data->status == 0): ?>
-			<div class="mt-4 flex justify-end">
-				<a href="<?php echo Yii::app()->createUrl('order/createCheckoutSession', ['orderId' => $data->id]); ?>"
-				class="inline-flex items-center gap-2 px-4 py-2 text-sm bg-black text-white rounded hover:bg-stone-900 transition">
-					<i class="ph ph-arrow-circle-right text-lg"></i>
-					Proceed to Checkout
-				</a>
-			</div>
-		<?php endif; ?>
+        <!-- Order Items Section -->
+        <div class="mb-5">
+            <div class="flex items-center gap-2 mb-2 text-gray-500 text-sm uppercase font-semibold">
+                <i class="ph ph-list-bullets text-lg"></i>
+                Order Items
+            </div>
+            <ul class="space-y-2 pl-4">
+                <?php foreach ($data->orderItems as $item): ?>
+                    <li class="flex justify-between items-center bg-gray-50 rounded px-3 py-2">
+                        <span class="text-gray-800 font-medium"><?php echo CHtml::encode($item->product->name); ?></span>
+                        <span class="text-sm text-gray-500">× <?php echo $item->quantity; ?></span>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
 
-	</div>
+        <!-- Metadata -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 text-base text-gray-700 ml-2">
+            <div class="flex items-center gap-3">
+                <i class="ph ph-calendar text-xl text-gray-500"></i>
+                <div>
+                    <div class="text-sm text-gray-500">Order Date</div>
+                    <div class="font-medium text-gray-900"><?php echo CHtml::encode($data->order_date); ?></div>
+                </div>
+            </div>
 
+            <div class="flex items-center gap-3">
+                <i class="ph ph-credit-card text-xl text-gray-500"></i>
+                <div>
+                    <div class="text-sm text-gray-500">Payment ID</div>
+                    <div class="font-medium text-gray-900"><?php echo CHtml::encode($data->payment_id ?? '—'); ?></div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <i class="ph ph-truck text-xl text-gray-500"></i>
+                <div>
+                    <div class="text-sm text-gray-500">Shipment ID</div>
+                    <div class="font-medium text-gray-900"><?php echo CHtml::encode($data->shipment_id ?? '—'); ?></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout CTA -->
+        <?php if ($data->status == 0): ?>
+            <div class="mt-6 flex justify-end">
+                <a href="<?php echo Yii::app()->createUrl('order/createCheckoutSession', ['orderId' => $data->id]); ?>"
+                    class="inline-flex items-center gap-2 px-5 py-2 text-base bg-black text-white rounded hover:bg-stone-900 transition">
+                    <i class="ph ph-arrow-circle-right text-lg"></i>
+                    Proceed to Checkout
+                </a>
+            </div>
+        <?php endif; ?>
+    </div>
 </div>
+
