@@ -62,7 +62,7 @@ return array(
 			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
+					'levels'=>'error, warning, info',
 				),
 				// uncomment the following to show log messages on web pages
 				/*
@@ -88,5 +88,8 @@ return array(
 		// Stripe URLs (optional)
 		'stripe.successUrl' => 'http://localhost:8080/index.php/order/success',
 		'stripe.cancelUrl' => 'http://localhost:8080/index.php/order/cancel',
+
+		// Stripe webhook secret
+		'stripe.webhookSecret' => 'whsec_6e1d22ab23377dc783d19d7235f13ad8fad95b38eaab164247c89d68d5551776'
 	),
 );
