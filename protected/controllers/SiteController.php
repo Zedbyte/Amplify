@@ -28,29 +28,31 @@ class SiteController extends Controller
 	public function actionIndex()
 	{
 		$rows = Yii::app()->db->createCommand()
-		->select('product_id, SUM(quantity) as total_sold')
-		->from('tbl_order_item')
-		->group('product_id')
-		->order('total_sold DESC')
-		->limit(3)
-		->queryAll();
-	
-	
+			->select('product_id, SUM(quantity) as total_sold')
+			->from('tbl_order_item')
+			->group('product_id')
+			->order('total_sold DESC')
+			->limit(3)
+			->queryAll();
+
 		$bestSellingProducts = [];
 		foreach ($rows as $row) {
-			$product = Product::model()->findByPk($row['product_id']);
-			// var_dump($product);exit;
+			$product = Product::model()->findByAttributes([
+				'id' => $row['product_id'],
+				'status' => 1
+			]);
+
 			if ($product) {
 				$product->total_sold = $row['total_sold'];
 				$bestSellingProducts[] = $product;
 			}
 		}
-		
-	
+
 		$this->render('index', [
 			'bestSellingProducts' => $bestSellingProducts,
 		]);
 	}
+
 
 
 

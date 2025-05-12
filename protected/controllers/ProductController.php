@@ -167,6 +167,9 @@ class ProductController extends Controller
 	public function actionIndex()
 	{
 		$criteria = new CDbCriteria;
+		
+		// ✅ Only show active products
+		$criteria->compare('status', 1);
 	
 		// 🔍 Filter by search keyword
 		if (!empty($_GET['q'])) {
