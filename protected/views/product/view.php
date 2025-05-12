@@ -14,6 +14,23 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
     </a>
 </div>
 
+<?php if (!Yii::app()->user->isGuest && Yii::app()->user->role == 2): ?>
+    <div class="flex justify-end items-center mx-4 mb-4 space-x-4">
+        <!-- Top Right: Create / Manage Buttons -->
+        <a href="<?php echo Yii::app()->createUrl('product/create'); ?>"
+            class="px-4 py-2 text-sm bg-emerald-600 text-white rounded hover:bg-emerald-700 transition flex items-center">
+            <i class="ph ph-plus-square mr-2"></i>
+            Create Product
+        </a>
+        <a href="<?php echo Yii::app()->createUrl('product/admin'); ?>"
+            class="px-4 py-2 text-sm bg-black text-white rounded hover:bg-stone-900 transition flex items-center">
+            <i class="ph ph-gear mr-2"></i>
+            Manage Products
+        </a>
+    </div>
+<?php endif; ?>
+
+
 <!-- Product View Section -->
 <section class="px-6 pb-16 grid grid-cols-1 lg:grid-cols-2 gap-8  mx-auto">
 
@@ -31,11 +48,38 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
     <!-- Right: Product Info -->
     <div class="w-full h-[600px] relative flex flex-col justify-between">
         <div class="space-y-4">
-
             <!-- Product Name -->
-            <h1 class="text-2xl md:text-3xl font-bold text-black">
-                <?php echo CHtml::encode($model->name); ?>
-            </h1>
+            <span class="flex justify-between items-center">
+                <h1 class="text-2xl md:text-3xl font-bold text-black">
+                    <?php echo CHtml::encode($model->name); ?>
+                </h1>
+
+                <?php if (!Yii::app()->user->isGuest && Yii::app()->user->role == 2): ?>
+                    <div class="flex justify-end items-center mb-4 space-x-4">
+                        <!-- Dropdown: Update / Delete -->
+                        <div x-data="{ open: false }" class="relative">
+                            <button @click="open = !open" class="p-2 rounded-full hover:bg-gray-100 focus:outline-none">
+                                <i class="ph ph-dots-three-outline text-xl text-gray-600"></i>
+                            </button>
+                            <div x-show="open" @click.away="open = false"
+                                class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded shadow-md z-10">
+                                <a href="<?php echo Yii::app()->createUrl('product/update', ['id' => $model->id]); ?>"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i class="ph ph-pencil-simple-line mr-2"></i> Update
+                                </a>
+                                <?php echo CHtml::beginForm(['product/delete', 'id' => $model->id], 'post', [
+                                    'onsubmit' => 'return confirm("Are you sure you want to delete this product?");'
+                                ]); ?>
+                                    <button type="submit"
+                                        class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                                        <i class="ph ph-trash-simple mr-2"></i> Delete
+                                    </button>
+                                <?php echo CHtml::endForm(); ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </span>
 
             <!-- Rating -->
             <div class="flex items-center space-x-2">
@@ -146,7 +190,7 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
 
     <!-- Panels -->
     <div x-show="tab === 'details'" class="tab-panel">
-        <h3 class="text-lg font-semibold text-black mb-2">Product Details</h3>
+        <!-- <h3 class="text-lg font-semibold text-black mb-2">Product Details</h3> -->
         <p class="text-sm text-gray-700 leading-relaxed mb-4">
             <?php echo $model->description; ?>
         </p>
@@ -171,13 +215,13 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
 // 	$model->name,
 // );
 
-$this->menu=array(
-	array('label'=>'List Product', 'url'=>array('index')),
-	array('label'=>'Create Product', 'url'=>array('create')),
-	array('label'=>'Update Product', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Product', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Product', 'url'=>array('admin')),
-);
+// $this->menu=array(
+// 	array('label'=>'List Product', 'url'=>array('index')),
+// 	array('label'=>'Create Product', 'url'=>array('create')),
+// 	array('label'=>'Update Product', 'url'=>array('update', 'id'=>$model->id)),
+// 	array('label'=>'Delete Product', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+// 	array('label'=>'Manage Product', 'url'=>array('admin')),
+// );
 ?>
 
 <!-- <h1>View Product #<?php //echo $model->id; ?></h1> -->

@@ -2,17 +2,35 @@
 /* @var $this OrderController */
 /* @var $model Order */
 
-$this->breadcrumbs=array(
-	'Orders'=>array('index'),
-	'Create',
-);
-
-$this->menu=array(
-	array('label'=>'List Order', 'url'=>array('index')),
-	array('label'=>'Manage Order', 'url'=>array('admin')),
-);
+$this->breadcrumbs = ['Orders' => ['index'], 'Create'];
 ?>
 
-<h1>Create Order</h1>
+<!-- Page Container -->
+<div class="max-w-4xl mx-auto px-6 py-10">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center gap-3">
+            <i class="ph ph-plus-circle text-3xl text-emerald-600"></i>
+            <h1 class="text-2xl font-bold text-gray-900">Create Order</h1>
+        </div>
+        
+        <!-- Admin Links -->
+        <?php if (!Yii::app()->user->isGuest && Yii::app()->user->role == 2): ?>
+            <div class="flex gap-2">
+                <a href="<?php echo $this->createUrl('index'); ?>"
+                   class="px-4 py-2 text-sm bg-gray-100 text-gray-800 rounded hover:bg-gray-200 transition">
+                    <i class="ph ph-list mr-1"></i> List Orders
+                </a>
+                <a href="<?php echo $this->createUrl('admin'); ?>"
+                   class="px-4 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                    <i class="ph ph-gear-six mr-1"></i> Manage Orders
+                </a>
+            </div>
+        <?php endif; ?>
+    </div>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+    <!-- Form -->
+    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        <?php $this->renderPartial('_form', array('model' => $model)); ?>
+    </div>
+</div>
