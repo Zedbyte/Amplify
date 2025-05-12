@@ -110,7 +110,7 @@ should you have any questions.</p> -->
 					<p class="text-gray-500">No best-selling guitars yet.</p>
 				<?php else: ?>
 					<?php foreach ($bestSellingProducts as $product): ?>
-						<div class="bg-white border border-stone-200 rounded-xl p-4 hover:shadow-lg transition">
+						<a class="bg-white border border-stone-200 rounded-xl p-4 hover:shadow-lg transition" href="<?php echo Yii::app()->createUrl('product/view', ['id' => $product->id]); ?>">
 							<img src="<?php echo Yii::app()->baseUrl . '/images/products/' . $product['image_path']; ?>"
 								alt="<?php echo CHtml::encode($product['name']); ?>"
 								class="w-full h-4/6 object-contain mb-4 rotate-45" />
@@ -121,7 +121,7 @@ should you have any questions.</p> -->
 								<p class="text-md text-gray-500">₱<?php echo number_format($product['price'], 2); ?></p>
 								<p class="text-md text-gray-500"><?php echo (int) $product->stock; ?> units left</p>
 							</div>
-						</div>
+						</a>
 					<?php endforeach; ?>
 				<?php endif; ?>
 			</div>

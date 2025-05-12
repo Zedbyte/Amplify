@@ -98,10 +98,17 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
                     <?php echo CHtml::hiddenField('product_id', $model->id); ?>
                     <input type="hidden" name="quantity" :value="qty">
                     
-                    <button type="submit" 
-                        class="flex-1 bg-black text-white py-3 rounded-full hover:bg-gray-900 transition text-sm font-semibold">
-                        Add to Cart
-                    </button>
+                    <?php if ($model->stock > 0): ?>
+                        <button type="submit" 
+                            class="flex-1 bg-black text-white py-3 rounded-full hover:bg-gray-900 transition text-sm font-semibold">
+                            Add to Cart
+                        </button>
+                    <?php else: ?>
+                        <button type="button" disabled
+                            class="flex-1 bg-gray-300 text-gray-500 py-3 rounded-full text-sm font-semibold cursor-not-allowed">
+                            Out of Stock
+                        </button>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>
