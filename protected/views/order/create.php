@@ -18,11 +18,11 @@ $this->breadcrumbs = ['Orders' => ['index'], 'Create'];
         <?php if (!Yii::app()->user->isGuest && Yii::app()->user->role == 2): ?>
             <div class="flex gap-2">
                 <a href="<?php echo $this->createUrl('index'); ?>"
-                   class="px-4 py-2 text-sm bg-gray-100 text-gray-800 rounded hover:bg-gray-200 transition">
+                   class="px-4 py-2 text-sm bg-black text-white rounded hover:bg-stone-900 transition flex items-center">
                     <i class="ph ph-list mr-1"></i> List Orders
                 </a>
                 <a href="<?php echo $this->createUrl('admin'); ?>"
-                   class="px-4 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                   class="px-4 py-2 text-sm bg-black text-white rounded hover:bg-stone-900 transition flex items-center">
                     <i class="ph ph-gear-six mr-1"></i> Manage Orders
                 </a>
             </div>
