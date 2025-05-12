@@ -171,7 +171,7 @@ $imageUrl = Yii::app()->baseUrl . '/images/products/' . $model->image_path;
 
 
 <!-- Tabs -->
-<section x-data="{ tab: 'details' }" class="px-6 mx-auto">
+<section x-data="{ tab: 'details' }" class="px-6 mx-auto mb-52">
     <!-- Tabs -->
     <div class="border-b border-gray-200 flex space-x-10 mb-6">
         <button 
