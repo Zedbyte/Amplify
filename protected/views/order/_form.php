@@ -4,79 +4,65 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+<?php $form = $this->beginWidget('CActiveForm', [
+    'id' => 'order-form',
+    'enableAjaxValidation' => false,
+    'htmlOptions' => ['class' => 'space-y-6'],
+]); ?>
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'order-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
+<!-- Error summary -->
+<?php echo $form->errorSummary($model, null, null, [
+    'class' => 'p-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg'
+]); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+<?php
+$fields = [
+    'order_date' => 'text',
+    'total_price' => 'text',
+    'customer_id' => 'text',
+    'payment_id' => 'text',
+    'shipment_id' => 'text',
+    'status' => 'text',
+    'is_received' => 'boolean',
+    'created_at' => 'text',
+    'updated_at' => 'text',
+];
 
-	<?php echo $form->errorSummary($model); ?>
+foreach ($fields as $attribute => $type): ?>
+    <div>
+        <?php echo $form->labelEx($model, $attribute, ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'order_date'); ?>
-		<?php echo $form->textField($model,'order_date'); ?>
-		<?php echo $form->error($model,'order_date'); ?>
-	</div>
+        <?php if ($type === 'boolean'): ?>
+            <?php echo $form->dropDownList($model, $attribute, [
+                0 => 'No',
+                1 => 'Yes'
+            ], [
+                'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 bg-white text-black focus:ring-1 focus:ring-black focus:outline-none'
+            ]); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'total_price'); ?>
-		<?php echo $form->textField($model,'total_price',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'total_price'); ?>
-	</div>
+		<?php elseif ($attribute === 'status'): ?>
+			<?php echo $form->dropDownList($model, 'status', [
+				0 => 'Pending',
+				1 => 'Accepted',
+				2 => 'Shipped'
+			], [
+				'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 bg-white text-black focus:ring-1 focus:ring-black focus:outline-none'
+			]); ?>
+		<?php else: ?>
+			<?php echo $form->textField($model, $attribute, [
+				'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black placeholder-gray-400 focus:ring-1 focus:ring-black focus:outline-none'
+			]); ?>
+		<?php endif; ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'customer_id'); ?>
-		<?php echo $form->textField($model,'customer_id'); ?>
-		<?php echo $form->error($model,'customer_id'); ?>
-	</div>
+				<?php echo $form->error($model, $attribute, ['class' => 'text-red-600 text-sm mt-1']); ?>
+			</div>
+		<?php endforeach; ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'payment_id'); ?>
-		<?php echo $form->textField($model,'payment_id'); ?>
-		<?php echo $form->error($model,'payment_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'shipment_id'); ?>
-		<?php echo $form->textField($model,'shipment_id'); ?>
-		<?php echo $form->error($model,'shipment_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
-		<?php echo $form->error($model,'status'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'is_received'); ?>
-		<?php echo $form->textField($model,'is_received'); ?>
-		<?php echo $form->error($model,'is_received'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'created_at'); ?>
-		<?php echo $form->textField($model,'created_at'); ?>
-		<?php echo $form->error($model,'created_at'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'updated_at'); ?>
-		<?php echo $form->textField($model,'updated_at'); ?>
-		<?php echo $form->error($model,'updated_at'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+<!-- Submit Button -->
+<div>
+    <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', [
+        'class' => 'w-full bg-black text-white rounded-xl py-2 text-sm font-semibold hover:bg-gray-900 transition'
+    ]); ?>
+</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->
