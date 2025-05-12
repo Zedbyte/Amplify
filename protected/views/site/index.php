@@ -88,7 +88,7 @@ should you have any questions.</p> -->
 
 	<!-- Best Selling Guitars Section -->
 	<section class="py-16 bg-white">
-		<div class="mx-auto px-4 grid grid-cols-1 md:grid-cols-10 gap-8 items-center">
+		<div class="mx-auto px-4 grid grid-cols-1 md:grid-cols-10 gap-8">
 			
 			<!-- Left Column (30%) -->
 			<div class="md:col-span-3">
@@ -105,15 +105,15 @@ should you have any questions.</p> -->
 			</div>
 
 			<!-- Right Column (70%) -->
-			<div class="md:col-span-7 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-15">
+			<div class="md:col-span-7 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-10">
 				<?php if (empty($bestSellingProducts)): ?>
 					<p class="text-gray-500">No best-selling guitars yet.</p>
 				<?php else: ?>
 					<?php foreach ($bestSellingProducts as $product): ?>
-						<div class="bg-white rounded-xl p-4 hover:shadow-lg transition">
+						<div class="bg-white border border-stone-200 rounded-xl p-4 hover:shadow-lg transition">
 							<img src="<?php echo Yii::app()->baseUrl . '/images/products/' . $product['image_path']; ?>"
 								alt="<?php echo CHtml::encode($product['name']); ?>"
-								class="w-full h-5/6 object-contain mb-4 rotate-45" />
+								class="w-full h-4/6 object-contain mb-4 rotate-45" />
 							<h3 class="text-md font-semibold text-gray-800 truncate">
 								<?php echo CHtml::encode($product['name']); ?>
 							</h3>

@@ -32,7 +32,7 @@ class SiteController extends Controller
 		->from('tbl_order_item')
 		->group('product_id')
 		->order('total_sold DESC')
-		->limit(4)
+		->limit(3)
 		->queryAll();
 	
 	
