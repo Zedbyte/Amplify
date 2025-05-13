@@ -34,6 +34,10 @@ $filter = $_GET['filter'] ?? 'pending';
                 class="px-4 py-2 text-sm rounded <?php echo $filter === 'accepted' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'; ?>">
                 Accepted Only
             </a>
+            <a href="<?php echo Yii::app()->createUrl('order/index', ['filter' => 'shipped']); ?>"
+                class="px-4 py-2 text-sm rounded <?php echo $filter === 'shipped' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'; ?>">
+                Shipped Only
+            </a>
             <a href="<?php echo Yii::app()->createUrl('order/index', ['filter' => 'all']); ?>"
                 class="px-4 py-2 text-sm rounded <?php echo $filter === 'all' ? 'bg-black text-white' : 'bg-gray-100 text-gray-700'; ?>">
                 Show All

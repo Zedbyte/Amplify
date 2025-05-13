@@ -8,8 +8,14 @@
     <div class="relative w-20 min-w-[5rem] bg-gradient-to-br from-black via-stone-900 to-stone-700">
         <div class="absolute inset-0 flex items-center justify-center">
             <span class="transform -rotate-90 text-sm font-extrabold tracking-wider uppercase 
-                <?php echo $data->status == 1 ? 'text-green-400' : 'text-yellow-300'; ?>">
-                <?php echo $data->status == 1 ? 'Accepted' : 'Pending'; ?>
+                <?php 
+                    echo $data->status == 1 ? 'text-green-400' : 
+                        ($data->status == 2 ? 'text-blue-400' : 'text-yellow-300'); 
+                ?>">
+                <?php 
+                    echo $data->status == 1 ? 'Accepted' : 
+                        ($data->status == 2 ? 'Shipped' : 'Pending'); 
+                ?>
             </span>
         </div>
     </div>
@@ -76,13 +82,14 @@
 
         <!-- Checkout CTA -->
         <?php if ($data->status == 0): ?>
-            <div class="mt-6 flex justify-end">
-                <a href="<?php echo Yii::app()->createUrl('order/createCheckoutSession', ['orderId' => $data->id]); ?>"
+            <form action="<?php echo Yii::app()->createUrl('order/checkoutRedirect'); ?>" method="get" class="mt-6 flex justify-end">
+                <input type="hidden" name="orderId" value="<?php echo $data->id; ?>">
+                <button type="submit"
                     class="inline-flex items-center gap-2 px-5 py-2 text-base bg-black text-white rounded hover:bg-stone-900 transition">
                     <i class="ph ph-arrow-circle-right text-lg"></i>
                     Proceed to Checkout
-                </a>
-            </div>
+                </button>
+            </form>
         <?php endif; ?>
     </div>
 </div>

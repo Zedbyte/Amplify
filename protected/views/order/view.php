@@ -49,9 +49,18 @@ $this->breadcrumbs = ['Orders' => ['index'], "Order #{$model->id}"];
             <div><?php echo $model->payment_id ?? '—'; ?></div>
         </div>
         <div>
-            <div class="font-medium text-gray-900">Shipment</div>
-            <div><?php echo $model->shipment_id ?? '—'; ?></div>
-        </div>
+			<div class="font-medium text-gray-900">Shipment</div>
+			<div>
+				<?php 
+					if ($model->shipment === null) {
+						echo '—';
+					} else {
+						echo $model->shipment->id . ' — ';
+						echo $model->shipment->status == 1 ? 'In Transit' : 'Pending';
+					}
+				?>
+			</div>
+		</div>
         <div>
             <div class="font-medium text-gray-900">Received?</div>
             <div><?php echo $model->is_received ? 'Yes' : 'No'; ?></div>
