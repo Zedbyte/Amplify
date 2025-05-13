@@ -1,5 +1,8 @@
 <?php
 
+use Stripe\Stripe;
+use Stripe\Webhook;
+
 class OrderController extends Controller
 {
 	/**
@@ -16,7 +19,17 @@ class OrderController extends Controller
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
+			'postOnly + stripeWebhook',
+			'postOnly + emailSent',
 		);
+	}
+
+	public function beforeAction($action)
+	{
+		if ($action->id === 'stripeWebhook') {
+			Yii::app()->request->enableCsrfValidation = false;
+		}
+		return parent::beforeAction($action);
 	}
 
 	/**
@@ -28,11 +41,11 @@ class OrderController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'stripeWebhook', 'emailSent'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'createCheckoutSession', 'success', 'cancel', 'stripeWebhook'),
+				'actions'=>array('create','update', 'createCheckoutSession', 'success', 'cancel', 'checkoutRedirect'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -51,10 +64,15 @@ class OrderController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		$model = $this->loadModel($id);
+		$orderItems = OrderItem::model()->with('product')->findAllByAttributes(['order_id' => $id]);
+
+		$this->render('view', [
+			'model' => $model,
+			'orderItems' => $orderItems,
+		]);
 	}
+
 
 	/**
 	 * Creates a new model.
@@ -122,11 +140,50 @@ class OrderController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Order');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		$userId = Yii::app()->user->id;
+		$userRole = Yii::app()->user->role; // assuming 'role' is available via Yii::app()->user
+
+		$criteria = new CDbCriteria();
+		$criteria->order = 'created_at DESC';
+
+		// 🚫 Only apply customer filtering if not admin
+		if ($userRole != 2) {
+			$customer = Customer::model()->findByAttributes(['user_id' => $userId]);
+
+			if (!$customer) {
+				throw new CHttpException(403, 'You are not authorized to view orders.');
+			}
+
+			$criteria->compare('customer_id', $customer->id);
+		}
+
+		// 🔍 Filter by status
+		$filter = $_GET['filter'] ?? 'pending';
+
+		switch ($filter) {
+			case 'shipped':
+				$criteria->compare('status', 2);
+				break;
+			case 'accepted':
+				$criteria->compare('status', 1);
+				break;
+			case 'pending':
+				$criteria->compare('status', 0);
+				break;
+			case 'all':
+			default:
+				// No status filter
+				break;
+		}
+
+		$dataProvider = new CActiveDataProvider('Order', [
+			'criteria' => $criteria,
+			'pagination' => ['pageSize' => 10],
+		]);
+
+		$this->render('index', ['dataProvider' => $dataProvider]);
 	}
+
 
 	/**
 	 * Manages all models.
@@ -183,6 +240,7 @@ class OrderController extends Controller
 
 		try {
 			$session = StripeService::createCheckoutSession($order);
+			Yii::log("Stripe Checkout Session created: " . $session->url, CLogger::LEVEL_INFO);
 			$this->redirect($session->url);
 		} catch (Exception $e) {
 			Yii::log("Stripe Error: " . $e->getMessage(), CLogger::LEVEL_ERROR);
@@ -191,14 +249,83 @@ class OrderController extends Controller
 		}
 	}
 
+
+	//Bypass AJAX (due to CLIst) CORS Error in order/_view.php checkout button 
+	public function actionCheckoutRedirect($orderId)
+	{
+		if (Yii::app()->request->isAjaxRequest) {
+			// Force redirect via JS
+			echo CJSON::encode(['url' => $this->createUrl('order/createCheckoutSession', ['orderId' => $orderId])]);
+			Yii::app()->end();
+		}
+
+		// Normal redirect
+		$this->redirect(['order/createCheckoutSession', 'orderId' => $orderId]);
+	}
+
 	/**
 	 * After the payment process in Stripe.
 	 */
-	public function actionSuccess()
+	public function actionSuccess($order_id, $session_id = null)
 	{
-		Yii::app()->user->setFlash('success', 'Payment successful!');
-		var_dump("Payment successful! Create a View Page for this. ");exit;
-		$this->render('success');
+		require_once dirname(Yii::app()->basePath) . '/vendor/autoload.php';
+		\Stripe\Stripe::setApiKey(Yii::app()->params['stripe.secretKey']);
+
+		$stripeSession = null;
+		$stripePaymentIntent = null;
+
+		if ($session_id) {
+			try {
+				$stripeSession = \Stripe\Checkout\Session::retrieve($session_id);
+				if (isset($stripeSession->payment_intent)) {
+					$stripePaymentIntent = \Stripe\PaymentIntent::retrieve($stripeSession->payment_intent);
+				}
+			} catch (Exception $e) {
+				Yii::log('Stripe error during session lookup: ' . $e->getMessage(), CLogger::LEVEL_ERROR);
+			}
+		}
+
+
+		$userId = Yii::app()->user->id;
+
+		// Step 1: Get the customer associated with the current user
+		$customer = Customer::model()->findByAttributes(['user_id' => $userId]);
+		if (!$customer) {
+			throw new CHttpException(403, 'Customer not found.');
+		}
+
+		// Step 2: Load the order (with eager loading for shipment, payment, and items)
+		$order = Order::model()->with('shipment', 'payment', 'orderItems.product')->findByPk($order_id);
+
+		// Step 3: Validate ownership and status
+		if (!$order || $order->customer_id != $customer->id || $order->status != 1) {
+			throw new CHttpException(403, 'Access denied or invalid order. Order ID: ' . $order_id . 'Order Status: ' . $order->status);
+		}
+
+		// Step 4: Collect associated data
+		$shipment = $order->shipment;  // via relation
+		$payment  = $order->payment;   // via relation
+		$items    = $order->orderItems; // via relation
+		$products = [];
+
+		foreach ($items as $item) {
+			$products[] = [
+				'product_id' => $item->product_id,
+				'name'       => $item->product->name ?? 'N/A',
+				'price'      => $item->price,
+				'quantity'   => $item->quantity,
+				'subtotal'   => $item->price * $item->quantity,
+			];
+		}
+
+		// Step 5: Pass everything to the success view
+		$this->render('success', [
+			'order'    => $order,
+			'shipment' => $shipment,
+			'payment'  => $payment,
+			'products' => $products,
+			'paymentIntent' => $stripePaymentIntent,
+		]);
 	}
 
 	
@@ -212,49 +339,206 @@ class OrderController extends Controller
 
 	/**
 	 * 
-	 * Webhook Configuration to send Email to LateNode
+	 * Webhook Configuration to send Email to LateNode (Stripe Local CLI)
 	 * 
 	 */
+	// public function actionStripeWebhook()
+	// {	
 
+	// 	$autoloadPath = dirname(Yii::app()->basePath) . '/vendor/autoload.php';
+    //     if (file_exists($autoloadPath)) {
+    //         require_once($autoloadPath);
+    //     } else {
+    //         throw new CHttpException(500, 'Stripe SDK not found. Please run composer install.');
+    //     }
+
+	// 	$payload = @file_get_contents('php://input');
+	// 	$sigHeader = $_SERVER['HTTP_STRIPE_SIGNATURE'] ?? null;
+	// 	$secret = Yii::app()->params['stripe.webhookSecret'];
+	
+	// 	Yii::log("Stripe Webhook Hit", CLogger::LEVEL_INFO);
+	// 	Yii::log("Payload: $payload", CLogger::LEVEL_INFO);
+	
+	// 	try {
+	// 		Stripe::setApiKey(Yii::app()->params['stripe.secretKey']);
+	
+	// 		if (!$sigHeader) {
+	// 			throw new Exception('Missing Stripe Signature header.');
+	// 		}
+	
+	// 		$event = Webhook::constructEvent($payload, $sigHeader, $secret);
+	
+	// 		Yii::log("Webhook Type: " . $event->type, CLogger::LEVEL_INFO);
+	
+	// 		if ($event->type === 'checkout.session.completed') {
+	// 			$session = $event->data->object;
+	// 			$orderId = $session->metadata->order_id ?? null;
+	
+	// 			Yii::log("Session Order ID: $orderId", CLogger::LEVEL_INFO);
+	
+	// 			if ($orderId) {
+	// 				$order = Order::model()->findByPk($orderId);
+	// 				if ($order) {
+	// 					$order->status = 1;
+	// 					$order->updated_at = new CDbExpression('NOW()');
+	// 					$order->save();
+	
+	// 					Yii::log("Order #$orderId marked as paid.", CLogger::LEVEL_INFO);
+	
+	// 					LateNodeService::sendOrderConfirmation($order);
+	// 				} else {
+	// 					throw new Exception("Order not found: $orderId");
+	// 				}
+	// 			} else {
+	// 				throw new Exception("Missing order_id in session metadata.");
+	// 			}
+	// 		}
+	
+	// 		http_response_code(200);
+	// 	} catch (Exception $e) {
+	// 		Yii::log("Stripe Webhook error: " . $e->getMessage(), CLogger::LEVEL_ERROR);
+	// 		http_response_code(400);
+	// 	}
+	// }
+	
+
+	/**
+	 * Webhook to handle Stripe events (Ngrok)
+	 */
 	public function actionStripeWebhook()
-	{
-		$payload = @file_get_contents("php://input");
-		$sigHeader = $_SERVER['HTTP_STRIPE_SIGNATURE'];
-		$secret = Yii::app()->params['stripe.webhookSecret']; // set in config
+	{	
+		Yii::log("Stripe Webhook Hit", CLogger::LEVEL_INFO);
+		$rawInput = file_get_contents('php://input');
+		Yii::log("Stripe Webhook Raw Input: " . $rawInput, CLogger::LEVEL_INFO);
 
-		require_once(dirname(Yii::app()->basePath) . '/../vendor/autoload.php');
+		// fallback for debugging
+		if (empty($rawInput)) {
+			$rawInput = json_encode($_POST); // fallback in case it's form-data
+			Yii::log("Using fallback \$_POST: " . print_r($_POST, true), CLogger::LEVEL_INFO);
+		}
+	
+		$data = json_decode($rawInput, true);
+		Yii::log("Decoded Webhook Data: " . print_r($data, true), CLogger::LEVEL_INFO);
+	
+		$orderId = $data['order_id'] ?? null;
+		$status = $data['payment_status'] ?? null;
+	
+		Yii::log("Order ID: $orderId | Payment Status: $status", CLogger::LEVEL_INFO);
+	
+		if ($orderId && $status === 'paid') {
+        	$order = Order::model()->findByPk($orderId);
+			if (!$order) {
+				Yii::log("Order not found: $orderId", CLogger::LEVEL_ERROR);
+			} else {
+				// Use helper methods
+				$payment = OrderHelper::createPayment($order);
+				$shipment = OrderHelper::createShipment($order);
 
-		try {
-			$event = \Stripe\Webhook::constructEvent($payload, $sigHeader, $secret);
-		} catch(\UnexpectedValueException $e) {
-			// Invalid payload
-			http_response_code(400);
-			exit();
-		} catch(\Stripe\Exception\SignatureVerificationException $e) {
-			// Invalid signature
-			http_response_code(400);
-			exit();
+				if ($payment && $shipment) {
+					Yii::log("Order #$orderId marked as paid. Payment and shipment created.", CLogger::LEVEL_INFO);
+
+					// Update order status
+					$orderItems = OrderItem::model()->with('product')->findAllByAttributes(['order_id' => $order->id]);
+
+					$productDetails = [];
+					foreach ($orderItems as $item) {
+						$productDetails[] = [
+							'product_id'   => $item->product_id,
+							'name'         => $item->product->name ?? 'Unknown',
+							'quantity'     => $item->quantity,
+							'price'        => $item->price,
+							'total'        => $item->price * $item->quantity,
+						];
+					}
+
+					$productHTML = $this->renderProductHTML($productDetails);
+					
+					Yii::log("Product Details: " . CJSON::encode([
+						'status' => 'success',
+						'order_id' => $order->id,
+						'products' => $productDetails,
+						'productHTML' => $productHTML,
+					]), CLogger::LEVEL_INFO);
+
+
+					echo CJSON::encode([
+						'status' => 'success',
+						'order_id' => $order->id,
+						'products' => $productDetails,
+						'productHTML' => $productHTML,
+					]);
+
+					Yii::app()->end();
+				} else {
+					Yii::log("Failed to create payment or shipment for Order #$orderId", CLogger::LEVEL_ERROR);
+				}
+			}
+		} else {
+			Yii::log("Invalid webhook payload: Order ID: $orderId | Status: $status", CLogger::LEVEL_ERROR);
 		}
 
-		// Handle the event
-		if ($event->type === 'checkout.session.completed') {
-			$session = $event->data->object;
+	
+		Yii::log("Stripe Webhook processing failed.", CLogger::LEVEL_WARNING);
+		Yii::app()->user->setFlash('error', 'Stripe Webhook processing failed.');
+		echo CJSON::encode(['status' => 'failed']);
+		Yii::app()->end();
+	}
 
-			$orderId = $session->metadata->order_id;
-			$order = Order::model()->findByPk($orderId);
 
-			if ($order) {
-				$order->status = 1; // paid
-				$order->updated_at = new CDbExpression('NOW()');
-				$order->save(false);
+	/**
+	 * Webhook to handle Email Sent
+	 */
+	public function actionEmailSent()
+	{
+		if (Yii::app()->request->isPostRequest) {
+			$emailStatus = Yii::app()->request->getPost('email_status');
+			$orderId = Yii::app()->request->getPost('order_id');
 
-				// Send email via LateNode
-				$email = $order->customer->email; // assumes relation
-				$message = "Hi, your payment was successful. Your order #{$order->id} is now being processed.";
-				LateNodeService::sendEmail($email, 'Payment Successful', $message);
+			if ($emailStatus === 'SENT' && $orderId) {
+				$order = Order::model()->findByPk((int)$orderId);
+
+				if (!$order) {
+					throw new CHttpException(404, 'Order not found.');
+				}
+
+				// Update order status to 2 (shipped)
+				$order->status = 2;
+
+				if ($order->save(false)) {
+					// Update related shipment (if exists)
+					if ($order->shipment_id) {
+						$shipment = Shipment::model()->findByPk($order->shipment_id);
+						if ($shipment) {
+							//$shipment->status = 1; // in transit
+							$shipment->save(false);
+						}
+					}
+
+					echo CJSON::encode(['success' => true, 'message' => 'Status updated.']);
+					Yii::app()->end();
+				} else {
+					echo CJSON::encode(['success' => false, 'message' => 'Failed to update order.']);
+					Yii::app()->end();
+				}
 			}
 		}
 
-		http_response_code(200);
+		throw new CHttpException(400, 'Invalid request.');
+	}
+
+	private function renderProductHTML($products)
+	{
+		$html = '';
+		foreach ($products as $product) {
+			$html .= '
+			<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;">
+				<div>
+					<p style="margin: 0; font-weight: 600;">' . htmlspecialchars($product['name']) . '</p>
+					<p style="margin: 0; color: #666;">Qty: ' . $product['quantity'] . '</p>
+				</div>
+				<div style="font-weight: 600;">₱' . number_format($product['price'], 2) . '</div>
+			</div>';
+		}
+		return $html;
 	}
 }
