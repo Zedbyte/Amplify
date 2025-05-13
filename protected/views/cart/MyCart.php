@@ -9,16 +9,46 @@ $total = $subtotal + $deliveryFee;
 <?php echo CHtml::beginForm(['cart/checkout'], 'post', ['id' => 'checkout-form']); ?>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 px-6 py-8"
         x-data="{
+            originalSubtotal: <?php echo $subtotal; ?>,
             subtotal: <?php echo $subtotal; ?>,
-            deliveryFee: 700,
+            deliveryFee: 0,
+
             get total() {
                 return this.subtotal + this.deliveryFee;
             },
+
             updateSubtotal(newTotal, oldTotal) {
-                this.subtotal = this.subtotal - oldTotal + newTotal;
+                this.originalSubtotal = this.originalSubtotal - oldTotal + newTotal;
+                this.subtotal = this.originalSubtotal;
+            },
+
+            recalculateSelectedSubtotal() {
+                const checkboxes = document.querySelectorAll('.select-item');
+                const checked = document.querySelectorAll('.select-item:checked');
+                
+                // If none are selected, fallback to full subtotal
+                if (checked.length === 0) {
+                    this.subtotal = this.originalSubtotal;
+                    return;
+                }
+
+                let total = 0;
+                checked.forEach(cb => {
+                    const price = parseFloat(cb.dataset.price);
+                    const qty = parseInt(cb.dataset.qty);
+                    total += price * qty;
+                });
+
+                this.subtotal = total;
             }
         }"
-        @update-subtotal.window="updateSubtotal($event.detail.newTotal, $event.detail.oldTotal)">
+        @update-subtotal.window="updateSubtotal($event.detail.newTotal, $event.detail.oldTotal)"
+        @change.window="
+            if ($event.target.classList.contains('select-item')) {
+                recalculateSelectedSubtotal();
+            }
+        "
+        >
         <!-- Cart Items (60%) -->
         <div class="lg:col-span-7 space-y-4">
             <?php if ($dataProvider): ?>
@@ -55,10 +85,10 @@ $total = $subtotal + $deliveryFee;
                 </div>
 
                 <!-- Delivery Fee -->
-                <div class="flex justify-between text-sm text-gray-700">
+                <!-- <div class="flex justify-between text-sm text-gray-700">
                     <span>Delivery Fee</span>
                     <span x-text="'₱' + deliveryFee.toLocaleString(undefined, { minimumFractionDigits: 2 })"></span>
-                </div>
+                </div> -->
 
                 <!-- Voucher (optional placeholder remains the same) -->
                 <div>

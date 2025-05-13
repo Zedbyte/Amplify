@@ -286,7 +286,7 @@ class CartController extends Controller
 	public function actionMyCart()
 	{
 		$subtotal = 0;
-		$deliveryFee = 700;
+		$deliveryFee = 0;
 
 		if (!Yii::app()->user->isGuest) {
 			// Find the actual customer record for the logged-in user
