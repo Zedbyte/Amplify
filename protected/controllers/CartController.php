@@ -114,7 +114,6 @@ class CartController extends Controller
 			// Handle guest cart deletion from session
 			$sessionCart = Yii::app()->session['cart'] ?? [];
 
-			// Find product ID key that matches the session cart item
 			if (array_key_exists($id, $sessionCart)) {
 				unset($sessionCart[$id]);
 				Yii::app()->session['cart'] = $sessionCart;
@@ -124,8 +123,15 @@ class CartController extends Controller
 			// Authenticated user - delete from DB
 			$model = $this->loadModel($id);
 
-			// Ensure the cart belongs to the current user
-			if ($model->customer_id == Yii::app()->user->id) {
+			// Get current user's customer profile
+			$customer = Customer::model()->findByAttributes(['user_id' => Yii::app()->user->id]);
+
+			if (!$customer) {
+				throw new CHttpException(403, 'You do not have a customer profile.');
+			}
+
+			// Ensure the cart belongs to the current customer
+			if ($model->customer_id == $customer->id) {
 				$model->delete();
 			} else {
 				throw new CHttpException(403, 'Unauthorized deletion attempt.');
@@ -137,6 +143,7 @@ class CartController extends Controller
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : ['myCart']);
 		}
 	}
+
 
 
 	/**
@@ -268,7 +275,7 @@ class CartController extends Controller
 			}
 
 
-		$this->redirect(['product/index']);
+		$this->redirect(['product/view', 'id' => $productId]);
 	}
 
 
@@ -376,7 +383,8 @@ class CartController extends Controller
 	
 		if (!Yii::app()->user->isGuest) {
 			$cart = Cart::model()->findByPk($cartId);
-			if (!$cart || $cart->customer_id != Yii::app()->user->id) {
+			$customer = Customer::model()->findByAttributes(['user_id' => Yii::app()->user->id]);
+			if (!$cart || !$customer || $cart->customer_id != $customer->id) {
 				echo CJSON::encode(['status' => 'error', 'message' => 'Unauthorized']);
 				Yii::app()->end();
 			}
@@ -419,26 +427,40 @@ class CartController extends Controller
 			$this->redirect(['site/login']);
 			return;
 		}
+
 		$userId = Yii::app()->user->id;
 		$customer = Customer::model()->findByAttributes(['user_id' => $userId]);
-		if (!$customer) {
-            Yii::log("No customer profile found for user ID: $userId", CLogger::LEVEL_WARNING);
-            Yii::app()->user->setFlash('error', 'No customer profile found. Please contact support.');
-            return;
-        }
 
-        $customerId = $customer->id;
-		$cartItems = Cart::model()->findAllByAttributes(['customer_id' => $customerId]);
-		if (empty($cartItems)) {
-			Yii::app()->user->setFlash('error', 'Your cart is empty.');
+		if (!$customer) {
+			Yii::log("No customer profile found for user ID: $userId", CLogger::LEVEL_WARNING);
+			Yii::app()->user->setFlash('error', 'No customer profile found. Please contact support.');
+			return;
+		}
+
+		$selectedCartIds = Yii::app()->request->getPost('selectedCartItems', []);
+		if (empty($selectedCartIds)) {
+			Yii::app()->user->setFlash('error', 'Please select at least one product to checkout.');
 			$this->redirect(['cart/myCart']);
 			return;
 		}
-	
+
+		// Fetch only selected cart items owned by this customer
+		$criteria = new CDbCriteria();
+		$criteria->addInCondition('id', $selectedCartIds);
+		$criteria->compare('customer_id', $customer->id);
+
+		$cartItems = Cart::model()->findAll($criteria);
+
+		if (empty($cartItems)) {
+			Yii::app()->user->setFlash('error', 'Invalid or unauthorized cart selection.');
+			$this->redirect(['cart/myCart']);
+			return;
+		}
+
 		$subtotal = 0;
 		$deliveryFee = 700;
 		$orderItems = [];
-	
+
 		foreach ($cartItems as $item) {
 			$product = Product::model()->findByPk($item->product_id);
 			if (!$product || $item->quantity > $product->stock) {
@@ -446,30 +468,29 @@ class CartController extends Controller
 				$this->redirect(['cart/myCart']);
 				return;
 			}
-	
+
 			$price = $product->price;
 			$subtotal += $price * $item->quantity;
-	
+
 			$orderItems[] = [
 				'product_id' => $product->id,
 				'quantity' => $item->quantity,
 				'price' => $price,
 			];
 		}
-		
+
 		$total = $subtotal + $deliveryFee;
-	
+
 		// Create Order
 		$order = new Order();
-		$order->customer_id = $customerId;
+		$order->customer_id = $customer->id;
 		$order->order_date = new CDbExpression('NOW()');
 		$order->total_price = $total;
 		$order->status = 0;
-		$order->is_received = 0; // false
-		// $order->payment_id = 1; //will be assigned after stripe checkout
-		// $order->shipment_id = 1; //will be assigned after stripe checkout
+		$order->is_received = 0;
 		$order->created_at = new CDbExpression('NOW()');
 		$order->updated_at = new CDbExpression('NOW()');
+
 		if ($order->save()) {
 			foreach ($orderItems as $itemData) {
 				$orderItem = new OrderItem();
@@ -480,6 +501,7 @@ class CartController extends Controller
 				$orderItem->status = 0;
 				$orderItem->created_at = new CDbExpression('NOW()');
 				$orderItem->updated_at = new CDbExpression('NOW()');
+
 				if (!$orderItem->save()) {
 					Yii::app()->user->setFlash('error', 'Failed to save an order item.');
 					$order->delete(); // Rollback
@@ -487,17 +509,17 @@ class CartController extends Controller
 					return;
 				}
 			}
-	
-			// Clear cart
-			Cart::model()->deleteAllByAttributes(['customer_id' => $customerId]);
-	
-			// Redirect to order view or Stripe checkout
+
+			// Delete only the selected cart items
+			Cart::model()->deleteByPk($selectedCartIds);
+
 			$this->redirect(['order/createCheckoutSession', 'orderId' => $order->id]);
 		} else {
 			Yii::app()->user->setFlash('error', 'Failed to create order.');
 			$this->redirect(['cart/myCart']);
 		}
 	}
+
 	
 
 }

@@ -6,7 +6,7 @@ $qty = isset($data->quantity) ? $data->quantity : ($quantities[$product->id] ?? 
 ?>
 
 <div class="flex items-center border border-gray-200 rounded-xl p-4 gap-4 mb-5">
-    <input type="checkbox" class="form-checkbox h-5 w-5 text-black">
+    <input type="checkbox" name="selectedCartItems[]" value="<?php echo $data->id; ?>" class="form-checkbox h-5 w-5 text-black">
 
     <!-- Product Image -->
     <div class="w-1/5">
