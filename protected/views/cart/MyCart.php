@@ -88,3 +88,33 @@ $total = $subtotal + $deliveryFee;
         </div>
     </div>
 <?php echo CHtml::endForm(); ?>
+
+<!-- Somewhere at the end of your cart view layout -->
+<form id="delete-cart-form" method="post" style="display: none;">
+  <input type="hidden" name="YII_CSRF_TOKEN" value="<?php echo Yii::app()->request->csrfToken; ?>">
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('click', function (e) {
+        const target = e.target.closest('.delete-cart-item');
+        if (!target) return;
+
+        e.preventDefault();
+
+        if (!confirm('Are you sure you want to remove this item?')) {
+            return; // user cancelled – do nothing
+        }
+
+        const form = document.getElementById('delete-cart-form');
+        if (!form) {
+            console.error('Delete form not found.');
+            return;
+        }
+
+        form.action = `/index.php/cart/delete?id=${target.dataset.id}`;
+        form.submit();
+    });
+});
+</script>
+

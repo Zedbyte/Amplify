@@ -20,14 +20,11 @@ $qty = isset($data->quantity) ? $data->quantity : ($quantities[$product->id] ?? 
         <div class="flex justify-between items-start">
             <h3 class="text-md font-bold text-black"><?php echo CHtml::encode($product->name); ?></h3>
 
-            <?php echo CHtml::beginForm(Yii::app()->createUrl('cart/delete', ['id' => $data->id]), 'post', [
-                'style' => 'display:inline;',
-                'onsubmit' => "return confirm('Are you sure you want to remove this item?');"
-            ]); ?>
-            <button type="submit" class="text-red-500 hover:text-red-700">
+            <a href="#" 
+                class="text-red-500 hover:text-red-700 delete-cart-item" 
+                data-id="<?php echo $data->id; ?>">
                 <i class="ph ph-trash text-xl"></i>
-            </button>
-            <?php echo CHtml::endForm(); ?>
+            </a>
         </div>
 
         <p class="text-sm text-gray-600">Color: Black · Stock: <?php echo $product->stock; ?></p>
