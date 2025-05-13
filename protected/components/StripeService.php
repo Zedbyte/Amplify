@@ -7,6 +7,9 @@ class StripeService
 {
     public static function createCheckoutSession($order)
     {
+        $userId = Yii::app()->user->id;
+        $user = User::model()->findByPk($userId);
+
         $autoloadPath = dirname(Yii::app()->basePath) . '/vendor/autoload.php';
         if (file_exists($autoloadPath)) {
             require_once($autoloadPath);
@@ -35,10 +38,20 @@ class StripeService
             'payment_method_types' => ['card'],
             'line_items' => $lineItems,
             'mode' => 'payment',
-            'success_url' => Yii::app()->params['stripe.successUrl'] . '?session_id={CHECKOUT_SESSION_ID}',
+            'success_url' => Yii::app()->params['stripe.successUrl'] . '?order_id=' . $order->id . '&session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => Yii::app()->params['stripe.cancelUrl'],
             'metadata' => [
                 'order_id' => $order->id,
+            ],
+            'customer_email' => $user->email,
+            'payment_intent_data' => [
+                'shipping' => [
+                    'name' => $user->first_name . ' ' . $user->last_name,
+                    'address' => [
+                        'line1' => '123 Test St.',
+                        'country' => 'PH', 
+                    ],
+                ],
             ],
         ]);
     }
