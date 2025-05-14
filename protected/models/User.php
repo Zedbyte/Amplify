@@ -20,6 +20,8 @@
  */
 class User extends CActiveRecord
 {
+
+	public $rawPassword;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -42,6 +44,9 @@ class User extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, first_name, last_name, username, email, status, password, role, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('username', 'unique', 'message' => 'This username has already been taken.'),
+			array('email', 'email', 'message' => 'Invalid email format.'),
+			array('email', 'unique', 'message' => 'This email has already been taken.'),
 		);
 	}
 
@@ -120,4 +125,20 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public function hashPassword($password)
+    {
+        return CPasswordHelper::hashPassword($password);
+    }
+
+	protected function beforeSave()
+    {
+        if (parent::beforeSave()) {
+            if ($this->isNewRecord || $this->isAttributeChanged('password')) {
+                $this->password = $this->hashPassword($this->password);
+            }
+            return true;
+        }
+        return false;
+    }
 }

@@ -62,21 +62,26 @@ class CustomerController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Customer;
+		$model = new Customer;
+		$user = new User;
+		$user->role = 1;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		if (isset($_POST['Customer'], $_POST['User'])) {
+			$model->attributes = $_POST['Customer'];
+			$user->attributes = $_POST['User'];
 
-		if(isset($_POST['Customer']))
-		{
-			$model->attributes=$_POST['Customer'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			if ($user->save()) { // password is hashed here
+				$model->user_id = $user->id;
+				if ($model->save()) {
+					$this->redirect(['view', 'id' => $model->id]);
+				}
+			}
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		$this->render('create', [
+			'model' => $model,
+			'user' => $user,
+		]);
 	}
 
 	/**
@@ -91,16 +96,25 @@ class CustomerController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Customer']))
-		{
-			$model->attributes=$_POST['Customer'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		// Load related user model via relation or foreign key
+		$user = User::model()->findByPk($model->user_id);
+
+		if (isset($_POST['Customer'], $_POST['User'])) {
+			$model->attributes = $_POST['Customer'];
+			$user->attributes = $_POST['User'];
+
+			// Save user first (since customer depends on user_id)
+			if ($user->save()) {
+				if ($model->save()) {
+					$this->redirect(['view', 'id' => $model->id]);
+				}
+			}
 		}
 
-		$this->render('update',array(
-			'model'=>$model,
-		));
+		$this->render('update', [
+			'model' => $model,
+			'user' => $user,
+		]);
 	}
 
 	/**
@@ -122,11 +136,17 @@ class CustomerController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Customer');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		$dataProvider = new CActiveDataProvider('Customer', [
+			'criteria' => [
+				'with' => ['user'], // eager load the related user
+			],
+		]);
+
+		$this->render('index', [
+			'dataProvider' => $dataProvider,
+		]);
 	}
+
 
 	/**
 	 * Manages all models.

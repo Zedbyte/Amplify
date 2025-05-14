@@ -70,18 +70,18 @@
         <a href="<?php echo Yii::app()->createUrl('customer/admin'); ?>"
         class="bg-white shadow rounded-lg p-4 border hover:shadow-md transition hover:bg-black hover:text-white group">
             <h2 class="text-lg font-semibold text-black mb-2 group-hover:text-white">
-                <i class="ph ph-user text-xl mr-1"></i> Customers
+                <i class="ph ph-users-three text-xl mr-1"></i> Customers
             </h2>
             <p class="text-sm text-gray-600 group-hover:text-white">Edit customer information and profiles.</p>
         </a>
 
-        <!-- Users -->
+        <!-- Admins -->
         <a href="<?php echo Yii::app()->createUrl('user/admin'); ?>"
         class="bg-white shadow rounded-lg p-4 border hover:shadow-md transition hover:bg-black hover:text-white group">
             <h2 class="text-lg font-semibold text-black mb-2 group-hover:text-white">
-                <i class="ph ph-users-three text-xl mr-1"></i> Users
+                <i class="ph ph-user text-xl mr-1"></i> Admins
             </h2>
-            <p class="text-sm text-gray-600 group-hover:text-white">Manage all registered users and roles.</p>
+            <p class="text-sm text-gray-600 group-hover:text-white">Manage all registered admins.</p>
         </a>
 
     </div>
