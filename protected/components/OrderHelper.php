@@ -6,7 +6,7 @@ class OrderHelper
     {
         $payment = new Payment();
         $payment->payment_date = new CDbExpression('NOW()');
-        $payment->payment_method = 'Stripe';
+        $payment->payment_method = 'Card';
         $payment->amount = $order->total_price;
         $payment->customer_id = $order->customer_id;
         $payment->status = 1;
