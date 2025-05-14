@@ -332,7 +332,7 @@ class OrderController extends Controller
 	public function actionCancel()
 	{
 		Yii::app()->user->setFlash('error', 'Payment was cancelled.');
-		var_dump("Payment failed! Create a View Page for this. ");exit;
+		Yii::log('Payment was cancelled.', CLogger::LEVEL_WARNING);
 		$this->render('cancel');
 	}
 

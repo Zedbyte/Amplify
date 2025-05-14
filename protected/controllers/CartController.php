@@ -28,11 +28,11 @@ class CartController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'add', 'mycart', 'delete', 'updateQuantity'),
+				'actions'=>array('index','view', 'add', 'mycart', 'delete', 'updateQuantity', 'checkout',),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'checkout', 'createCheckoutSession'),
+				'actions'=>array('create','update', 'createCheckoutSession'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -423,24 +423,25 @@ class CartController extends Controller
 
 	public function actionCheckout()
 	{
-		if (Yii::app()->user->isGuest) {
-			$this->redirect(['site/login']);
-			return;
-		}
-
 		$userId = Yii::app()->user->id;
 		$customer = Customer::model()->findByAttributes(['user_id' => $userId]);
-
-		if (!$customer) {
-			Yii::log("No customer profile found for user ID: $userId", CLogger::LEVEL_WARNING);
-			Yii::app()->user->setFlash('error', 'No customer profile found. Please contact support.');
-			return;
-		}
 
 		$selectedCartIds = Yii::app()->request->getPost('selectedCartItems', []);
 		if (empty($selectedCartIds)) {
 			Yii::app()->user->setFlash('error', 'Please select at least one product to checkout.');
 			$this->redirect(['cart/myCart']);
+			return;
+		}
+
+		if (Yii::app()->user->isGuest) {
+			$this->redirect(['site/login']);
+			return;
+		}
+
+		
+		if (!$customer) {
+			Yii::log("No customer profile found for user ID: $userId", CLogger::LEVEL_WARNING);
+			Yii::app()->user->setFlash('error', 'No customer profile found. Please contact support.');
 			return;
 		}
 
