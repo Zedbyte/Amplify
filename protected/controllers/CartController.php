@@ -459,7 +459,7 @@ class CartController extends Controller
 		}
 
 		$subtotal = 0;
-		$deliveryFee = 700;
+		$deliveryFee = 0;
 		$orderItems = [];
 
 		foreach ($cartItems as $item) {
