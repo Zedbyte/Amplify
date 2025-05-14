@@ -197,6 +197,17 @@ class SiteController extends Controller
 			throw new CHttpException(403, 'You are not authorized to access this page.');
 		}
 
-		$this->render('adminDashboard');
+		$totalRevenue = Yii::app()->db->createCommand("
+		SELECT SUM(amount) FROM tbl_payment WHERE status = 1
+		")->queryScalar();
+
+		$stats = [
+			'totalOrders' => Order::model()->count(),
+			'totalRevenue' => $totalRevenue ?: 0,
+			'totalProducts' => Product::model()->count(),
+			'totalCustomers' => Customer::model()->count(),
+		];
+
+		$this->render('adminDashboard', ['stats' => $stats]);
 	}
 }

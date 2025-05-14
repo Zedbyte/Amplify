@@ -1,5 +1,41 @@
-<div class="max-w-7xl mx-auto my-10">
+<div class="max-w-7xl mx-auto my-10 mb-30">
     <h1 class="text-2xl font-bold mb-6">Admin Dashboard</h1>
+
+	<!-- KPI CARDS -->
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-15 mt-7">
+		<!-- Total Orders -->
+		<div class="bg-white border border-gray-200 rounded-lg shadow p-5">
+			<div class="text-sm text-gray-500 mb-1 flex items-center gap-1">
+				<i class="ph ph-shopping-cart-simple"></i> Total Orders
+			</div>
+			<div class="text-2xl font-bold text-gray-900"><?php echo $stats['totalOrders']; ?></div>
+		</div>
+
+		<!-- Revenue -->
+		<div class="bg-white border border-gray-200 rounded-lg shadow p-5">
+			<div class="text-sm text-gray-500 mb-1 flex items-center gap-1">
+				<i class="ph ph-credit-card"></i> Total Revenue
+			</div>
+			<div class="text-2xl font-bold text-emerald-600">₱<?php echo number_format($stats['totalRevenue'], 2); ?></div>
+		</div>
+
+		<!-- Products -->
+		<div class="bg-white border border-gray-200 rounded-lg shadow p-5">
+			<div class="text-sm text-gray-500 mb-1 flex items-center gap-1">
+				<i class="ph ph-guitar"></i> Products
+			</div>
+			<div class="text-2xl font-bold text-gray-900"><?php echo $stats['totalProducts']; ?></div>
+		</div>
+
+		<!-- Customers -->
+		<div class="bg-white border border-gray-200 rounded-lg shadow p-5">
+			<div class="text-sm text-gray-500 mb-1 flex items-center gap-1">
+				<i class="ph ph-users-three"></i> Customers
+			</div>
+			<div class="text-2xl font-bold text-gray-900"><?php echo $stats['totalCustomers']; ?></div>
+		</div>
+	</div>
+
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
