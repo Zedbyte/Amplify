@@ -336,7 +336,7 @@ class OrderController extends Controller
 		if ($order->save(false)) {
 			Yii::log('Order reference_id set to: ' . $order->reference_id, CLogger::LEVEL_INFO);
 		}
-		$shipment = $order->shipment;  // via relation
+		//$shipment = $order->shipment;  // via relation SHIPMENT_MOVED
 		$payment  = $order->payment;   // via relation
 		$items    = $order->orderItems; // via relation
 		$products = [];
@@ -354,7 +354,7 @@ class OrderController extends Controller
 		// Step 5: Pass everything to the success view
 		$this->render('success', [
 			'order'    => $order,
-			'shipment' => $shipment,
+			//'shipment' => $shipment, SHIPMENT_MOVED
 			'payment'  => $payment,
 			'products' => $products,
 			'paymentIntent' => $stripePaymentIntent,
@@ -368,72 +368,6 @@ class OrderController extends Controller
 		Yii::log('Payment was cancelled.', CLogger::LEVEL_WARNING);
 		$this->render('cancel');
 	}
-
-
-	/**
-	 * 
-	 * Webhook Configuration to send Email to LateNode (Stripe Local CLI)
-	 * 
-	 */
-	// public function actionStripeWebhook()
-	// {	
-
-	// 	$autoloadPath = dirname(Yii::app()->basePath) . '/vendor/autoload.php';
-    //     if (file_exists($autoloadPath)) {
-    //         require_once($autoloadPath);
-    //     } else {
-    //         throw new CHttpException(500, 'Stripe SDK not found. Please run composer install.');
-    //     }
-
-	// 	$payload = @file_get_contents('php://input');
-	// 	$sigHeader = $_SERVER['HTTP_STRIPE_SIGNATURE'] ?? null;
-	// 	$secret = Yii::app()->params['stripe.webhookSecret'];
-	
-	// 	Yii::log("Stripe Webhook Hit", CLogger::LEVEL_INFO);
-	// 	Yii::log("Payload: $payload", CLogger::LEVEL_INFO);
-	
-	// 	try {
-	// 		Stripe::setApiKey(Yii::app()->params['stripe.secretKey']);
-	
-	// 		if (!$sigHeader) {
-	// 			throw new Exception('Missing Stripe Signature header.');
-	// 		}
-	
-	// 		$event = Webhook::constructEvent($payload, $sigHeader, $secret);
-	
-	// 		Yii::log("Webhook Type: " . $event->type, CLogger::LEVEL_INFO);
-	
-	// 		if ($event->type === 'checkout.session.completed') {
-	// 			$session = $event->data->object;
-	// 			$orderId = $session->metadata->order_id ?? null;
-	
-	// 			Yii::log("Session Order ID: $orderId", CLogger::LEVEL_INFO);
-	
-	// 			if ($orderId) {
-	// 				$order = Order::model()->findByPk($orderId);
-	// 				if ($order) {
-	// 					$order->status = 1;
-	// 					$order->updated_at = new CDbExpression('NOW()');
-	// 					$order->save();
-	
-	// 					Yii::log("Order #$orderId marked as paid.", CLogger::LEVEL_INFO);
-	
-	// 					LateNodeService::sendOrderConfirmation($order);
-	// 				} else {
-	// 					throw new Exception("Order not found: $orderId");
-	// 				}
-	// 			} else {
-	// 				throw new Exception("Missing order_id in session metadata.");
-	// 			}
-	// 		}
-	
-	// 		http_response_code(200);
-	// 	} catch (Exception $e) {
-	// 		Yii::log("Stripe Webhook error: " . $e->getMessage(), CLogger::LEVEL_ERROR);
-	// 		http_response_code(400);
-	// 	}
-	// }
-	
 
 	/**
 	 * Webhook to handle Stripe events (Ngrok)
@@ -465,9 +399,11 @@ class OrderController extends Controller
 			} else {
 				// Use helper methods
 				$payment = OrderHelper::createPayment($order);
-				$shipment = OrderHelper::createShipment($order);
+				// Moved to Order Approval
+				// $shipment = OrderHelper::createShipment($order); SHIPMENT_MOVED
 
-				if ($payment && $shipment) {
+				// if ($payment && $shipment) { SHIPMENT_MOVED
+				if ($payment) {
 					Yii::log("Order #$orderId marked as paid. Payment and shipment created.", CLogger::LEVEL_INFO);
 
 					// Update order status
@@ -588,6 +524,12 @@ class OrderController extends Controller
 			throw new CHttpException(404, 'Order is either null or not paid.');
 		}
 
+		$shipment = OrderHelper::createShipment($order); // SHIPMENT_MOVED
+
+		if ($shipment) { // SHIPMENT_MOVED
+			Yii::log("Shipment created.", CLogger::LEVEL_INFO);
+		}
+
 		if ($order->status == 1) { // Accepted/Paid
 			$order->status = 2; // Shipped
 			if ($order->update()) {
@@ -597,4 +539,69 @@ class OrderController extends Controller
 
 		$this->redirect(['order/view', 'id' => $id]);
 	}
+
+
+	/**
+	 * 
+	 * Webhook Configuration to send Email to LateNode (Stripe Local CLI)
+	 * 
+	 */
+	// public function actionStripeWebhook()
+	// {	
+
+	// 	$autoloadPath = dirname(Yii::app()->basePath) . '/vendor/autoload.php';
+    //     if (file_exists($autoloadPath)) {
+    //         require_once($autoloadPath);
+    //     } else {
+    //         throw new CHttpException(500, 'Stripe SDK not found. Please run composer install.');
+    //     }
+
+	// 	$payload = @file_get_contents('php://input');
+	// 	$sigHeader = $_SERVER['HTTP_STRIPE_SIGNATURE'] ?? null;
+	// 	$secret = Yii::app()->params['stripe.webhookSecret'];
+	
+	// 	Yii::log("Stripe Webhook Hit", CLogger::LEVEL_INFO);
+	// 	Yii::log("Payload: $payload", CLogger::LEVEL_INFO);
+	
+	// 	try {
+	// 		Stripe::setApiKey(Yii::app()->params['stripe.secretKey']);
+	
+	// 		if (!$sigHeader) {
+	// 			throw new Exception('Missing Stripe Signature header.');
+	// 		}
+	
+	// 		$event = Webhook::constructEvent($payload, $sigHeader, $secret);
+	
+	// 		Yii::log("Webhook Type: " . $event->type, CLogger::LEVEL_INFO);
+	
+	// 		if ($event->type === 'checkout.session.completed') {
+	// 			$session = $event->data->object;
+	// 			$orderId = $session->metadata->order_id ?? null;
+	
+	// 			Yii::log("Session Order ID: $orderId", CLogger::LEVEL_INFO);
+	
+	// 			if ($orderId) {
+	// 				$order = Order::model()->findByPk($orderId);
+	// 				if ($order) {
+	// 					$order->status = 1;
+	// 					$order->updated_at = new CDbExpression('NOW()');
+	// 					$order->save();
+	
+	// 					Yii::log("Order #$orderId marked as paid.", CLogger::LEVEL_INFO);
+	
+	// 					LateNodeService::sendOrderConfirmation($order);
+	// 				} else {
+	// 					throw new Exception("Order not found: $orderId");
+	// 				}
+	// 			} else {
+	// 				throw new Exception("Missing order_id in session metadata.");
+	// 			}
+	// 		}
+	
+	// 		http_response_code(200);
+	// 	} catch (Exception $e) {
+	// 		Yii::log("Stripe Webhook error: " . $e->getMessage(), CLogger::LEVEL_ERROR);
+	// 		http_response_code(400);
+	// 	}
+	// }
 }

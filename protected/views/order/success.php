@@ -16,22 +16,22 @@
         <div class="space-y-2 text-sm text-gray-700">
             <p><span class="font-semibold text-gray-900">Order ID.</span> 2025_AMP_OD_<?php echo $order->id; ?></p>
             <p><span class="font-semibold text-gray-900">Order Date:</span> <?php echo $order->order_date; ?></p>
-            <p><span class="font-semibold text-gray-900">Shipment Date:</span> <?php echo $shipment->shipment_date; ?></p>
+            <!-- <p><span class="font-semibold text-gray-900">Shipment Date:</span> <?php //echo $shipment->shipment_date; ?></p> -->
             <p><span class="font-semibold text-gray-900">Total Price:</span> ₱<?php echo number_format($order->total_price, 2); ?></p>
         </div>
 
         <!-- Shipment Info -->
         <div class="space-y-2 text-sm text-gray-700">
             <h2 class="text-base font-semibold text-black">Shipping Information</h2>
-            <p><span class="font-medium">Address:</span> <?php echo $shipment->address; ?></p>
+            <!-- <p><span class="font-medium">Address:</span> <?php //echo $shipment->address; ?></p> -->
 
             <p>
                 <span class="font-medium">Status:</span>
-                <?php if ($shipment->status == 0): ?>
-                    <span class="text-yellow-600 flex items-center gap-1"><i class="ph ph-clock"></i> Pending</span>
-                <?php else: ?>
-                    <span class="text-green-600 flex items-center gap-1"><i class="ph ph-check-circle"></i> Shipped</span>
-                <?php endif; ?>
+                <?php //if ($shipment->status == 0): ?>
+                    <span class="text-yellow-600 flex items-center gap-1"><i class="ph ph-clock"></i> Waiting for Approval</span>
+                <?php //else: ?>
+                    <!-- <span class="text-red-600 flex items-center gap-1"><i class="ph ph-check-circle"></i> Something Went Wrong</span> -->
+                <?php //endif; ?>
             </p>
         </div>
 

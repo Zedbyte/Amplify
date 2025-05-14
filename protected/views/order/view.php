@@ -61,7 +61,7 @@ $this->breadcrumbs = ['Orders' => ['index'], "Order #{$order->id}"];
                     <?php endif; ?>
                 </p>
             <?php else: ?>
-                <p class="text-gray-500 italic">No shipment assigned.</p>
+                <p class="text-gray-500 italic">No shipment assigned yet. Please wait for your order to be approved.</p>
             <?php endif; ?>
         </div>
 
