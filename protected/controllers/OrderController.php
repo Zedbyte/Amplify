@@ -312,6 +312,10 @@ class OrderController extends Controller
 		}
 
 		// Step 4: Collect associated data
+		$order->reference_id = $stripePaymentIntent->id;
+		if ($order->save(false)) {
+			Yii::log('Order reference_id set to: ' . $order->reference_id, CLogger::LEVEL_INFO);
+		}
 		$shipment = $order->shipment;  // via relation
 		$payment  = $order->payment;   // via relation
 		$items    = $order->orderItems; // via relation

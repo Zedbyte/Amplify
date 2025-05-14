@@ -11,6 +11,7 @@
  * @property integer $payment_id
  * @property integer $shipment_id
  * @property integer $status
+ * @property string $reference_id
  * @property integer $is_received
  * @property string $created_at
  * @property string $updated_at
@@ -41,10 +42,10 @@ class Order extends CActiveRecord
 		return array(
 			array('order_date, total_price, customer_id, is_received', 'required'),
 			array('customer_id, payment_id, shipment_id, status, is_received', 'numerical', 'integerOnly'=>true),
-			array('total_price', 'length', 'max'=>10),
+			array('total_price, reference_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, order_date, total_price, customer_id, payment_id, shipment_id, status, is_received, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, order_date, total_price, customer_id, payment_id, shipment_id, status, reference_id, is_received, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -76,6 +77,7 @@ class Order extends CActiveRecord
 			'payment_id' => 'Payment',
 			'shipment_id' => 'Shipment',
 			'status' => 'Status',
+			'reference_id' => 'Reference ID',
 			'is_received' => 'Is Received',
 			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
@@ -107,6 +109,7 @@ class Order extends CActiveRecord
 		$criteria->compare('payment_id',$this->payment_id);
 		$criteria->compare('shipment_id',$this->shipment_id);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('reference_id',$this->reference_id,true);
 		$criteria->compare('is_received',$this->is_received);
 		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
