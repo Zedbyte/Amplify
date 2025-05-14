@@ -23,7 +23,7 @@ $cartItems = $this->getCart();
             $isActive = strpos($currentRoute, trim($item['route'], '/')) !== false;
           ?>
           <a href="<?php echo Yii::app()->createUrl($item['route'], $item['params'] ?? []); ?>"
-            class="text-gray-700 hover:text-gray-900 <?php echo $isActive ? 'font-semibold underline' : ''; ?>">
+            class="text-gray-700 hover:text-gray-900 <?php echo $isActive ? 'font-semibold' : ''; ?>">
               <?php echo CHtml::encode($item['label']); ?>
           </a>
         <?php endforeach; ?>
