@@ -1003,6 +1003,9 @@
   .border-black {
     border-color: var(--color-black);
   }
+  .border-gray-100 {
+    border-color: var(--color-gray-100);
+  }
   .border-gray-200 {
     border-color: var(--color-gray-200);
   }

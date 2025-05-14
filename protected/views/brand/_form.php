@@ -4,49 +4,43 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+<?php $form = $this->beginWidget('CActiveForm', [
+    'id' => 'brand-form',
+    'enableAjaxValidation' => false,
+    'htmlOptions' => ['class' => 'space-y-6'],
+]); ?>
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'brand-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
+<!-- Error Summary -->
+<?php echo $form->errorSummary($model, null, null, [
+    'class' => 'p-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg'
+]); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+<!-- Name -->
+<div>
+    <?php echo $form->labelEx($model, 'name', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+    <?php echo $form->textField($model, 'name', [
+        'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black placeholder-gray-400 focus:ring-1 focus:ring-black focus:outline-none'
+    ]); ?>
+    <?php echo $form->error($model, 'name', ['class' => 'text-red-600 text-sm mt-1']); ?>
+</div>
 
-	<?php echo $form->errorSummary($model); ?>
+<!-- Status -->
+<div>
+    <?php echo $form->labelEx($model, 'status', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+    <?php echo $form->dropDownList($model, 'status', [
+        0 => 'Inactive',
+        1 => 'Active',
+    ], [
+        'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 bg-white text-black focus:ring-1 focus:ring-black focus:outline-none'
+    ]); ?>
+    <?php echo $form->error($model, 'status', ['class' => 'text-red-600 text-sm mt-1']); ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'name'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
-		<?php echo $form->error($model,'status'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'created_at'); ?>
-		<?php echo $form->textField($model,'created_at'); ?>
-		<?php echo $form->error($model,'created_at'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'updated_at'); ?>
-		<?php echo $form->textField($model,'updated_at'); ?>
-		<?php echo $form->error($model,'updated_at'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+<!-- Submit Button -->
+<div>
+    <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', [
+        'class' => 'w-full bg-black text-white rounded-xl py-2 text-sm font-semibold hover:bg-gray-900 transition'
+    ]); ?>
+</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->
