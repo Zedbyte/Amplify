@@ -31,25 +31,27 @@ $cartItems = $this->getCart();
 
       <!-- Right Icons -->
       <div class="flex items-center space-x-10">
-        <span class="flex items-center space-x-4">
-          <a href="#" class="text-gray-700 hover:text-gray-900">
-            <i class="ph ph-magnifying-glass text-xl"></i>
-          </a>
-          <a href="<?php echo Yii::app()->createUrl('cart/mycart'); ?>" class="relative text-gray-700 hover:text-gray-900">
-              <i class="ph ph-shopping-cart text-xl"></i>
+        <?php if (Yii::app()->user->isGuest || Yii::app()->user->role == 1): ?>
+          <span class="flex items-center space-x-4">
+            <a href="#" class="text-gray-700 hover:text-gray-900">
+              <i class="ph ph-magnifying-glass text-xl"></i>
+            </a>
+            <a href="<?php echo Yii::app()->createUrl('cart/mycart'); ?>" class="relative text-gray-700 hover:text-gray-900">
+                <i class="ph ph-shopping-cart text-xl"></i>
 
-              <?php $cartCount = is_array($cartItems) ? count($cartItems) : count($cartItems); ?>
-              <?php if ($cartCount > 0): ?>
-                  <span class="absolute -top-2 -right-2 text-xs bg-red-500 text-white rounded-full px-1">
-                      <?php echo $cartCount; ?>
-                  </span>
-              <?php endif; ?>
-          </a>
-          <a href="#" class="relative text-gray-700 hover:text-gray-900">
-            <i class="ph ph-heart text-xl"></i>
-            <span class="absolute -top-2 -right-2 text-xs">1</span>
-          </a>
-        </span>
+                <?php $cartCount = is_array($cartItems) ? count($cartItems) : count($cartItems); ?>
+                <?php if ($cartCount > 0): ?>
+                    <span class="absolute -top-2 -right-2 text-xs bg-red-500 text-white rounded-full px-1">
+                        <?php echo $cartCount; ?>
+                    </span>
+                <?php endif; ?>
+            </a>
+            <a href="#" class="relative text-gray-700 hover:text-gray-900">
+              <i class="ph ph-heart text-xl"></i>
+              <span class="absolute -top-2 -right-2 text-xs">1</span>
+            </a>
+          </span>
+        <?php endif; ?>
 
         <span>
           <?php if ($isGuest): ?>
