@@ -65,14 +65,34 @@ class OrderController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$model = $this->loadModel($id);
-		$orderItems = OrderItem::model()->with('product')->findAllByAttributes(['order_id' => $id]);
+		// Load the order with related models
+		$model = Order::model()->with('shipment', 'payment', 'orderItems.product')->findByPk($id);
+
+		if (!$model) {
+			throw new CHttpException(404, 'Order not found.');
+		}
+
+		// Prepare order item details
+		$products = [];
+		foreach ($model->orderItems as $item) {
+			$products[] = [
+				'product_id' => $item->product_id,
+				'name'       => $item->product->name ?? 'N/A',
+				'price'      => $item->price,
+				'quantity'   => $item->quantity,
+				'subtotal'   => $item->price * $item->quantity,
+			];
+		}
 
 		$this->render('view', [
-			'model' => $model,
-			'orderItems' => $orderItems,
+			'order'         => $model,
+			'shipment'      => $model->shipment,
+			'payment'       => $model->payment,
+			'products'      => $products,
+			'paymentIntent' => $model->reference_id, // Pass as string, not Stripe object
 		]);
 	}
+
 
 
 	/**

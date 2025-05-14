@@ -1,110 +1,120 @@
 <?php
 /* @var $this OrderController */
-/* @var $model Order */
-/* @var $orderItems OrderItem[] */
+/* @var $order Order */
+/* @var $shipment Shipment */
+/* @var $payment Payment */
+/* @var $products array */
+/* @var $paymentIntent \Stripe\PaymentIntent|null */
 
-$this->breadcrumbs = ['Orders' => ['index'], "Order #{$model->id}"];
+$this->breadcrumbs = ['Orders' => ['index'], "Order #{$order->id}"];
 ?>
 
-<div class="max-w-3xl mx-auto px-6 py-10 bg-white border border-gray-200 rounded-xl shadow mt-15">
-    <!-- Header -->
-    <div class="flex justify-between items-center mb-6">
-        <div>
-            <h1 class="text-xl font-bold text-gray-900 flex items-center gap-2">
-                <i class="ph ph-receipt text-2xl text-blue-600"></i>
-                Order Slip — <span class="text-gray-700">Order #<?php echo $model->id; ?></span>
-            </h1>
-            <p class="text-sm text-gray-500 mt-1">
-                <?php echo date('F j, Y, g:i A', strtotime($model->order_date)); ?>
-            </p>
-        </div>
-        <div class="text-right">
+<div class="flex flex-col justify-center items-center bg-gray-50 px-4 py-8">
+    <div class="w-full max-w-3xl bg-white p-6 shadow-md rounded-lg border border-gray-200 space-y-6">
+
+        <!-- Header -->
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="ph ph-receipt text-2xl text-indigo-600"></i>
+                <h1 class="text-2xl font-bold">Order Slip</h1>
+            </div>
             <span class="inline-block px-3 py-1 text-sm font-medium rounded-full
                 <?php
-                echo match ($model->status) {
-                    1 => 'bg-green-100 text-green-700',
-                    2 => 'bg-blue-100 text-blue-700',
-                    default => 'bg-yellow-100 text-yellow-700',
-                };
+                    echo match ($order->status) {
+                        1 => 'bg-green-100 text-green-700',
+                        2 => 'bg-blue-100 text-blue-700',
+                        default => 'bg-yellow-100 text-yellow-700',
+                    };
                 ?>">
                 <?php
-                echo match ($model->status) {
-                    1 => 'Accepted',
-                    2 => 'Shipped',
-                    default => 'Pending',
-                };
+                    echo match ($order->status) {
+                        1 => 'Accepted',
+                        2 => 'Shipped',
+                        default => 'Pending',
+                    };
                 ?>
             </span>
         </div>
-    </div>
 
-    <!-- Order Info -->
-    <div class="grid grid-cols-2 gap-6 text-sm text-gray-700 mb-6">
-        <div>
-            <div class="font-medium text-gray-900">Customer ID</div>
-            <div>#<?php echo $model->customer_id; ?></div>
+        <!-- Order Summary -->
+        <div class="space-y-2 text-sm text-gray-700">
+            <p><span class="font-semibold text-gray-900">Order ID:</span> 2025_AMP_OD_<?php echo $order->id; ?></p>
+            <p><span class="font-semibold text-gray-900">Order Date:</span> <?php echo $order->order_date; ?></p>
+            <p><span class="font-semibold text-gray-900">Reference ID:</span> <?php echo $order->reference_id ?? '—'; ?></p>
+            <p><span class="font-semibold text-gray-900">Total Price:</span> ₱<?php echo number_format($order->total_price, 2); ?></p>
+            <p><span class="font-semibold text-gray-900">Received:</span> <?php echo $order->is_received ? 'Yes' : 'No'; ?></p>
         </div>
-        <div>
-            <div class="font-medium text-gray-900">Payment</div>
-            <div><?php echo $model->payment_id ?? '—'; ?></div>
-        </div>
-        <div>
-			<div class="font-medium text-gray-900">Shipment</div>
-			<div>
-				<?php 
-					if ($model->shipment === null) {
-						echo '—';
-					} else {
-						echo $model->shipment->id . ' — ';
-						echo $model->shipment->status == 1 ? 'In Transit' : 'Pending';
-					}
-				?>
-			</div>
-		</div>
-        <div>
-            <div class="font-medium text-gray-900">Received?</div>
-            <div><?php echo $model->is_received ? 'Yes' : 'No'; ?></div>
-        </div>
-    </div>
 
-    <!-- Order Items -->
-    <div class="mb-6">
-        <h2 class="text-lg font-semibold text-gray-900 mb-2">Order Items</h2>
-        <table class="w-full border border-gray-200 text-sm text-left">
-            <thead class="bg-gray-100">
-                <tr>
-                    <th class="px-4 py-2 border-b">Product</th>
-                    <th class="px-4 py-2 border-b text-center">Qty</th>
-                    <th class="px-4 py-2 border-b text-right">Unit Price</th>
-                    <th class="px-4 py-2 border-b text-right">Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $grandTotal = 0; ?>
-                <?php foreach ($orderItems as $item): ?>
-                    <?php
-                        $subtotal = $item->price * $item->quantity;
-                        $grandTotal += $subtotal;
-                    ?>
+        <!-- Shipment Info -->
+        <div class="space-y-2 text-sm text-gray-700">
+            <h2 class="text-base font-semibold text-black">Shipping Information</h2>
+            <?php if ($shipment): ?>
+                <p><span class="font-medium">Shipment ID: 2025_AMP_SP_</span><?php echo $shipment->id; ?></p>
+                <p><span class="font-medium">Address:</span> <?php echo CHtml::encode($shipment->address); ?></p>
+                <p><span class="font-medium">Shipment Date:</span> <?php echo $shipment->shipment_date ?? '—'; ?></p>
+                <p>
+                    <span class="font-medium">Status:</span>
+                    <?php if ($shipment->status == 0): ?>
+                        <span class="text-yellow-600 flex items-center gap-1"><i class="ph ph-clock"></i> Pending</span>
+                    <?php else: ?>
+                        <span class="text-green-600 flex items-center gap-1"><i class="ph ph-truck"></i> Shipped</span>
+                    <?php endif; ?>
+                </p>
+            <?php else: ?>
+                <p class="text-gray-500 italic">No shipment assigned.</p>
+            <?php endif; ?>
+        </div>
+
+        <!-- Payment Info -->
+        <div class="space-y-2 text-sm text-gray-700">
+            <h2 class="text-base font-semibold text-black">Payment Details</h2>
+            <?php if ($payment): ?>
+                <p><span class="font-medium">Payment ID:</span> 2025_AMP_PM_<?php echo $payment->id; ?></p>
+                <p><span class="font-medium">Amount Paid:</span> ₱<?php echo number_format($payment->amount, 2); ?></p>
+                <p><span class="font-medium">Method:</span> <?php echo CHtml::encode($payment->payment_method); ?></p>
+                <p><span class="font-medium">Payment Date:</span> <?php echo $payment->payment_date; ?></p>
+                <p><span class="font-medium">Reference Number:</span> <?php echo $paymentIntent->id ?? 'N/A'; ?></p>
+            <?php else: ?>
+                <p class="text-gray-500 italic">No payment record found.</p>
+            <?php endif; ?>
+        </div>
+
+        <!-- Product List -->
+        <div class="space-y-2 text-sm text-gray-700">
+            <h2 class="text-base font-semibold text-black">Items Ordered</h2>
+            <table class="w-full text-sm text-left border border-gray-200 rounded overflow-hidden">
+                <thead class="bg-gray-100 text-gray-800">
                     <tr>
-                        <td class="px-4 py-2 border-b"><?php echo CHtml::encode($item->product->name); ?></td>
-                        <td class="px-4 py-2 border-b text-center"><?php echo $item->quantity; ?></td>
-                        <td class="px-4 py-2 border-b text-right">₱<?php echo number_format($item->price, 2); ?></td>
-                        <td class="px-4 py-2 border-b text-right">₱<?php echo number_format($subtotal, 2); ?></td>
+                        <th class="px-4 py-2 border-b">Product</th>
+                        <th class="px-4 py-2 border-b text-center">Qty</th>
+                        <th class="px-4 py-2 border-b text-right">Price</th>
+                        <th class="px-4 py-2 border-b text-right">Subtotal</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-            <tfoot class="bg-gray-50">
-                <tr>
-                    <td colspan="3" class="px-4 py-2 font-semibold text-right">Total</td>
-                    <td class="px-4 py-2 font-bold text-right text-emerald-600">₱<?php echo number_format($grandTotal, 2); ?></td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    <?php foreach ($products as $product): ?>
+                        <tr class="border-t">
+                            <td class="px-4 py-2"><?php echo CHtml::encode($product['name']); ?></td>
+                            <td class="px-4 py-2 text-center"><?php echo $product['quantity']; ?></td>
+                            <td class="px-4 py-2 text-right">₱<?php echo number_format($product['price'], 2); ?></td>
+                            <td class="px-4 py-2 text-right">₱<?php echo number_format($product['subtotal'], 2); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+                <tfoot class="bg-gray-50">
+                    <tr>
+                        <td colspan="3" class="px-4 py-2 font-semibold text-right">Total</td>
+                        <td class="px-4 py-2 font-bold text-right text-emerald-600">
+                            ₱<?php echo number_format($order->total_price, 2); ?>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
 
-    <!-- Footer -->
-    <div class="text-center text-xs text-gray-400">
-        Thank you for shopping with us. This serves as your digital order slip.
+        <!-- Footer -->
+        <div class="pt-6 border-t text-xs text-gray-500 text-center">
+            This is your official order slip. For inquiries, please contact amplify@gmail.com.
+        </div>
     </div>
 </div>
