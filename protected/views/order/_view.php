@@ -90,7 +90,17 @@
                     Proceed to Checkout
                 </button>
             </form>
-        <?php endif; ?>
+
+            <?php elseif ($data->status == 1 && Yii::app()->user->role == 2): ?>
+                <form action="<?php echo Yii::app()->createUrl('order/approveOrder'); ?>" method="get" class="mt-6 flex justify-end">
+                    <input type="hidden" name="id" value="<?php echo $data->id; ?>">
+                    <button type="submit"
+                        class="inline-flex items-center gap-2 px-5 py-2 text-base bg-black text-white rounded hover:bg-stone-900 transition">
+                        <i class="ph ph-check-circle text-lg"></i>
+                        Mark as Shipped
+                    </button>
+                </form>
+        <?php endif; ?> 
     </div>
 </div>
 

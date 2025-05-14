@@ -49,7 +49,7 @@ class OrderController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete', 'approveOrder'),
 				'users'=>array('@'),
 				'expression'=>'Yii::app()->user->role == 2',
 			),
@@ -511,7 +511,7 @@ class OrderController extends Controller
 				}
 
 				// Update order status to 2 (shipped)
-				$order->status = 2;
+				// $order->status = 2;
 
 				if ($order->save(false)) {
 					// Update related shipment (if exists)
@@ -549,5 +549,28 @@ class OrderController extends Controller
 			</div>';
 		}
 		return $html;
+	}
+
+	/**
+	 * 
+	 * Approve Order (Update to Shipped)
+	 * 
+	 */
+	public function actionApproveOrder($id)
+	{
+		$order = Order::model()->findByPk($id);
+
+		if ($order === null || $order->status != 1) {
+			throw new CHttpException(404, 'Order is either null or not paid.');
+		}
+
+		if ($order->status == 1) { // Accepted/Paid
+			$order->status = 2; // Shipped
+			if ($order->save()) {
+				Yii::app()->user->setFlash('success', 'Order approved and marked as shipped.');
+			}
+		}
+
+		$this->redirect(['order/view', 'id' => $id]);
 	}
 }

@@ -174,9 +174,15 @@ class ProductController extends Controller
 		// 🔍 Filter by search keyword
 		if (!empty($_GET['q'])) {
 			$q = $_GET['q'];
-			$criteria->addSearchCondition('name', $q, true, 'OR');
-			$criteria->addSearchCondition('description', $q, true, 'OR');
+
+			$criteria->addCondition(
+				'name LIKE :q OR description LIKE :q',
+				'AND' // <- important: makes sure this is ANDed with status = 1
+			);
+			$criteria->params[':q'] = "%{$q}%";
 		}
+
+		Yii::log('Search query: ' . (isset($_GET['q']) ? $_GET['q'] : 'None'), CLogger::LEVEL_INFO);
 
 		// 🏷 Filter by category
 		if (!empty($_GET['category_id'])) {
@@ -235,6 +241,9 @@ class ProductController extends Controller
 			'criteria' => $criteria,
 			'pagination' => ['pageSize' => 9],
 		]);
+
+		Yii::log('DataProvider criteria: ' . print_r($criteria, true), CLogger::LEVEL_INFO);
+		Yii::log('DataProvider : ' . print_r($dataProvider, true), CLogger::LEVEL_INFO);
 	
 		$this->render('index', [
 			'dataProvider' => $dataProvider,

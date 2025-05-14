@@ -122,26 +122,38 @@ class UserController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('User');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		$dataProvider = new CActiveDataProvider('User', [
+			'criteria' => [
+				'condition' => 'role = 2',
+			],
+		]);
+
+		$this->render('index', [
+			'dataProvider' => $dataProvider,
+		]);
 	}
+
 
 	/**
 	 * Manages all models.
 	 */
 	public function actionAdmin()
 	{
-		$model=new User('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['User']))
-			$model->attributes=$_GET['User'];
+		$model = new User('search');
+		$model->unsetAttributes(); // clear any default values
 
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+		// Force default filter for admins
+		$model->role = 2;
+
+		if (isset($_GET['User'])) {
+			$model->attributes = $_GET['User'];
+		}
+
+		$this->render('admin', [
+			'model' => $model,
+		]);
 	}
+
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

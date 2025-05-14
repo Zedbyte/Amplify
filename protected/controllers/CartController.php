@@ -241,7 +241,7 @@ class CartController extends Controller
 				$customer = Customer::model()->findByAttributes(['user_id' => $userId]);
 				if (!$customer) {
 					Yii::app()->user->setFlash('error', 'Admin users cannot add items to cart.');
-					$this->redirect(['product/index']);
+					$this->redirect(['product/' . $productId]);
 					return;
 				}
 
