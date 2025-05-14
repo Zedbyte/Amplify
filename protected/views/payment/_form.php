@@ -4,67 +4,91 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+<?php $form = $this->beginWidget('CActiveForm', [
+    'id' => 'payment-form',
+    'enableAjaxValidation' => false,
+    'htmlOptions' => ['class' => 'space-y-6'],
+]); ?>
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'payment-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
+<!-- Error Summary -->
+<?php echo $form->errorSummary($model, null, null, [
+    'class' => 'p-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg'
+]); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+<!-- Payment Date -->
+<div>
+    <?php echo $form->labelEx($model, 'payment_date', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+    <?php echo $form->textField($model, 'payment_date', [
+        'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black placeholder-gray-400 focus:ring-1 focus:ring-black focus:outline-none'
+    ]); ?>
+    <?php echo $form->error($model, 'payment_date', ['class' => 'text-red-600 text-sm mt-1']); ?>
+</div>
 
-	<?php echo $form->errorSummary($model); ?>
+<!-- Payment Method -->
+<div>
+    <?php echo $form->labelEx($model, 'payment_method', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+    <?php echo $form->textField($model, 'payment_method', [
+        'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black placeholder-gray-400 focus:ring-1 focus:ring-black focus:outline-none',
+        'maxlength' => 100
+    ]); ?>
+    <?php echo $form->error($model, 'payment_method', ['class' => 'text-red-600 text-sm mt-1']); ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'payment_date'); ?>
-		<?php echo $form->textField($model,'payment_date'); ?>
-		<?php echo $form->error($model,'payment_date'); ?>
-	</div>
+<!-- Amount -->
+<div>
+    <?php echo $form->labelEx($model, 'amount', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+    <?php echo $form->textField($model, 'amount', [
+        'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black placeholder-gray-400 focus:ring-1 focus:ring-black focus:outline-none',
+        'maxlength' => 10
+    ]); ?>
+    <?php echo $form->error($model, 'amount', ['class' => 'text-red-600 text-sm mt-1']); ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'payment_method'); ?>
-		<?php echo $form->textField($model,'payment_method',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'payment_method'); ?>
-	</div>
+<!-- Customer ID -->
+<div>
+    <?php echo $form->labelEx($model, 'customer_id', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+    <?php echo $form->textField($model, 'customer_id', [
+        'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black placeholder-gray-400 focus:ring-1 focus:ring-black focus:outline-none'
+    ]); ?>
+    <?php echo $form->error($model, 'customer_id', ['class' => 'text-red-600 text-sm mt-1']); ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'amount'); ?>
-		<?php echo $form->textField($model,'amount',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'amount'); ?>
-	</div>
+<!-- Status -->
+<div>
+    <?php echo $form->labelEx($model, 'status', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+    <?php echo $form->dropDownList($model, 'status', [
+        0 => 'Pending',
+        1 => 'Paid',
+        2 => 'Failed'
+    ], [
+        'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 bg-white text-black focus:ring-1 focus:ring-black focus:outline-none'
+    ]); ?>
+    <?php echo $form->error($model, 'status', ['class' => 'text-red-600 text-sm mt-1']); ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'customer_id'); ?>
-		<?php echo $form->textField($model,'customer_id'); ?>
-		<?php echo $form->error($model,'customer_id'); ?>
-	</div>
+<!-- Created At -->
+<div>
+    <?php echo $form->labelEx($model, 'created_at', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+    <?php echo $form->textField($model, 'created_at', [
+        'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black placeholder-gray-400 focus:ring-1 focus:ring-black focus:outline-none'
+    ]); ?>
+    <?php echo $form->error($model, 'created_at', ['class' => 'text-red-600 text-sm mt-1']); ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
-		<?php echo $form->error($model,'status'); ?>
-	</div>
+<!-- Updated At -->
+<div>
+    <?php echo $form->labelEx($model, 'updated_at', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
+    <?php echo $form->textField($model, 'updated_at', [
+        'class' => 'w-full border border-gray-300 rounded-xl px-4 py-2 text-black placeholder-gray-400 focus:ring-1 focus:ring-black focus:outline-none'
+    ]); ?>
+    <?php echo $form->error($model, 'updated_at', ['class' => 'text-red-600 text-sm mt-1']); ?>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'created_at'); ?>
-		<?php echo $form->textField($model,'created_at'); ?>
-		<?php echo $form->error($model,'created_at'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'updated_at'); ?>
-		<?php echo $form->textField($model,'updated_at'); ?>
-		<?php echo $form->error($model,'updated_at'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+<!-- Submit Button -->
+<div>
+    <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', [
+        'class' => 'w-full bg-black text-white rounded-xl py-2 text-sm font-semibold hover:bg-gray-900 transition'
+    ]); ?>
+</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->
