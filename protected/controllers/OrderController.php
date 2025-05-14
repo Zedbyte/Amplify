@@ -590,7 +590,7 @@ class OrderController extends Controller
 
 		if ($order->status == 1) { // Accepted/Paid
 			$order->status = 2; // Shipped
-			if ($order->save()) {
+			if ($order->update()) {
 				Yii::app()->user->setFlash('success', 'Order approved and marked as shipped.');
 			}
 		}

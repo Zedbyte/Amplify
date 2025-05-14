@@ -57,7 +57,7 @@ $this->breadcrumbs = ['Orders' => ['index'], "Order #{$order->id}"];
                     <?php if ($shipment->status == 0): ?>
                         <span class="text-yellow-600 flex items-center gap-1"><i class="ph ph-clock"></i> Pending</span>
                     <?php else: ?>
-                        <span class="text-green-600 flex items-center gap-1"><i class="ph ph-truck"></i> Shipped</span>
+                        <span class="text-green-600 flex items-center gap-1"><i class="ph ph-truck"></i> In Transit</span>
                     <?php endif; ?>
                 </p>
             <?php else: ?>
