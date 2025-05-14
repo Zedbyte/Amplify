@@ -2,32 +2,85 @@
 /* @var $this OrderItemController */
 /* @var $model OrderItem */
 
-$this->breadcrumbs=array(
-	'Order Items'=>array('index'),
-	$model->id,
-);
-
-$this->menu=array(
-	array('label'=>'List OrderItem', 'url'=>array('index')),
-	array('label'=>'Create OrderItem', 'url'=>array('create')),
-	array('label'=>'Update OrderItem', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete OrderItem', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage OrderItem', 'url'=>array('admin')),
-);
+$this->breadcrumbs = ['Order Items' => ['index'], 'Item #' . $model->id];
 ?>
 
-<h1>View OrderItem #<?php echo $model->id; ?></h1>
+<!-- Page Container -->
+<div class="max-w-4xl mx-auto px-6 py-10">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center gap-3">
+            <i class="ph ph-eye text-3xl text-indigo-600"></i>
+            <h1 class="text-2xl font-bold text-gray-900">View Order Item #<?php echo CHtml::encode($model->id); ?></h1>
+        </div>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'quantity',
-		'price',
-		'product_id',
-		'order_id',
-		'status',
-		'created_at',
-		'updated_at',
-	),
-)); ?>
+        <!-- Action Buttons -->
+        <div class="flex gap-2">
+            <a href="<?php echo $this->createUrl('update', ['id' => $model->id]); ?>"
+               class="px-4 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition flex items-center">
+                <i class="ph ph-pencil-simple mr-1"></i> Edit
+            </a>
+            <?php echo CHtml::link('<i class="ph ph-trash mr-1"></i> Delete',
+                '#',
+                [
+                    'class' => 'px-4 py-2 text-sm bg-red-600 text-white rounded hover:bg-red-700 transition flex items-center',
+                    'submit' => ['delete', 'id' => $model->id],
+                    'confirm' => 'Are you sure you want to delete this order item?'
+                ]); ?>
+            <a href="<?php echo $this->createUrl('index'); ?>"
+               class="px-4 py-2 text-sm bg-black text-white rounded hover:bg-stone-900 transition flex items-center">
+                <i class="ph ph-list mr-1"></i> Back to List
+            </a>
+        </div>
+    </div>
+
+    <!-- Card -->
+    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div>
+                <div class="text-sm text-gray-500">ID</div>
+                <div class="text-base font-medium text-gray-800"><?php echo CHtml::encode($model->id); ?></div>
+            </div>
+
+            <div>
+                <div class="text-sm text-gray-500">Quantity</div>
+                <div class="text-base font-medium text-gray-800"><?php echo CHtml::encode($model->quantity); ?></div>
+            </div>
+
+            <div>
+                <div class="text-sm text-gray-500">Price</div>
+                <div class="text-base font-medium text-gray-800">$<?php echo CHtml::encode($model->price); ?></div>
+            </div>
+
+            <div>
+                <div class="text-sm text-gray-500">Product ID</div>
+                <div class="text-base font-medium text-gray-800"><?php echo CHtml::encode($model->product_id); ?></div>
+            </div>
+
+            <div>
+                <div class="text-sm text-gray-500">Order ID</div>
+                <div class="text-base font-medium text-gray-800"><?php echo CHtml::encode($model->order_id); ?></div>
+            </div>
+
+            <div>
+                <div class="text-sm text-gray-500">Status</div>
+                <div class="text-base font-medium text-gray-800">
+                    <?php
+                        $statuses = [0 => 'Pending', 1 => 'Processed', 2 => 'Shipped', 3 => 'Cancelled'];
+                        echo isset($statuses[$model->status]) ? $statuses[$model->status] : 'Unknown';
+                    ?>
+                </div>
+            </div>
+
+            <div>
+                <div class="text-sm text-gray-500">Created At</div>
+                <div class="text-base font-medium text-gray-800"><?php echo CHtml::encode($model->created_at); ?></div>
+            </div>
+
+            <div>
+                <div class="text-sm text-gray-500">Updated At</div>
+                <div class="text-base font-medium text-gray-800"><?php echo CHtml::encode($model->updated_at); ?></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,41 +3,47 @@
 /* @var $data OrderItem */
 ?>
 
-<div class="view">
+<div class="p-4 hover:bg-gray-50 transition view border-b border-gray-100">
+    <div class="flex justify-between items-center">
+        <!-- Left: Order Item Info -->
+        <div class="space-y-1">
+            <a href="<?php echo Yii::app()->createUrl('orderItem/view', ['id' => $data->id]); ?>"
+               class="text-blue-600 hover:underline text-sm font-medium">
+                Order Item #<?php echo CHtml::encode($data->id); ?>
+            </a>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
+            <div class="text-sm text-gray-700">
+                <span class="font-semibold">Quantity:</span> <?php echo CHtml::encode($data->quantity); ?>
+            </div>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('quantity')); ?>:</b>
-	<?php echo CHtml::encode($data->quantity); ?>
-	<br />
+            <div class="text-sm text-gray-700">
+                <span class="font-semibold">Price:</span> $<?php echo CHtml::encode($data->price); ?>
+            </div>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('price')); ?>:</b>
-	<?php echo CHtml::encode($data->price); ?>
-	<br />
+            <div class="text-sm text-gray-700">
+                <span class="font-semibold">Product ID:</span> <?php echo CHtml::encode($data->product_id); ?>
+            </div>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('product_id')); ?>:</b>
-	<?php echo CHtml::encode($data->product_id); ?>
-	<br />
+            <div class="text-sm text-gray-700">
+                <span class="font-semibold">Order ID:</span> <?php echo CHtml::encode($data->order_id); ?>
+            </div>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('order_id')); ?>:</b>
-	<?php echo CHtml::encode($data->order_id); ?>
-	<br />
+            <div class="text-sm text-gray-700">
+                <span class="font-semibold">Status:</span>
+                <?php
+                    $statusText = [
+                        0 => 'Pending',
+                        1 => 'Accepted',
+                        2 => 'Shipped',
+                        3 => 'Cancelled',
+                    ];
+                    echo isset($statusText[$data->status]) ? $statusText[$data->status] : 'Unknown';
+                ?>
+            </div>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('status')); ?>:</b>
-	<?php echo CHtml::encode($data->status); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('created_at')); ?>:</b>
-	<?php echo CHtml::encode($data->created_at); ?>
-	<br />
-
-	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('updated_at')); ?>:</b>
-	<?php echo CHtml::encode($data->updated_at); ?>
-	<br />
-
-	*/ ?>
-
+            <div class="text-xs text-gray-500">
+                Created at: <?php echo CHtml::encode($data->created_at); ?>
+            </div>
+        </div>
+    </div>
 </div>
