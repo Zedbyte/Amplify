@@ -27,6 +27,13 @@ class OrderHelper
 
             // Deduct stock for each item
             foreach ($order->orderItems as $item) {
+                // 1. Update OrderItem status
+                $item->status = 1;
+                if (!$item->save()) {
+                    Yii::log('Failed to update OrderItem status: ' . print_r($item->getErrors(), true), CLogger::LEVEL_ERROR);
+                }
+
+                // 2. Update Product stock
                 $product = Product::model()->findByPk($item->product_id);
                 if ($product) {
                     $product->stock = max(0, $product->stock - $item->quantity);
