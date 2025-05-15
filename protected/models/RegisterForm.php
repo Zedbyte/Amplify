@@ -16,7 +16,7 @@ class RegisterForm extends CFormModel
         return [
             ['first_name, last_name, username, email, password, confirm_password, address, phone_number', 'required'],
             ['email', 'email'],
-            ['username', 'unique', 'className' => 'User'],
+            ['username, email', 'unique', 'className' => 'User'],
             ['confirm_password', 'compare', 'compareAttribute' => 'password'],
             ['password', 'length', 'min' => 6],
         ];
@@ -40,7 +40,7 @@ class RegisterForm extends CFormModel
         $user->last_name = $this->last_name;
         $user->username = $this->username;
         $user->email = $this->email;
-        $user->password = CPasswordHelper::hashPassword($this->password);
+        $user->password = $this->password;
         $user->role = 1; // customer
         
         if ($user->save()) {
