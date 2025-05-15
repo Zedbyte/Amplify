@@ -8,12 +8,12 @@ $this->breadcrumbs=array(
 
 $this->menu = [];
 
-if (!Yii::app()->user->isGuest && Yii::app()->user->role == 2) {
-    $this->menu = [
-        ['label' => 'Create Order', 'url' => ['create']],
-        ['label' => 'Manage Order', 'url' => ['admin']],
-    ];
-}
+// if (!Yii::app()->user->isGuest && Yii::app()->user->role == 2) {
+//     $this->menu = [
+//         ['label' => 'Create Order', 'url' => ['create']],
+//         ['label' => 'Manage Order', 'url' => ['admin']],
+//     ];
+// }
 
 $filter = $_GET['filter'] ?? 'pending';
 ?>
