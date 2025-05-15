@@ -21,17 +21,26 @@ class UserIdentity extends CUserIdentity
     {
         $user = User::model()->findByAttributes(['username' => $this->username]);
 
-        if ($user === null || !CPasswordHelper::verifyPassword($this->password, $user->password)) {
+        if ($user === null) {
+            Yii::log("Authentication failed: user '{$this->username}' not found", CLogger::LEVEL_ERROR);
             $this->errorCode = self::ERROR_USERNAME_INVALID;
+            Yii::log("Authentication failed: invalid username '{$this->username}'", CLogger::LEVEL_ERROR);
+        } elseif (!CPasswordHelper::verifyPassword($this->password, $user->password)) {
+            Yii::log("Authentication failed: invalid password for '{$this->username}'", CLogger::LEVEL_ERROR);
+            $this->errorCode = self::ERROR_PASSWORD_INVALID;
+            Yii::log("Authentication failed: invalid password for this: '{$this->username}'", CLogger::LEVEL_ERROR);
+            Yii::log("Authentication failed: invalid password for user: '{$user->username}'", CLogger::LEVEL_ERROR);
         } else {
             $this->_id = $user->id;
             $this->setState('role', $user->role); // Set role in session
             $this->username = $user->username;
             $this->errorCode = self::ERROR_NONE;
+            Yii::log("Authentication successful for '{$this->username}'", CLogger::LEVEL_INFO);
         }
 
         return !$this->errorCode;
     }
+
 
     public function getId()
     {

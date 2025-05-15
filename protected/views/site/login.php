@@ -44,7 +44,7 @@ $this->breadcrumbs = ['Login'];
             <div class="mb-4">
                 <?php echo $form->labelEx($model, 'username', ['class' => 'block text-sm font-medium text-gray-700 mb-1']); ?>
                 <?php echo $form->textField($model, 'username', [
-                    'placeholder' => 'Enter email',
+                    'placeholder' => 'Enter username',
                     'class' => 'w-full rounded-lg border px-4 py-2 text-black border-gray-300 focus:ring-1 focus:ring-black focus:outline-none'
                 ]); ?>
                 <?php echo $form->error($model, 'username', ['class' => 'text-red-600 text-sm mt-1']); ?>
