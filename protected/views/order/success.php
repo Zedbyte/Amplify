@@ -36,12 +36,22 @@
         </div>
 
         <!-- Payment Info -->
-        <div class="space-y-2 text-sm text-gray-700">
-            <h2 class="text-base font-semibold text-black">Payment Details</h2>
-            <p><span class="font-medium">Payment ID:</span> 2025_AMP_PM_<?php echo $payment->id ?? 'N/A'; ?></p>
-            <p><span class="font-medium">Reference Number:</span> <?php echo $paymentIntent->id ?? 'N/A'; ?></p>
-            <p><span class="font-medium">Amount Paid:</span> ₱<?php echo number_format($payment->amount ?? 0, 2); ?></p>
-        </div>
+        <?php if ($payment): ?>
+            <div class="space-y-2 text-sm text-gray-700">
+                <h2 class="text-base font-semibold text-black">Payment Details</h2>
+                <p><span class="font-medium">Payment ID:</span> 2025_AMP_PM_<?php echo $payment->id; ?></p>
+                <p><span class="font-medium">Reference Number:</span> <?php echo $paymentIntent->id ?? 'N/A'; ?></p>
+                <p><span class="font-medium">Amount Paid:</span> ₱<?php echo number_format($payment->amount, 2); ?></p>
+            </div>
+        <?php else: ?>
+            <div class="space-y-2 text-sm text-gray-700">
+                <h2 class="text-base font-semibold text-black">Payment Details</h2>
+                <div class="bg-yellow-100 border border-yellow-300 text-yellow-800 text-sm p-3 rounded">
+                    Your payment is being finalized. This may take a few moments.
+                </div>
+                <p><span class="font-medium">Reference Number:</span> <?php echo $paymentIntent->id ?? 'N/A'; ?></p>
+            </div>
+        <?php endif; ?>
 
         <!-- Product List -->
         <div class="space-y-2 text-sm text-gray-700">

@@ -81,7 +81,7 @@
         </div>
 
         <!-- Checkout CTA -->
-        <?php if ($data->status == 0 && !Yii::app()->user->role == 2): ?>
+        <?php if ($data->status == 0 && Yii::app()->user->role != 2): ?>
             <form action="<?php echo Yii::app()->createUrl('order/checkoutRedirect'); ?>" method="get" class="mt-6 flex justify-end">
                 <input type="hidden" name="orderId" value="<?php echo $data->id; ?>">
                 <button type="submit"

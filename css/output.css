@@ -996,6 +996,9 @@
   .border-stone-700 {
     border-color: var(--color-stone-700);
   }
+  .border-yellow-300 {
+    border-color: var(--color-yellow-300);
+  }
   .bg-black {
     background-color: var(--color-black);
   }
@@ -1090,6 +1093,9 @@
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
+  }
+  .p-3 {
+    padding: calc(var(--spacing) * 3);
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
