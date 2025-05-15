@@ -22,6 +22,7 @@ class User extends CActiveRecord
 {
 
 	public $rawPassword;
+	private $_originalPassword;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -131,14 +132,20 @@ class User extends CActiveRecord
         return CPasswordHelper::hashPassword($password);
     }
 
+	protected function afterFind()
+	{
+		parent::afterFind();
+		$this->_originalPassword = $this->password;
+	}
+
 	protected function beforeSave()
     {
-        if (parent::beforeSave()) {
-            if ($this->isNewRecord || $this->isAttributeChanged('password')) {
-                $this->password = $this->hashPassword($this->password);
-            }
-            return true;
-        }
-        return false;
+		if (parent::beforeSave()) {
+			if ($this->isNewRecord || $this->password !== $this->_originalPassword) {
+				$this->password = $this->hashPassword($this->password);
+			}
+			return true;
+		}
+		return false;
     }
 }

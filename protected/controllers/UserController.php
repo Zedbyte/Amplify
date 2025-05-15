@@ -62,21 +62,22 @@ class UserController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new User;
+   		$model = new User;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		if (isset($_POST['User'])) {
+			$model->attributes = $_POST['User'];
 
-		if(isset($_POST['User']))
-		{
-			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			// ✅ Safeguard: If role is not set, default to 2
+			if (empty($_POST['User']['role'])) {
+				$model->role = 2;
+			}
+
+			if ($model->save()) {
+				$this->redirect(['view', 'id' => $model->id]);
+			}
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		$this->render('create', ['model' => $model]);
 	}
 
 	/**
