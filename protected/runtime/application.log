@@ -1,83 +1,52 @@
-2025/05/14 17:53:01 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:39:12 [info] [application] Login attempt with username: test | Password: testuser
+in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (120)
+in C:\xampp\htdocs\Amplify\index.php (13)
+2025/05/15 14:39:12 [error] [application] Authentication failed: invalid password for 'test'
+in C:\xampp\htdocs\Amplify\protected\components\UserIdentity.php (29)
+in C:\xampp\htdocs\Amplify\protected\models\LoginForm.php (54)
+in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (123)
+2025/05/15 14:39:12 [error] [application] Authentication failed: invalid password for this: 'test'
+in C:\xampp\htdocs\Amplify\protected\components\UserIdentity.php (31)
+in C:\xampp\htdocs\Amplify\protected\models\LoginForm.php (54)
+in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (123)
+2025/05/15 14:39:12 [error] [application] Authentication failed: invalid password for user: 'test'
+in C:\xampp\htdocs\Amplify\protected\components\UserIdentity.php (32)
+in C:\xampp\htdocs\Amplify\protected\models\LoginForm.php (54)
+in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (123)
+2025/05/15 14:41:09 [info] [application] Login attempt with username: skibidi | Password: abc123
+in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (120)
+in C:\xampp\htdocs\Amplify\index.php (13)
+2025/05/15 14:41:10 [info] [application] Authentication successful for 'skibidi'
+in C:\xampp\htdocs\Amplify\protected\components\UserIdentity.php (38)
+in C:\xampp\htdocs\Amplify\protected\models\LoginForm.php (54)
+in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (123)
+2025/05/15 14:42:47 [info] [application] Login attempt with username: admin | Password: abc123
+in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (120)
+in C:\xampp\htdocs\Amplify\index.php (13)
+2025/05/15 14:42:47 [info] [application] Authentication successful for 'admin'
+in C:\xampp\htdocs\Amplify\protected\components\UserIdentity.php (38)
+in C:\xampp\htdocs\Amplify\protected\models\LoginForm.php (54)
+in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (123)
+2025/05/15 14:42:47 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:53:42 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:50:01 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:53:44 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:50:17 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:53:45 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:50:20 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:53:48 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:53:49 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:53:50 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:54:05 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:54:06 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:54:08 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:54:11 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:54:13 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:55:33 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:55:36 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:59:51 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:59:52 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:59:53 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:59:53 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:59:55 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:59:56 [info] [application] Search query: None
+2025/05/15 14:50:22 [info] [application] Search query: None
 in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
 in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 17:59:56 [info] [application] DataProvider criteria: CDbCriteria Object
+2025/05/15 14:50:22 [info] [application] DataProvider criteria: CDbCriteria Object
 (
     [_e:CComponent:private] => 
     [_m:CComponent:private] => 
@@ -104,7 +73,7 @@ in C:\xampp\htdocs\Amplify\index.php (13)
 
 in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
 in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 17:59:56 [info] [application] DataProvider : CActiveDataProvider Object
+2025/05/15 14:50:22 [info] [application] DataProvider : CActiveDataProvider Object
 (
     [_e:CComponent:private] => 
     [_m:CComponent:private] => 
@@ -184,2726 +153,295 @@ in C:\xampp\htdocs\Amplify\index.php (13)
 
 in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
 in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 17:59:56 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 17:59:56 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 17:59:56 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 17:59:56 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 17:59:56 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:00:00 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:00:02 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:00:29 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:00:29 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:00:29 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:00:29 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:00:30 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:00:31 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:00:32 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:00:33 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
+2025/05/15 14:50:28 [info] [application] Login attempt with username: admin | Password: abc123
+in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (120)
 in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:00:33 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:00:33 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:00:33 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:00:35 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:01:29 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:01:30 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:01:30 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:01:30 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:01:30 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:01:31 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:01:32 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:01:32 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:01:33 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:01:33 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:01:33 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:01:33 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:01:34 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:01:35 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:01:37 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:04:33 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:04:41 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:05:24 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:05:36 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:05:41 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:05:44 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:05:52 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:07:29 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:50:29 [info] [application] Authentication successful for 'admin'
+in C:\xampp\htdocs\Amplify\protected\components\UserIdentity.php (38)
+in C:\xampp\htdocs\Amplify\protected\models\LoginForm.php (54)
+in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (123)
+2025/05/15 14:50:29 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:07:36 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'amplify.payment' doesn't exist. The SQL statement executed was: SELECT amount FROM payment WHERE status = 1.
-in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (202)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:07:36 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'amplify.payment' doesn't exist. The SQL statement executed was: SELECT amount FROM payment WHERE status = 1 in C:\xampp\htdocs\Amplify\framework\db\CDbCommand.php:543
-Stack trace:
-#0 C:\xampp\htdocs\Amplify\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
-#1 C:\xampp\htdocs\Amplify\framework\db\ar\CActiveRecord.php(1566): CDbCommand->queryRow()
-#2 C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php(202): CActiveRecord->findBySql('SELECT amount F...')
-#3 C:\xampp\htdocs\Amplify\framework\web\actions\CInlineAction.php(49): SiteController->actionAdminDashboard()
-#4 C:\xampp\htdocs\Amplify\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#5 C:\xampp\htdocs\Amplify\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
-#6 C:\xampp\htdocs\Amplify\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(282): CController->run('adminDashboard')
-#8 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(141): CWebApplication->runController('site/adminDashb...')
-#9 C:\xampp\htdocs\Amplify\framework\base\CApplication.php(185): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\Amplify\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/index.php/site/adminDashboard
-HTTP_REFERER=http://localhost:8080/index.php/site/page?view=about
----
-2025/05/14 18:07:41 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:50:30 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:08:35 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:50:31 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:08:49 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:50:33 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:08:55 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:50:34 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:08:58 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:50:35 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:09:04 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:50:55 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:09:10 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:50:58 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:10:58 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:50:59 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:11:00 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:06 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:11:01 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:09 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:11:02 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:10 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:11:07 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:13 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:11:08 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:18 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:11:32 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:19 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:11:33 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:22 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:11:41 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:23 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:11:43 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:24 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:14:32 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:27 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:14:33 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:31 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:14:34 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:32 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:19:43 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:34 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:19:45 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:35 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:19:51 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:35 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:19:53 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:43 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:19:55 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:44 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:19:58 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:45 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:20:02 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:50 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:20:03 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:50 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:20:04 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:51 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:20:05 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:58 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:20:05 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:58 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:20:06 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:51:59 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:20:06 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:52:01 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:20:07 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:52:02 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:20:08 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:52:04 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:26:47 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:52:05 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:26:47 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
+2025/05/15 14:53:34 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
 in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:26:47 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:26:47 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:26:48 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:53:34 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:26:50 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:53:36 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
+in C:\xampp\htdocs\Amplify\index.php (13)
+2025/05/15 14:53:36 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:26:53 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:53:37 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:27:03 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:27:03 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:27:03 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:27:13 [info] [application] Stripe Checkout Session created: https://checkout.stripe.com/c/pay/cs_test_a1kv3pYz1zaNkNT3CrNzNmEwo4kEAbTgt1yBD9Sthx7TK4ygDdKeYZOAJn#fidkdWxOYHwnPyd1blpxYHZxWjA0V09qT1xHVjFMMjIzXVI1Nj1KNE5UNEQ3bV1CYzxBVDY8ZjVKZmJxYnQ2cUJTYl1sMHNvdz1XYzwwbmtVb0tKSXR9UE1AQnNQQnByRFdXbjZRZEFVfX1QNTV9aFNzUTdSMicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (272)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:27:31 [info] [application] Stripe Webhook Hit
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (443)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:27:31 [info] [application] Stripe Webhook Raw Input: 
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (445)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:27:31 [info] [application] Using fallback $_POST: Array
-(
-    [order_id] => 69
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (450)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:27:31 [info] [application] Decoded Webhook Data: Array
-(
-    [order_id] => 69
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (454)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:27:31 [info] [application] Order ID: 69 | Payment Status: paid
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (459)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:27:31 [info] [application] Order saved successfully: 69
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (20)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (467)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:27:31 [info] [application] Payment created successfully: 61
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (21)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (467)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:27:31 [info] [application] Order #69 marked as paid. Payment and shipment created.
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (471)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:27:31 [info] [application] Product Details: {"status":"success","order_id":69,"products":[{"product_id":11,"name":"Les Paul Standard 60s Heritage Cherry Sunburst, Exclusive","quantity":1,"price":"156500.00","total":156500}],"productHTML":"\n\t\t\t<div style=\"display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;\">\n\t\t\t\t<div>\n\t\t\t\t\t<p style=\"margin: 0; font-weight: 600;\">Les Paul Standard 60s Heritage Cherry Sunburst, Exclusive<\/p>\n\t\t\t\t\t<p style=\"margin: 0; color: #666;\">Qty: 1<\/p>\n\t\t\t\t<\/div>\n\t\t\t\t<div style=\"font-weight: 600;\">\u20b1156,500.00<\/div>\n\t\t\t<\/div>"}
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (489)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:27:33 [info] [application] Order reference_id set to: pi_3ROi9UBS4I776XW02LlV2iBb
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (337)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:07 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:07 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:07 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:11 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:11 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:11 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:18 [info] [application] Stripe Checkout Session created: https://checkout.stripe.com/c/pay/cs_test_a10IKGGiIfIYUklonZLBJXI8Mjiupv2rZ5rwsROz9UhHQcsRlz59ioj3x6#fidkdWxOYHwnPyd1blpxYHZxWjA0V09qT1xHVjFMMjIzXVI1Nj1KNE5UNEQ3bV1CYzxBVDY8ZjVKZmJxYnQ2cUJTYl1sMHNvdz1XYzwwbmtVb0tKSXR9UE1AQnNQQnByRFdXbjZRZEFVfX1QNTV9aFNzUTdSMicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (272)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:29 [info] [application] Stripe Webhook Hit
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (443)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:29 [info] [application] Stripe Webhook Raw Input: 
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (445)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:29 [info] [application] Using fallback $_POST: Array
-(
-    [order_id] => 70
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (450)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:29 [info] [application] Decoded Webhook Data: Array
-(
-    [order_id] => 70
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (454)
+2025/05/15 14:53:48 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
 in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:29 [info] [application] Order ID: 70 | Payment Status: paid
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (459)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:29 [info] [application] Order saved successfully: 70
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (20)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (467)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:29 [info] [application] Payment created successfully: 62
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (21)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (467)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:29 [info] [application] Order #70 marked as paid. Payment and shipment created.
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (473)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:29 [info] [application] Product Details: {"status":"success","order_id":70,"products":[{"product_id":12,"name":"Kurt Cobain\u2019s Martin","quantity":1,"price":"47960.00","total":47960}],"productHTML":"\n\t\t\t<div style=\"display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;\">\n\t\t\t\t<div>\n\t\t\t\t\t<p style=\"margin: 0; font-weight: 600;\">Kurt Cobain\u2019s Martin<\/p>\n\t\t\t\t\t<p style=\"margin: 0; color: #666;\">Qty: 1<\/p>\n\t\t\t\t<\/div>\n\t\t\t\t<div style=\"font-weight: 600;\">\u20b147,960.00<\/div>\n\t\t\t<\/div>"}
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (491)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:31 [info] [application] Order reference_id set to: pi_3ROiJ9BS4I776XW00RTkPtvk
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (337)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:37:31 [error] [php] Attempt to read property "shipment_date" on null (C:\xampp\htdocs\Amplify\protected\views\order\success.php:19)
-Stack trace:
-#0 C:\xampp\htdocs\Amplify\framework\web\CBaseController.php(126): require()
-#1 C:\xampp\htdocs\Amplify\framework\web\CBaseController.php(95): OrderController->renderInternal()
-#2 C:\xampp\htdocs\Amplify\framework\web\CController.php(872): OrderController->renderFile()
-#3 C:\xampp\htdocs\Amplify\framework\web\CController.php(785): OrderController->renderPartial()
-#4 C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php(355): OrderController->render()
-#5 unknown(0): OrderController->actionSuccess()
-#6 C:\xampp\htdocs\Amplify\framework\web\actions\CAction.php(114): ReflectionMethod->invokeArgs()
-#7 C:\xampp\htdocs\Amplify\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
-#8 C:\xampp\htdocs\Amplify\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(134): OrderController->runAction()
-#10 C:\xampp\htdocs\Amplify\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\Amplify\framework\web\CController.php(1148): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\Amplify\framework\web\filters\CInlineFilter.php(58): OrderController->filterAccessControl()
-#13 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
-#14 C:\xampp\htdocs\Amplify\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\Amplify\framework\web\CController.php(265): OrderController->runActionWithFilters()
-#16 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(282): OrderController->run()
-#17 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\Amplify\framework\base\CApplication.php(185): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\Amplify\index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php/order/success?order_id=70&session_id=cs_test_a10IKGGiIfIYUklonZLBJXI8Mjiupv2rZ5rwsROz9UhHQcsRlz59ioj3x6
-in C:\xampp\htdocs\Amplify\protected\views\order\success.php (19)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (355)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:39:26 [info] [application] Order reference_id set to: pi_3ROiJ9BS4I776XW00RTkPtvk
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (337)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:39:26 [error] [php] Attempt to read property "shipment_date" on null (C:\xampp\htdocs\Amplify\protected\views\order\success.php:19)
-Stack trace:
-#0 C:\xampp\htdocs\Amplify\framework\web\CBaseController.php(126): require()
-#1 C:\xampp\htdocs\Amplify\framework\web\CBaseController.php(95): OrderController->renderInternal()
-#2 C:\xampp\htdocs\Amplify\framework\web\CController.php(872): OrderController->renderFile()
-#3 C:\xampp\htdocs\Amplify\framework\web\CController.php(785): OrderController->renderPartial()
-#4 C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php(355): OrderController->render()
-#5 unknown(0): OrderController->actionSuccess()
-#6 C:\xampp\htdocs\Amplify\framework\web\actions\CAction.php(114): ReflectionMethod->invokeArgs()
-#7 C:\xampp\htdocs\Amplify\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
-#8 C:\xampp\htdocs\Amplify\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(134): OrderController->runAction()
-#10 C:\xampp\htdocs\Amplify\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\Amplify\framework\web\CController.php(1148): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\Amplify\framework\web\filters\CInlineFilter.php(58): OrderController->filterAccessControl()
-#13 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
-#14 C:\xampp\htdocs\Amplify\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\Amplify\framework\web\CController.php(265): OrderController->runActionWithFilters()
-#16 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(282): OrderController->run()
-#17 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\Amplify\framework\base\CApplication.php(185): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\Amplify\index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php/order/success?order_id=70&session_id=cs_test_a10IKGGiIfIYUklonZLBJXI8Mjiupv2rZ5rwsROz9UhHQcsRlz59ioj3x6
-in C:\xampp\htdocs\Amplify\protected\views\order\success.php (19)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (355)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:39:27 [info] [application] Order reference_id set to: pi_3ROiJ9BS4I776XW00RTkPtvk
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (337)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:39:27 [error] [php] Attempt to read property "shipment_date" on null (C:\xampp\htdocs\Amplify\protected\views\order\success.php:19)
-Stack trace:
-#0 C:\xampp\htdocs\Amplify\framework\web\CBaseController.php(126): require()
-#1 C:\xampp\htdocs\Amplify\framework\web\CBaseController.php(95): OrderController->renderInternal()
-#2 C:\xampp\htdocs\Amplify\framework\web\CController.php(872): OrderController->renderFile()
-#3 C:\xampp\htdocs\Amplify\framework\web\CController.php(785): OrderController->renderPartial()
-#4 C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php(355): OrderController->render()
-#5 unknown(0): OrderController->actionSuccess()
-#6 C:\xampp\htdocs\Amplify\framework\web\actions\CAction.php(114): ReflectionMethod->invokeArgs()
-#7 C:\xampp\htdocs\Amplify\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
-#8 C:\xampp\htdocs\Amplify\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(134): OrderController->runAction()
-#10 C:\xampp\htdocs\Amplify\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\Amplify\framework\web\CController.php(1148): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\Amplify\framework\web\filters\CInlineFilter.php(58): OrderController->filterAccessControl()
-#13 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
-#14 C:\xampp\htdocs\Amplify\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\Amplify\framework\web\CController.php(265): OrderController->runActionWithFilters()
-#16 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(282): OrderController->run()
-#17 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\Amplify\framework\base\CApplication.php(185): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\Amplify\index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php/order/success?order_id=70&session_id=cs_test_a10IKGGiIfIYUklonZLBJXI8Mjiupv2rZ5rwsROz9UhHQcsRlz59ioj3x6
-in C:\xampp\htdocs\Amplify\protected\views\order\success.php (19)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (355)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:41:51 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:41:51 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:41:51 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:41:58 [info] [application] Stripe Checkout Session created: https://checkout.stripe.com/c/pay/cs_test_a1gKuPLsf9ZtPF1ofojkaLaJ5kJBw9gWsOwifDSq1uEYkkGmHPYHiiPSEC#fidkdWxOYHwnPyd1blpxYHZxWjA0V09qT1xHVjFMMjIzXVI1Nj1KNE5UNEQ3bV1CYzxBVDY8ZjVKZmJxYnQ2cUJTYl1sMHNvdz1XYzwwbmtVb0tKSXR9UE1AQnNQQnByRFdXbjZRZEFVfX1QNTV9aFNzUTdSMicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (272)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:09 [info] [application] Stripe Webhook Hit
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (377)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:09 [info] [application] Stripe Webhook Raw Input: 
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (379)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:09 [info] [application] Using fallback $_POST: Array
-(
-    [order_id] => 71
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (384)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:09 [info] [application] Decoded Webhook Data: Array
-(
-    [order_id] => 71
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (388)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:09 [info] [application] Order ID: 71 | Payment Status: paid
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (393)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:09 [info] [application] Order saved successfully: 71
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (20)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (401)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:09 [info] [application] Payment created successfully: 63
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (21)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (401)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:09 [info] [application] Order #71 marked as paid. Payment and shipment created.
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (407)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:09 [info] [application] Product Details: {"status":"success","order_id":71,"products":[{"product_id":13,"name":"Erick Clapton's Guitar","quantity":1,"price":"80000.00","total":80000}],"productHTML":"\n\t\t\t<div style=\"display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;\">\n\t\t\t\t<div>\n\t\t\t\t\t<p style=\"margin: 0; font-weight: 600;\">Erick Clapton&#039;s Guitar<\/p>\n\t\t\t\t\t<p style=\"margin: 0; color: #666;\">Qty: 1<\/p>\n\t\t\t\t<\/div>\n\t\t\t\t<div style=\"font-weight: 600;\">\u20b180,000.00<\/div>\n\t\t\t<\/div>"}
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (425)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:11 [info] [application] Order reference_id set to: pi_3ROiNfBS4I776XW01wSOxOeQ
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (337)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:11 [error] [php] Attempt to read property "shipment_date" on null (C:\xampp\htdocs\Amplify\protected\views\order\success.php:19)
-Stack trace:
-#0 C:\xampp\htdocs\Amplify\framework\web\CBaseController.php(126): require()
-#1 C:\xampp\htdocs\Amplify\framework\web\CBaseController.php(95): OrderController->renderInternal()
-#2 C:\xampp\htdocs\Amplify\framework\web\CController.php(872): OrderController->renderFile()
-#3 C:\xampp\htdocs\Amplify\framework\web\CController.php(785): OrderController->renderPartial()
-#4 C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php(355): OrderController->render()
-#5 unknown(0): OrderController->actionSuccess()
-#6 C:\xampp\htdocs\Amplify\framework\web\actions\CAction.php(114): ReflectionMethod->invokeArgs()
-#7 C:\xampp\htdocs\Amplify\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
-#8 C:\xampp\htdocs\Amplify\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(134): OrderController->runAction()
-#10 C:\xampp\htdocs\Amplify\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\Amplify\framework\web\CController.php(1148): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\Amplify\framework\web\filters\CInlineFilter.php(58): OrderController->filterAccessControl()
-#13 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
-#14 C:\xampp\htdocs\Amplify\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\Amplify\framework\web\CController.php(265): OrderController->runActionWithFilters()
-#16 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(282): OrderController->run()
-#17 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\Amplify\framework\base\CApplication.php(185): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\Amplify\index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php/order/success?order_id=71&session_id=cs_test_a1gKuPLsf9ZtPF1ofojkaLaJ5kJBw9gWsOwifDSq1uEYkkGmHPYHiiPSEC
-in C:\xampp\htdocs\Amplify\protected\views\order\success.php (19)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (355)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:35 [info] [application] Stripe Checkout Session created: https://checkout.stripe.com/c/pay/cs_test_a1eDiScQCSkwNMUEYBJEsFvrnIT0ho2HoA2NFkTO8RGqZ1xNpd7h4bbz64#fidkdWxOYHwnPyd1blpxYHZxWjA0V09qT1xHVjFMMjIzXVI1Nj1KNE5UNEQ3bV1CYzxBVDY8ZjVKZmJxYnQ2cUJTYl1sMHNvdz1XYzwwbmtVb0tKSXR9UE1AQnNQQnByRFdXbjZRZEFVfX1QNTV9aFNzUTdSMicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (272)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:45 [info] [application] Stripe Webhook Hit
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (377)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:45 [info] [application] Stripe Webhook Raw Input: 
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (379)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:45 [info] [application] Using fallback $_POST: Array
-(
-    [order_id] => 72
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (384)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:45 [info] [application] Decoded Webhook Data: Array
-(
-    [order_id] => 72
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (388)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:45 [info] [application] Order ID: 72 | Payment Status: paid
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (393)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:46 [info] [application] Order saved successfully: 72
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (20)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (401)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:46 [info] [application] Payment created successfully: 64
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (21)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (401)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:46 [info] [application] Order #72 marked as paid. Payment and shipment created.
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (407)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:46 [info] [application] Product Details: {"status":"success","order_id":72,"products":[{"product_id":13,"name":"Erick Clapton's Guitar","quantity":1,"price":"80000.00","total":80000}],"productHTML":"\n\t\t\t<div style=\"display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;\">\n\t\t\t\t<div>\n\t\t\t\t\t<p style=\"margin: 0; font-weight: 600;\">Erick Clapton&#039;s Guitar<\/p>\n\t\t\t\t\t<p style=\"margin: 0; color: #666;\">Qty: 1<\/p>\n\t\t\t\t<\/div>\n\t\t\t\t<div style=\"font-weight: 600;\">\u20b180,000.00<\/div>\n\t\t\t<\/div>"}
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (425)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:47 [info] [application] Order reference_id set to: pi_3ROiOFBS4I776XW00Lws3z4j
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (337)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:42:47 [error] [php] Attempt to read property "address" on null (C:\xampp\htdocs\Amplify\protected\views\order\success.php:26)
-Stack trace:
-#0 C:\xampp\htdocs\Amplify\framework\web\CBaseController.php(126): require()
-#1 C:\xampp\htdocs\Amplify\framework\web\CBaseController.php(95): OrderController->renderInternal()
-#2 C:\xampp\htdocs\Amplify\framework\web\CController.php(872): OrderController->renderFile()
-#3 C:\xampp\htdocs\Amplify\framework\web\CController.php(785): OrderController->renderPartial()
-#4 C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php(355): OrderController->render()
-#5 unknown(0): OrderController->actionSuccess()
-#6 C:\xampp\htdocs\Amplify\framework\web\actions\CAction.php(114): ReflectionMethod->invokeArgs()
-#7 C:\xampp\htdocs\Amplify\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
-#8 C:\xampp\htdocs\Amplify\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(134): OrderController->runAction()
-#10 C:\xampp\htdocs\Amplify\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\Amplify\framework\web\CController.php(1148): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\Amplify\framework\web\filters\CInlineFilter.php(58): OrderController->filterAccessControl()
-#13 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
-#14 C:\xampp\htdocs\Amplify\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\Amplify\framework\web\CController.php(265): OrderController->runActionWithFilters()
-#16 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(282): OrderController->run()
-#17 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\Amplify\framework\base\CApplication.php(185): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\Amplify\index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php/order/success?order_id=72&session_id=cs_test_a1eDiScQCSkwNMUEYBJEsFvrnIT0ho2HoA2NFkTO8RGqZ1xNpd7h4bbz64
-in C:\xampp\htdocs\Amplify\protected\views\order\success.php (26)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (355)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:20 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:20 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:20 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:27 [info] [application] Stripe Checkout Session created: https://checkout.stripe.com/c/pay/cs_test_a1v7hq4ofSBue7KuF660nJVUX3bv1WRhvfe8P3WhpdHAwFZtgctUi9pv92#fidkdWxOYHwnPyd1blpxYHZxWjA0V09qT1xHVjFMMjIzXVI1Nj1KNE5UNEQ3bV1CYzxBVDY8ZjVKZmJxYnQ2cUJTYl1sMHNvdz1XYzwwbmtVb0tKSXR9UE1AQnNQQnByRFdXbjZRZEFVfX1QNTV9aFNzUTdSMicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (272)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:54 [info] [application] Stripe Webhook Hit
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (377)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:54 [info] [application] Stripe Webhook Raw Input: 
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (379)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:54 [info] [application] Using fallback $_POST: Array
-(
-    [order_id] => 73
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (384)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:54 [info] [application] Decoded Webhook Data: Array
-(
-    [order_id] => 73
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (388)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:54 [info] [application] Order ID: 73 | Payment Status: paid
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (393)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:54 [info] [application] Order saved successfully: 73
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (20)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (401)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:54 [info] [application] Payment created successfully: 65
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (21)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (401)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:54 [info] [application] Order #73 marked as paid. Payment and shipment created.
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (407)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:54 [info] [application] Product Details: {"status":"success","order_id":73,"products":[{"product_id":13,"name":"Erick Clapton's Guitar","quantity":1,"price":"80000.00","total":80000}],"productHTML":"\n\t\t\t<div style=\"display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;\">\n\t\t\t\t<div>\n\t\t\t\t\t<p style=\"margin: 0; font-weight: 600;\">Erick Clapton&#039;s Guitar<\/p>\n\t\t\t\t\t<p style=\"margin: 0; color: #666;\">Qty: 1<\/p>\n\t\t\t\t<\/div>\n\t\t\t\t<div style=\"font-weight: 600;\">\u20b180,000.00<\/div>\n\t\t\t<\/div>"}
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (425)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:56 [info] [application] Order reference_id set to: pi_3ROiPMBS4I776XW00LMKezKA
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (337)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:43:56 [error] [php] Attempt to read property "status" on null (C:\xampp\htdocs\Amplify\protected\views\order\success.php:30)
-Stack trace:
-#0 C:\xampp\htdocs\Amplify\framework\web\CBaseController.php(126): require()
-#1 C:\xampp\htdocs\Amplify\framework\web\CBaseController.php(95): OrderController->renderInternal()
-#2 C:\xampp\htdocs\Amplify\framework\web\CController.php(872): OrderController->renderFile()
-#3 C:\xampp\htdocs\Amplify\framework\web\CController.php(785): OrderController->renderPartial()
-#4 C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php(355): OrderController->render()
-#5 unknown(0): OrderController->actionSuccess()
-#6 C:\xampp\htdocs\Amplify\framework\web\actions\CAction.php(114): ReflectionMethod->invokeArgs()
-#7 C:\xampp\htdocs\Amplify\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
-#8 C:\xampp\htdocs\Amplify\framework\web\CController.php(308): CInlineAction->runWithParams()
-#9 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(134): OrderController->runAction()
-#10 C:\xampp\htdocs\Amplify\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#11 C:\xampp\htdocs\Amplify\framework\web\CController.php(1148): CAccessControlFilter->filter()
-#12 C:\xampp\htdocs\Amplify\framework\web\filters\CInlineFilter.php(58): OrderController->filterAccessControl()
-#13 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
-#14 C:\xampp\htdocs\Amplify\framework\web\CController.php(291): CFilterChain->run()
-#15 C:\xampp\htdocs\Amplify\framework\web\CController.php(265): OrderController->runActionWithFilters()
-#16 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(282): OrderController->run()
-#17 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#18 C:\xampp\htdocs\Amplify\framework\base\CApplication.php(185): CWebApplication->processRequest()
-#19 C:\xampp\htdocs\Amplify\index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php/order/success?order_id=73&session_id=cs_test_a1v7hq4ofSBue7KuF660nJVUX3bv1WRhvfe8P3WhpdHAwFZtgctUi9pv92
-in C:\xampp\htdocs\Amplify\protected\views\order\success.php (30)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (355)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:13 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:13 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:13 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:20 [info] [application] Stripe Checkout Session created: https://checkout.stripe.com/c/pay/cs_test_a1Qw872gbrwo3cvVjIw45hh8W9RJQYC7TqPUuTGOtn518HyoqpztprTQIY#fidkdWxOYHwnPyd1blpxYHZxWjA0V09qT1xHVjFMMjIzXVI1Nj1KNE5UNEQ3bV1CYzxBVDY8ZjVKZmJxYnQ2cUJTYl1sMHNvdz1XYzwwbmtVb0tKSXR9UE1AQnNQQnByRFdXbjZRZEFVfX1QNTV9aFNzUTdSMicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (272)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:29 [info] [application] Stripe Webhook Hit
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (377)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:29 [info] [application] Stripe Webhook Raw Input: 
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (379)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:29 [info] [application] Using fallback $_POST: Array
-(
-    [order_id] => 74
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (384)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:29 [info] [application] Decoded Webhook Data: Array
-(
-    [order_id] => 74
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (388)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:29 [info] [application] Order ID: 74 | Payment Status: paid
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (393)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:30 [info] [application] Order saved successfully: 74
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (20)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (401)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:30 [info] [application] Payment created successfully: 66
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (21)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (401)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:30 [info] [application] Order #74 marked as paid. Payment and shipment created.
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (407)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:30 [info] [application] Product Details: {"status":"success","order_id":74,"products":[{"product_id":13,"name":"Erick Clapton's Guitar","quantity":1,"price":"80000.00","total":80000}],"productHTML":"\n\t\t\t<div style=\"display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;\">\n\t\t\t\t<div>\n\t\t\t\t\t<p style=\"margin: 0; font-weight: 600;\">Erick Clapton&#039;s Guitar<\/p>\n\t\t\t\t\t<p style=\"margin: 0; color: #666;\">Qty: 1<\/p>\n\t\t\t\t<\/div>\n\t\t\t\t<div style=\"font-weight: 600;\">\u20b180,000.00<\/div>\n\t\t\t<\/div>"}
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (425)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:45:31 [info] [application] Order reference_id set to: pi_3ROiQtBS4I776XW019RN8Zf2
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (337)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:46:52 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:53:48 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:46:54 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:53:48 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
+in C:\xampp\htdocs\Amplify\index.php (13)
+2025/05/15 14:53:48 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:46:56 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:53:49 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:46:58 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:53:58 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
+in C:\xampp\htdocs\Amplify\index.php (13)
+2025/05/15 14:53:58 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:46:59 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:53:59 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
+in C:\xampp\htdocs\Amplify\index.php (13)
+2025/05/15 14:53:59 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:47:00 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:54:00 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 18:47:03 [info] [application] Shipment created.
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (530)
+2025/05/15 14:54:13 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
 in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 18:47:03 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:54:13 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:06:08 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:08 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
+2025/05/15 14:54:14 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
 in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:08 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:08 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:06:10 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:54:14 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:06:11 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:54:15 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:06:13 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:13 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:13 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:28 [info] [application] Array
-(
-    [13] => 1
-)
-
-in C:\xampp\htdocs\Amplify\protected\components\MigrateSessionCart.php (22)
-in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (122)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:28 [info] [application] Array
-(
-)
-
-in C:\xampp\htdocs\Amplify\protected\components\MigrateSessionCart.php (48)
-in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (122)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:34 [info] [application] Stripe Checkout Session created: https://checkout.stripe.com/c/pay/cs_test_a1J5XWIViYkLfflXtWbAF0vUJbaAl7NPSa5aBcOzbXAdiwbNghIy6idF2y#fidkdWxOYHwnPyd1blpxYHZxWjA0V09qT1xHVjFMMjIzXVI1Nj1KNE5UNEQ3bV1CYzxBVDY8ZjVKZmJxYnQ2cUJTYl1sMHNvdz1XYzwwbmtVb0tKSXR9UE1AQnNQQnByRFdXbjZRZEFVfX1QNTV9aFNzUTdSMicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (272)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:47 [info] [application] Stripe Webhook Hit
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (379)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:47 [info] [application] Stripe Webhook Raw Input: 
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (381)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:47 [info] [application] Using fallback $_POST: Array
-(
-    [order_id] => 75
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (386)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:47 [info] [application] Decoded Webhook Data: Array
-(
-    [order_id] => 75
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (390)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:47 [info] [application] Order ID: 75 | Payment Status: paid
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (395)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:47 [info] [application] Product Details: {"status":"success","order_id":75,"products":[{"product_id":13,"name":"Erick Clapton's Guitar","quantity":1,"price":"80000.00","total":80000}],"productHTML":"\n\t\t\t<div style=\"display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;\">\n\t\t\t\t<div>\n\t\t\t\t\t<p style=\"margin: 0; font-weight: 600;\">Erick Clapton&#039;s Guitar<\/p>\n\t\t\t\t\t<p style=\"margin: 0; color: #666;\">Qty: 1<\/p>\n\t\t\t\t<\/div>\n\t\t\t\t<div style=\"font-weight: 600;\">\u20b180,000.00<\/div>\n\t\t\t<\/div>"}
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (428)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:06:48 [error] [exception.CHttpException.403] CHttpException: Access denied or invalid order. Order ID: 75Order Status: 0 in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php:332
-Stack trace:
-#0 [internal function]: OrderController->actionSuccess('75', 'cs_test_a1J5XWI...')
-#1 C:\xampp\htdocs\Amplify\framework\web\actions\CAction.php(114): ReflectionMethod->invokeArgs(Object(OrderController), Array)
-#2 C:\xampp\htdocs\Amplify\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(OrderController), Object(ReflectionMethod), Array)
-#3 C:\xampp\htdocs\Amplify\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#4 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
-#5 C:\xampp\htdocs\Amplify\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#6 C:\xampp\htdocs\Amplify\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
-#7 C:\xampp\htdocs\Amplify\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#8 C:\xampp\htdocs\Amplify\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
-#9 C:\xampp\htdocs\Amplify\framework\web\CController.php(291): CFilterChain->run()
-#10 C:\xampp\htdocs\Amplify\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#11 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(282): CController->run('success')
-#12 C:\xampp\htdocs\Amplify\framework\web\CWebApplication.php(141): CWebApplication->runController('order/success')
-#13 C:\xampp\htdocs\Amplify\framework\base\CApplication.php(185): CWebApplication->processRequest()
-#14 C:\xampp\htdocs\Amplify\index.php(13): CApplication->run()
-#15 {main}
-REQUEST_URI=/index.php/order/success?order_id=75&session_id=cs_test_a1J5XWIViYkLfflXtWbAF0vUJbaAl7NPSa5aBcOzbXAdiwbNghIy6idF2y
----
-2025/05/14 19:08:25 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:08:25 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:08:25 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:08:31 [info] [application] Stripe Checkout Session created: https://checkout.stripe.com/c/pay/cs_test_a1TVmoUqtHle2f49Etgi1n6ROZZ7BhNjNigdZR26NzdtKck2cXzpnDvU17#fidkdWxOYHwnPyd1blpxYHZxWjA0V09qT1xHVjFMMjIzXVI1Nj1KNE5UNEQ3bV1CYzxBVDY8ZjVKZmJxYnQ2cUJTYl1sMHNvdz1XYzwwbmtVb0tKSXR9UE1AQnNQQnByRFdXbjZRZEFVfX1QNTV9aFNzUTdSMicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (272)
+2025/05/15 14:54:25 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
 in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:08:42 [info] [application] Stripe Webhook Hit
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (382)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:08:42 [info] [application] Stripe Webhook Raw Input: 
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (384)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:08:42 [info] [application] Using fallback $_POST: Array
-(
-    [order_id] => 76
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (389)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:08:42 [info] [application] Decoded Webhook Data: Array
-(
-    [order_id] => 76
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (393)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:08:42 [info] [application] Order ID: 76 | Payment Status: paid
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (398)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:08:42 [info] [application] Product Details: {"status":"success","order_id":76,"products":[{"product_id":12,"name":"Kurt Cobain\u2019s Martin","quantity":1,"price":"47960.00","total":47960}],"productHTML":"\n\t\t\t<div style=\"display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;\">\n\t\t\t\t<div>\n\t\t\t\t\t<p style=\"margin: 0; font-weight: 600;\">Kurt Cobain\u2019s Martin<\/p>\n\t\t\t\t\t<p style=\"margin: 0; color: #666;\">Qty: 1<\/p>\n\t\t\t\t<\/div>\n\t\t\t\t<div style=\"font-weight: 600;\">\u20b147,960.00<\/div>\n\t\t\t<\/div>"}
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (431)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:08:43 [info] [application] Order reference_id set to: pi_3ROinLBS4I776XW02LHr8WKW
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (341)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:08:43 [error] [application] Failed to save order: Array
-(
-    [reference_id] => Array
-        (
-            [0] => Reference ID is too long (maximum is 10 characters).
-        )
-
-)
-
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (25)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (345)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:20 [info] [application] Search query: None
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (185)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:20 [info] [application] DataProvider criteria: CDbCriteria Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [select] => *
-    [distinct] => 
-    [condition] => status=:ycp0
-    [params] => Array
-        (
-            [:ycp0] => 1
-        )
-
-    [limit] => -1
-    [offset] => -1
-    [order] => id DESC
-    [group] => 
-    [join] => 
-    [having] => 
-    [with] => 
-    [alias] => 
-    [together] => 
-    [index] => 
-    [scopes] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (245)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:20 [info] [application] DataProvider : CActiveDataProvider Object
-(
-    [_e:CComponent:private] => 
-    [_m:CComponent:private] => 
-    [_id:CDataProvider:private] => Product
-    [_data:CDataProvider:private] => 
-    [_keys:CDataProvider:private] => 
-    [_totalItemCount:CDataProvider:private] => 
-    [_sort:CDataProvider:private] => 
-    [_pagination:CDataProvider:private] => CPagination Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [pageVar] => Product_page
-            [route] => 
-            [params] => 
-            [validateCurrentPage] => 1
-            [_pageSize:CPagination:private] => 9
-            [_itemCount:CPagination:private] => 0
-            [_currentPage:CPagination:private] => 
-        )
-
-    [modelClass] => Product
-    [model] => Product Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [_errors:CModel:private] => Array
-                (
-                )
-
-            [_validators:CModel:private] => 
-            [_scenario:CModel:private] => 
-            [_new:CActiveRecord:private] => 
-            [_attributes:CActiveRecord:private] => Array
-                (
-                )
-
-            [_related:CActiveRecord:private] => Array
-                (
-                )
-
-            [_c:CActiveRecord:private] => 
-            [_pk:CActiveRecord:private] => 
-            [_alias:CActiveRecord:private] => t
-            [imageFile] => 
-            [total_sold] => 
-        )
-
-    [keyAttribute] => 
-    [_criteria:CActiveDataProvider:private] => CDbCriteria Object
-        (
-            [_e:CComponent:private] => 
-            [_m:CComponent:private] => 
-            [select] => *
-            [distinct] => 
-            [condition] => status=:ycp0
-            [params] => Array
-                (
-                    [:ycp0] => 1
-                )
-
-            [limit] => -1
-            [offset] => -1
-            [order] => id DESC
-            [group] => 
-            [join] => 
-            [having] => 
-            [with] => 
-            [alias] => 
-            [together] => 
-            [index] => 
-            [scopes] => 
-        )
-
-    [_countCriteria:CActiveDataProvider:private] => 
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\ProductController.php (246)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:26 [info] [application] Stripe Checkout Session created: https://checkout.stripe.com/c/pay/cs_test_a1PpGxsqflHLjx1CT1hjsElFBGQMM0m8ywQgtR9P4tXXb1P95kUe58yLXR#fidkdWxOYHwnPyd1blpxYHZxWjA0V09qT1xHVjFMMjIzXVI1Nj1KNE5UNEQ3bV1CYzxBVDY8ZjVKZmJxYnQ2cUJTYl1sMHNvdz1XYzwwbmtVb0tKSXR9UE1AQnNQQnByRFdXbjZRZEFVfX1QNTV9aFNzUTdSMicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (272)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:37 [info] [application] Stripe Webhook Hit
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (377)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:37 [info] [application] Stripe Webhook Raw Input: 
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (379)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:37 [info] [application] Using fallback $_POST: Array
-(
-    [order_id] => 77
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (384)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:37 [info] [application] Decoded Webhook Data: Array
-(
-    [order_id] => 77
-    [payment_status] => paid
-)
-
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (388)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:37 [info] [application] Order ID: 77 | Payment Status: paid
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (393)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:37 [info] [application] Order saved successfully: 77
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (20)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (401)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:37 [info] [application] Payment created successfully: 68
-in C:\xampp\htdocs\Amplify\protected\components\OrderHelper.php (21)
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (401)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:37 [info] [application] Order #77 marked as paid. Payment and shipment created.
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (407)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:37 [info] [application] Product Details: {"status":"success","order_id":77,"products":[{"product_id":13,"name":"Erick Clapton's Guitar","quantity":1,"price":"80000.00","total":80000}],"productHTML":"\n\t\t\t<div style=\"display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;\">\n\t\t\t\t<div>\n\t\t\t\t\t<p style=\"margin: 0; font-weight: 600;\">Erick Clapton&#039;s Guitar<\/p>\n\t\t\t\t\t<p style=\"margin: 0; color: #666;\">Qty: 1<\/p>\n\t\t\t\t<\/div>\n\t\t\t\t<div style=\"font-weight: 600;\">\u20b180,000.00<\/div>\n\t\t\t<\/div>"}
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (425)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:10:40 [info] [application] Order reference_id set to: pi_3ROipDBS4I776XW014y2jvA1
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (337)
-in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:11:18 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:54:25 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:11:20 [warning] [application] No customer found for user ID: 6
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
-in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
-in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:11:20 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:54:26 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
+in C:\xampp\htdocs\Amplify\index.php (13)
+2025/05/15 14:54:26 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:11:22 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:54:30 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:11:24 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:54:36 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
+in C:\xampp\htdocs\Amplify\index.php (13)
+2025/05/15 14:54:36 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:11:25 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:54:37 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
+in C:\xampp\htdocs\Amplify\index.php (13)
+2025/05/15 14:54:37 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:11:26 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:54:40 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:11:30 [info] [application] Shipment created.
-in C:\xampp\htdocs\Amplify\protected\controllers\OrderController.php (530)
+2025/05/15 14:54:51 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
 in C:\xampp\htdocs\Amplify\index.php (13)
-2025/05/14 19:11:31 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:54:51 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:11:50 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:54:52 [warning] [application] Failed to set unsafe attribute "imageFile" of "Category".
+in C:\xampp\htdocs\Amplify\protected\controllers\CategoryController.php (67)
+in C:\xampp\htdocs\Amplify\index.php (13)
+2025/05/15 14:54:52 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:11:55 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:54:55 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
-2025/05/14 19:11:56 [warning] [application] No customer found for user ID: 6
+2025/05/15 14:56:31 [info] [application] Login attempt with username: admin | Password: abc123
+in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (120)
+in C:\xampp\htdocs\Amplify\index.php (13)
+2025/05/15 14:56:31 [info] [application] Authentication successful for 'admin'
+in C:\xampp\htdocs\Amplify\protected\components\UserIdentity.php (38)
+in C:\xampp\htdocs\Amplify\protected\models\LoginForm.php (54)
+in C:\xampp\htdocs\Amplify\protected\controllers\SiteController.php (123)
+2025/05/15 14:56:31 [warning] [application] No customer found for user ID: 2
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (31)
 in C:\xampp\htdocs\Amplify\protected\components\views\navbar.php (7)
 in C:\xampp\htdocs\Amplify\protected\widgets\Navbar.php (12)
