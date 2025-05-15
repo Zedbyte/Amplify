@@ -15,7 +15,7 @@ $url = Yii::app()->createUrl('product/view', ['id' => $data->id]);
         <div class="overflow-hidden">
             <img src="<?php echo CHtml::encode($imageUrl); ?>"
                 alt="<?php echo CHtml::encode($data->name); ?>"
-                class="w-full h-64 object-contain mb-4 group-hover:scale-110 transition-transform duration-300 rotate-45" />
+                class="w-full h-64 object-contain mb-4 group-hover:scale-110 transition-transform duration-300" />
         </div>
 
         <div>
